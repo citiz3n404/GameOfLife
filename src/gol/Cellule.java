@@ -3,6 +3,7 @@
  */
 package gol;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
  * @date    1 nov. 2015
  * @author  Anthony CHAFFOT
  */
-public class Cellule implements Cell{
+public class Cellule implements Cell, Serializable {
     private State state;
     private HashMap<Enum, Cellule> neighbors;
     private int griffeatState;
