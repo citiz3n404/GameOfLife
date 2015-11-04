@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/build.xml</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Board.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Controller.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayConsole.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Cellule.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GoL.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayDriver.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/LifeState.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayHexaGridFX.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GridPaneDriver.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Cell.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/State.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Param.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplaySquareGridFX.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Grid.java</file>
+        </group>
+    </open-files>
+</project-private>

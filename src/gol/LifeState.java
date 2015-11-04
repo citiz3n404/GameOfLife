@@ -17,5 +17,11 @@ public enum LifeState implements State{
         public char toChar() {
             return 'O';
         }
+    },
+    BORN{
+        @Override
+        public char toChar(){
+            return '*';
+        }
     }
 }

@@ -43,30 +43,18 @@ public class Board implements Grid {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
                 //Non torique
-                if (i > 0 && j > 0) {
+                
+                if(i>0 && i<Param.NB_ROWS-1 && j>0 && j<Param.NB_COLUMNS-1){
                     board[i][j].setNeighbor(SquareGridNbh.NORTH_WEST, board[i - 1][j - 1]);
-                }
-                if (i > 0) {
                     board[i][j].setNeighbor(SquareGridNbh.NORTH, board[i - 1][j]);
-                }
-                if (i > 0 && j < Param.NB_COLUMNS - 1) {
                     board[i][j].setNeighbor(SquareGridNbh.NORTH_EAST, board[i - 1][j + 1]);
-                }
-                if (j < Param.NB_COLUMNS - 1) {
                     board[i][j].setNeighbor(SquareGridNbh.EAST, board[i][j + 1]);
-                }
-                if (i < Param.NB_ROWS - 1 && j < Param.NB_COLUMNS - 1) {
                     board[i][j].setNeighbor(SquareGridNbh.SOUTH_EAST, board[i + 1][j + 1]);
-                }
-                if (i < Param.NB_ROWS - 1) {
                     board[i][j].setNeighbor(SquareGridNbh.SOUTH, board[i + 1][j]);
-                }
-                if (i < Param.NB_ROWS - 1 && j > 0) {
                     board[i][j].setNeighbor(SquareGridNbh.SOUTH_WEST, board[i + 1][j - 1]);
-                }
-                if (j > 0) {
                     board[i][j].setNeighbor(SquareGridNbh.WEST, board[i][j - 1]);
                 }
+                
                 //Torique // Cas particuliers
                 if (i == 0) {
                     board[i][j].setNeighbor(SquareGridNbh.NORTH, board[Param.NB_ROWS - 1][j]);
@@ -163,6 +151,15 @@ public class Board implements Grid {
     private void initHexaNonToriqueNeighbors() {
         //TODO
     }
+    
+    public void updateNeighbors(){
+        for(int i=0; i<Param.NB_ROWS; i++){
+            for(int j=0; j<Param.NB_COLUMNS; j++){
+                board[i][j].getHashMapNeighbors().clear();
+            }
+        }
+        initNeighbors();
+    }
 
     public void initRandom(double proba) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
@@ -187,8 +184,6 @@ public class Board implements Grid {
 
     @Override
     public void update() {
-
-        //ENLEVER LE INIT NEIGHBIR DU INIBOARD
         Cellule[][] boardTmp = new Cellule[Param.NB_ROWS][Param.NB_COLUMNS];
         initBoard(boardTmp);
 
@@ -197,7 +192,6 @@ public class Board implements Grid {
                 boardTmp[i][j].setState(board[i][j].nextState());
             }
         }
-
         //On recopie dans la bonne grille
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {

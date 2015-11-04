@@ -137,7 +137,15 @@ public class Controller implements Initializable {
     @FXML
     private void handleClear(ActionEvent event) {
         board = new Board();
-        display = new DisplaySquareGridFX(board);
+                if(Param.GRID == 1){
+            display = new DisplaySquareGridFX(board);
+        }
+        else if(Param.GRID == 2){
+            display = new DisplayHexaGridFX(board);
+        }
+        else{
+            display = new DisplaySquareGridFX(board);
+        }
         generation = 0;
         l_generation.setText("0");
         l_population.setText("0");
@@ -148,7 +156,16 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         board = new Board();
-        display = new DisplaySquareGridFX(board);
+        if(Param.GRID == 1){
+            display = new DisplaySquareGridFX(board);
+        }
+        else if(Param.GRID == 2){
+            display = new DisplayHexaGridFX(board);
+        }
+        else{
+            display = new DisplaySquareGridFX(board);
+        }
+        
 
         pane.getChildren().clear();
         pane.getChildren().add(new Group(display.getPane()));
