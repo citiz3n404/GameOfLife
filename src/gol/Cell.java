@@ -1,13 +1,15 @@
 
 package gol;
 
+import java.io.Serializable;
+
 /**
  * @author Anthony CHAFFOT
  * @param <S>
  * @param <N>
  * @date 30/10/2015
  */
-public interface Cell <S extends State, N extends Enum<N>>{
+public interface Cell <S extends State, N extends Enum<N>> extends Serializable {
     //**************************************************************************
     // METHODS
     //**************************************************************************

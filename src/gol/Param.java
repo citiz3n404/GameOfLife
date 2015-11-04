@@ -16,8 +16,8 @@ public class Param {
     //**************************************************************************
     // BASE PARAM
     //**************************************************************************
-    public static int       NB_ROWS                 = 100;
-    public static int       NB_COLUMNS              = 200;
+    public static int       NB_ROWS                 = 20;
+    public static int       NB_COLUMNS              = 20;
     public static int       GRID                    = 1;
     // 1 -> Square 2-> Hexa 3->Triangle ?
 

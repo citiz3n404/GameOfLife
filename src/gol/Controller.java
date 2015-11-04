@@ -14,14 +14,10 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -75,8 +71,32 @@ public class Controller implements Initializable {
     FileChooser fileChooser = new FileChooser();
 
     @FXML
-    private void handleLoad(ActionEvent event) {
-       File selectedFile = fileChooser.showOpenDialog(null); // Juste pour le test
+    private void handleLoad(ActionEvent event){
+        fileChooser.setTitle("Select a file");
+        fileChooser.getExtensionFilters().addAll(
+                new ExtensionFilter("GoL files", "*.gol"));
+        File selectedFile = fileChooser.showOpenDialog(null); 
+        if (selectedFile != null) {
+            String path = selectedFile.getPath();
+            System.out.println(path);
+            board = board.loadBoard(path);
+            handleUpdate(new ActionEvent());
+            display.displayBoard(board);
+        }
+    }
+    
+    @FXML
+    private void handleSave(ActionEvent event){
+        fileChooser.setTitle("Save");
+        fileChooser.getExtensionFilters().addAll(
+                new ExtensionFilter("GoL files", "*.gol"));
+        fileChooser.setInitialFileName("save.gol");
+        File selectedFile = fileChooser.showSaveDialog(null); 
+        if (selectedFile != null) {
+            String path = selectedFile.getPath();
+            System.out.println(path);
+            board.saveBoard(path);
+        }
     }
 
     @FXML

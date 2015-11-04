@@ -98,7 +98,7 @@
                         </Label>
                         <Separator orientation="VERTICAL" />
                         <Button fx:id="b_load" mnemonicParsing="false" onAction="#handleLoad" text="Load" />
-                        <Button fx:id="b_save" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="b_save" mnemonicParsing="false" onAction="#handleSave" text="Save" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
