@@ -5,6 +5,7 @@
         <group>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/build.xml</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Board.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/View.fxml</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Controller.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayConsole.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Cellule.java</file>
@@ -18,6 +19,7 @@
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Param.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplaySquareGridFX.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Grid.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/.git/config</file>
         </group>
     </open-files>
 </project-private>

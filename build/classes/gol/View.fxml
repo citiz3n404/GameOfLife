@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="900" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gol.Controller">
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gol.Controller">
     <children>
       <BorderPane prefHeight="242.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <right>
@@ -78,6 +78,52 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label text="Type de Grille" />
+                        <Button fx:id="b_square" disable="true" mnemonicParsing="false" onAction="#handleSquare" text="Square" />
+                        <Button fx:id="b_hexagon" mnemonicParsing="false" onAction="#handleHexa" text="Hexagon" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" top="5.0" />
+                     </padding>
+                  </HBox>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label text="Rows " />
+                        <Slider fx:id="s_nbRows" blockIncrement="1.0" min="1.0" value="50.0" />
+                        <Label fx:id="l_nbRows" text="50" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox spacing="5.0">
+                     <children>
+                        <Label text="Columns" />
+                        <Slider fx:id="s_nbColumns" blockIncrement="1.0" min="1.0" value="50.0" />
+                        <Label fx:id="l_nbColumns" text="50" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Separator>
                   <Label text="Pourcentage de remplissage random">
                      <VBox.margin>
                         <Insets left="10.0" />
@@ -88,7 +134,7 @@
                         <Insets bottom="10.0" top="5.0" />
                      </VBox.margin>
                   </Slider>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER" spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#handleRandom" text="Random" />
                         <Label fx:id="l_percent" text="0%">
@@ -98,7 +144,24 @@
                         </Label>
                         <Separator orientation="VERTICAL" />
                         <Button fx:id="b_load" mnemonicParsing="false" onAction="#handleLoad" text="Load" />
-                        <Button fx:id="b_save" mnemonicParsing="false" text="Save" />
+                        <Button fx:id="b_save" mnemonicParsing="false" onAction="#handleSave" text="Save" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+                  <Separator prefWidth="200.0">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <ToggleButton fx:id="b_torique" mnemonicParsing="false" onAction="#handleTorique" text="Torique" />
+                        <ToggleButton mnemonicParsing="false" text="Immigration" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
@@ -117,7 +180,7 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <HBox spacing="5.0">
+                  <HBox alignment="CENTER" spacing="5.0">
                      <children>
                         <Button fx:id="b_start" mnemonicParsing="false" onAction="#handleRun" text="Start" />
                         <Button fx:id="b_stop" mnemonicParsing="false" onAction="#handleStop" text="Stop" />
@@ -141,7 +204,6 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <TextArea editable="false" focusTraversable="false" prefHeight="122.0" prefWidth="220.0" text="- Si la cellule est VIVANTE alors elle&#10;se maintient en vie si elle a 2 ou 3&#10;voisins sinon elle meurt.&#10;- Si la cellule est MORTE alors nait si&#10;elle a exactement 3 voisins sinon&#10;elle reste morte." />
                </children>
                <BorderPane.margin>
                   <Insets />
