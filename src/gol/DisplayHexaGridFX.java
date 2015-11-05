@@ -31,14 +31,14 @@ public class DisplayHexaGridFX implements GridPaneDriver {
                 hexa.setFill(c);
                 pane.getChildren().add(hexa);
                 attachListeners(hexa, grid[i][j]);
-                x += Param.SIZE_TILE * Math.cos(Math.PI / 6) * 2; // OK
+                x += Param.SIZE_TILE * Math.cos(Math.PI / 6) * 2 + Param.SIZE_GAP; // OK
             }
             if (y % 2 == 0) {
-                x = Param.SIZE_TILE * Math.cos(Math.PI / 6);
-                y += Param.SIZE_TILE * 2 * 3 / 4;
+                x = Param.SIZE_TILE * Math.cos(Math.PI / 6) +Param.SIZE_GAP/2;
+                y += Param.SIZE_TILE * 2 * 3 / 4 + Param.SIZE_GAP*2;
             } else {
                 x = 0;
-                y += Param.SIZE_TILE * 2 * 3 / 4;
+                y += Param.SIZE_TILE * 2 * 3 / 4 +Param.SIZE_GAP*2;
             }
         }
     }
