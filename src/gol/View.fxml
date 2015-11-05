@@ -99,7 +99,7 @@
                   <HBox spacing="5.0">
                      <children>
                         <Label text="Rows " />
-                        <Slider fx:id="s_nbRows" blockIncrement="1.0" min="2.0" value="50.0" />
+                        <Slider fx:id="s_nbRows" blockIncrement="1.0" min="1.0" value="50.0" />
                         <Label fx:id="l_nbRows" text="50" />
                      </children>
                      <padding>
@@ -109,7 +109,7 @@
                   <HBox spacing="5.0">
                      <children>
                         <Label text="Columns" />
-                        <Slider fx:id="s_nbColumns" blockIncrement="1.0" min="2.0" value="50.0" />
+                        <Slider fx:id="s_nbColumns" blockIncrement="1.0" min="1.0" value="50.0" />
                         <Label fx:id="l_nbColumns" text="50" />
                      </children>
                      <padding>

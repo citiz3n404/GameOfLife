@@ -32,7 +32,7 @@ public class DisplaySquareGridFX implements GridPaneDriver{
         for(int i=0; i<Param.NB_ROWS; i++){
             for(int j=0; j<Param.NB_COLUMNS; j++){
                 Color c = grid[i][j].getAlive() ? Param.COLOR_ALIVE : Param.COLOR_DEAD;
-                Rectangle rectangle = new Rectangle(Param.SIZE_TILE,Param.SIZE_TILE, c);
+                Rectangle rectangle = new Rectangle(Param.SIZE_SQUARE_TILE,Param.SIZE_SQUARE_TILE, c);
                 tilePane.getChildren().add(rectangle);
                 
                 //On attache ici à chaque rectangle un listener pour le clique

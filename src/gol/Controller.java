@@ -250,7 +250,9 @@ public class Controller implements Initializable {
                 int val = new_val.intValue();
                 l_nbRows.setText(Integer.toString(val));
                 Param.NB_ROWS = val;
-                //handleStop();
+                if(loop != null){
+                    handleStop();
+                }
                 handleClear();
             }
         });
@@ -260,7 +262,9 @@ public class Controller implements Initializable {
                 int val = new_val.intValue();
                 l_nbColumns.setText(Integer.toString(val));
                 Param.NB_COLUMNS = val;
-                //handleStop();
+                if(loop != null){
+                     handleStop();
+                }
                 handleClear();
             }
         });

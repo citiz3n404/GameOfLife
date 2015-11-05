@@ -37,7 +37,7 @@ public class Param {
     //**************************************************************************
     // SIMULATION
     //**************************************************************************
-    public static boolean   IS_TORIQUE              = true;
+    public static boolean   IS_TORIQUE              = false;
     public static boolean   IS_IMMIGRATION          = false;
     public static boolean   IS_GRIFFEAT             = false;
     
@@ -45,7 +45,8 @@ public class Param {
     //**************************************************************************
     // GRAPHICAL
     //**************************************************************************
-    public static int       SIZE_TILE               = 5;
+    public static int       SIZE_HEXA_TILE          = 5;
+    public static int       SIZE_SQUARE_TILE        = 8;
     public static int       SIZE_GAP                = 1;
     public static Color     COLOR_ALIVE             = Color.web("#D50000");
     public static Color     COLOR_DEAD              = Color.web("#EF9A9A");

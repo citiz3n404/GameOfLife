@@ -31,14 +31,14 @@ public class DisplayHexaGridFX implements GridPaneDriver {
                 hexa.setFill(c);
                 pane.getChildren().add(hexa);
                 attachListeners(hexa, grid[i][j]);
-                x += Param.SIZE_TILE * Math.cos(Math.PI / 6) * 2 + Param.SIZE_GAP; // OK
+                x += Param.SIZE_HEXA_TILE * Math.cos(Math.PI / 6) * 2 + Param.SIZE_GAP; // OK
             }
             if (y % 2 == 0) {
-                x = Param.SIZE_TILE * Math.cos(Math.PI / 6) +Param.SIZE_GAP/2;
-                y += Param.SIZE_TILE * 2 * 3 / 4 + Param.SIZE_GAP*2;
+                x = Param.SIZE_HEXA_TILE * Math.cos(Math.PI / 6) +Param.SIZE_GAP/2;
+                y += Param.SIZE_HEXA_TILE * 2 * 3 / 4 + Param.SIZE_GAP*2;
             } else {
                 x = 0;
-                y += Param.SIZE_TILE * 2 * 3 / 4 +Param.SIZE_GAP*2;
+                y += Param.SIZE_HEXA_TILE * 2 * 3 / 4 +Param.SIZE_GAP*2;
             }
         }
     }
@@ -63,23 +63,23 @@ public class DisplayHexaGridFX implements GridPaneDriver {
 
     private Polygon createHexa(double centerX, double centerY) {
         double[] coord = new double[12];
-        coord[0] = Param.SIZE_TILE * Math.sqrt(3) / 2 + centerX;
-        coord[1] = Param.SIZE_TILE / 2 + centerY;
+        coord[0] = Param.SIZE_HEXA_TILE * Math.sqrt(3) / 2 + centerX;
+        coord[1] = Param.SIZE_HEXA_TILE / 2 + centerY;
 
         coord[2] = 0 + centerX;
-        coord[3] = Param.SIZE_TILE + centerY;
+        coord[3] = Param.SIZE_HEXA_TILE + centerY;
 
-        coord[4] = -Param.SIZE_TILE * Math.sqrt(3) / 2 + centerX;
-        coord[5] = Param.SIZE_TILE / 2 + centerY;
+        coord[4] = -Param.SIZE_HEXA_TILE * Math.sqrt(3) / 2 + centerX;
+        coord[5] = Param.SIZE_HEXA_TILE / 2 + centerY;
 
-        coord[6] = -Param.SIZE_TILE * Math.sqrt(3) / 2 + centerX;
-        coord[7] = -Param.SIZE_TILE / 2 + centerY;
+        coord[6] = -Param.SIZE_HEXA_TILE * Math.sqrt(3) / 2 + centerX;
+        coord[7] = -Param.SIZE_HEXA_TILE / 2 + centerY;
 
         coord[8] = 0 + centerX;
-        coord[9] = -Param.SIZE_TILE + centerY;
+        coord[9] = -Param.SIZE_HEXA_TILE + centerY;
 
-        coord[10] = Param.SIZE_TILE * Math.sqrt(3) / 2 + centerX;
-        coord[11] = -Param.SIZE_TILE / 2 + centerY;
+        coord[10] = Param.SIZE_HEXA_TILE * Math.sqrt(3) / 2 + centerX;
+        coord[11] = -Param.SIZE_HEXA_TILE / 2 + centerY;
         return new Polygon(coord);
     }
 
