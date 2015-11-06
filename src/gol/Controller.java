@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
@@ -91,6 +92,7 @@ public class Controller implements Initializable {
     private Timeline loop = null;
     private int generation = 0;
     FileChooser fileChooser = new FileChooser();
+    private int exVal =0;
     
     @FXML 
     private void handleTorique(){
@@ -192,7 +194,18 @@ public class Controller implements Initializable {
             display.displayBoard(board);
             generation++;
             l_generation.setText(Integer.toString(generation));
+            
+            if(exVal > board.getPopulation()){
+                l_population.setStyle("-fx-background-color: #E57373;-fx-background-radius:5; -fx-padding:3;");
+            }
+            else if(exVal == board.getPopulation()){
+                l_population.setStyle("-fx-background-color: #BDBDBD; -fx-background-radius:5; -fx-padding:3;");
+            }
+            else{
+                l_population.setStyle("-fx-background-color: #AED581;-fx-background-radius:5; -fx-padding:3;");
+            }
             l_population.setText(Integer.toString(board.getPopulation()));
+            exVal = board.getPopulation();
         }));
         loop.setCycleCount(Timeline.INDEFINITE);
         loop.play();

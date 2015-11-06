@@ -47,8 +47,8 @@
                      <children>
                         <Label text="GENERATION" />
                         <Label text="POPULATION" GridPane.rowIndex="1" />
-                        <Label fx:id="l_generation" style="-fx-background-color: BLACK; -fx-text-fill: WHITE; -fx-background-radius: 5; -fx-padding: 3;" text="0" GridPane.columnIndex="1" />
-                        <Label fx:id="l_population" style="-fx-background-color: BLACK; -fx-text-fill: WHITE; -fx-background-radius: 5; -fx-padding: 3;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="l_generation" style="-fx-background-color: #BDBDBD; -fx-background-radius: 5; -fx-padding: 3;" text="0" GridPane.columnIndex="1" />
+                        <Label fx:id="l_population" style="-fx-background-color: #BDBDBD; -fx-background-radius: 5; -fx-padding: 3;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <padding>
                         <Insets left="10.0" right="10.0" top="10.0" />
