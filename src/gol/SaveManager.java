@@ -28,7 +28,7 @@ public class SaveManager {
                     Param.NEIGHBORS_MAX_TO_BORN = (Integer) input.readObject();
                     System.out.println("Param loaded");
                     
-                    board = new Board();
+                    board = Utils.createNewBoard();
                     for (int i = 0; i < Param.NB_ROWS; i++) {
                         for (int j = 0; j < Param.NB_COLUMNS; j++) {
                             //System.out.println(i + " " + j);
@@ -54,7 +54,7 @@ public class SaveManager {
         } catch (ClassNotFoundException e) {
             System.out.println("Class not found");
         }
-        return new Board();
+        return Utils.createNewBoard();
     }
 
     public static void saveBoard(String path, Board board) {

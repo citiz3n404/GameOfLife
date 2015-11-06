@@ -215,7 +215,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void handleClear() {
-        board = new Board();
+        board = Utils.createNewBoard();
         resetGridView();
         generation = 0;
         l_generation.setText("0");
@@ -268,12 +268,11 @@ public class Controller implements Initializable {
                 handleClear();
             }
         });
-        
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        board = new Board();
+        board = Utils.createNewBoard();
         resetGridView();
         b_stop.setDisable(true);
         setSliders();
