@@ -294,7 +294,7 @@ public class Controller implements Initializable {
     
     private void setChoiceBox(){
         cb_mode.setItems(FXCollections.observableArrayList(
-                "Classique", "Isotrope","Immigration", "NightAndDay", "HighLife"));
+                "Classique", "Isotrope","Immigration", "NightAndDay", "HighLife", "Fredkin"));
         cb_mode.getSelectionModel().selectFirst();
         cb_mode.getSelectionModel().selectedItemProperty()
             .addListener((ObservableValue observable, 
@@ -309,30 +309,42 @@ public class Controller implements Initializable {
                     Param.IS_HIGHLIFE       = false;
                     Param.IS_IMMIGRATION    = false;
                     Param.IS_ISOTROPE       = false;
+                    Param.IS_FREDKIN        = false;
                 }else if("Isotrope".equals((String)newValue)){
                     Param.IS_DAY_AND_NIGHT  = false;
                     Param.IS_GRIFFEAT       = false;
                     Param.IS_HIGHLIFE       = false;
                     Param.IS_IMMIGRATION    = false;
                     Param.IS_ISOTROPE       = true;
+                    Param.IS_FREDKIN        = false;
                 }else if("Immigration".equals((String)newValue)){
                     Param.IS_DAY_AND_NIGHT  = false;
                     Param.IS_GRIFFEAT       = false;
                     Param.IS_HIGHLIFE       = false;
                     Param.IS_IMMIGRATION    = true;
                     Param.IS_ISOTROPE       = false;
+                    Param.IS_FREDKIN        = false;
                 }else if("NightAndDay".equals((String)newValue)){
                     Param.IS_DAY_AND_NIGHT  = true;
                     Param.IS_GRIFFEAT       = false;
                     Param.IS_HIGHLIFE       = false;
                     Param.IS_IMMIGRATION    = false;
                     Param.IS_ISOTROPE       = false;
+                    Param.IS_FREDKIN        = false;
                 }else if("HighLife".equals((String)newValue)){
                     Param.IS_DAY_AND_NIGHT  = false;
                     Param.IS_GRIFFEAT       = false;
                     Param.IS_HIGHLIFE       = true;
                     Param.IS_IMMIGRATION    = false;
                     Param.IS_ISOTROPE       = false;
+                    Param.IS_FREDKIN        = false;
+                }else if("HighLife".equals((String)newValue)){
+                    Param.IS_DAY_AND_NIGHT  = false;
+                    Param.IS_GRIFFEAT       = false;
+                    Param.IS_HIGHLIFE       = false;
+                    Param.IS_IMMIGRATION    = false;
+                    Param.IS_ISOTROPE       = false;
+                    Param.IS_FREDKIN        = true;
                 }
                 handleClear();
         });

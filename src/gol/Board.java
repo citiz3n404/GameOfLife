@@ -78,7 +78,13 @@ public abstract class Board implements Grid {
                     } else {
                         board[i][j].setState(LifeState.DEAD);
                     }
-                } else {
+                } else if(Param.IS_FREDKIN){
+                    if (Math.random() <= proba) {
+                        board[i][j].setState(LifeState.ALIVE);
+                    } else {
+                        board[i][j].setState(LifeState.DEAD);
+                    }
+                } {
                     if (Math.random() <= proba) {
                         board[i][j].setState(LifeState.ALIVE);
                     } else {
@@ -101,6 +107,8 @@ public abstract class Board implements Grid {
                 } else if(Param.IS_HIGHLIFE) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 } else if(Param.IS_DAY_AND_NIGHT) {
+                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
+                } else if(Param.IS_FREDKIN) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 } else {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);

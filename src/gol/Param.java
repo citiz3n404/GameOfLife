@@ -44,6 +44,7 @@ public class Param {
     public static boolean   IS_ISOTROPE             = false;
     public static boolean   IS_HIGHLIFE             = false;
     public static boolean   IS_DAY_AND_NIGHT        = false;
+    public static boolean   IS_FREDKIN                 = false;
     
     //**************************************************************************
     // GRAPHICAL

@@ -41,6 +41,8 @@ public class Utils {
             cell = new CelluleHighLife((LifeState) st);
         } else if (Param.IS_DAY_AND_NIGHT) {
             cell = new CelluleDayAndNight((LifeState) st);
+        } else if (Param.IS_FREDKIN) {
+            cell = new CelluleFredkin((LifeState) st);
         } else {
             cell = new CelluleClassique((LifeState) st);
         }
