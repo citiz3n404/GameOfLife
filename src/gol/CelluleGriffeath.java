@@ -25,23 +25,24 @@ public class CelluleGriffeath extends Cellule{
     
     @Override
     public State nextState() {
-        if((GriffeathState)this.state ==(GriffeathState)GriffeathState.FIRST){
-            
+        if(((GriffeathState)state).val == Param.ETAT_MAX_GRIFFEAT){
+            ((GriffeathState)state).val = 1;
         }
         else{
-            
+            ((GriffeathState)state).val +=1;
         }
         return this.state;
     }
 
     @Override
     public void kill() {
-        state = LifeState.DEAD;
+        //Quand on clique sur une cell en vie on passe le state au prochain
+        state = nextState();
     }
 
-    @Override
-    public void born() {
-        state = LifeState.ALIVE;
+    @Override 
+    public void born() { 
+        // Useless car ne sera jamais invoquée. La grille n'a pas d'état mort
     }
     
     //**************************************************************************

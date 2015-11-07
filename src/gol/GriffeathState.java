@@ -11,6 +11,6 @@ package gol;
  * @author Jessica FAVIN
  */
 public class GriffeathState implements State {
-    public int FIRST = 1;
-    //FIRST,SECOND,THIRD, FOURTH
+    public int val = 1;
+    
 }
