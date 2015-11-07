@@ -7,16 +7,17 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
@@ -63,6 +64,9 @@ public class Controller implements Initializable {
 
     @FXML
     private Button b_update;
+    
+    @FXML
+    private ChoiceBox cb_mode;
     
     @FXML
     private ToggleButton b_torique;
@@ -318,12 +322,19 @@ public class Controller implements Initializable {
         });
     }
     
+    private void setChoiceBox(){
+        cb_mode = new ChoiceBox(FXCollections.observableArrayList(
+    "Immigraton", "Isotrope", "High Life", "Night and Day")
+);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         board = Utils.createNewBoard();
         resetGridView();
         b_stop.setDisable(true);
         setSliders();
+        setChoiceBox();
     }
 
 }

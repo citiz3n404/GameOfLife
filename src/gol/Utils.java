@@ -37,6 +37,10 @@ public class Utils {
             cell = new CelluleImmigration((ImmigrationState) st);
         } else if (Param.IS_ISOTROPE) {
             cell = new CelluleIsotrope((LifeState) st);
+        } else if (Param.HIGHLIFE) {
+            cell = new CelluleHighLife((LifeState) st);
+        } else if (Param.DAY_AND_NIGHT) {
+            cell = new CelluleDayAndNight((LifeState) st);
         } else {
             cell = new CelluleClassique((LifeState) st);
         }

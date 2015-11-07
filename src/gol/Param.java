@@ -41,7 +41,8 @@ public class Param {
     public static boolean   IS_IMMIGRATION          = false;
     public static boolean   IS_GRIFFEAT             = false;
     public static boolean   IS_ISOTROPE             = false;
-    
+    public static boolean   HIGHLIFE                = false;
+    public static boolean   DAY_AND_NIGHT           = false;
     
     //**************************************************************************
     // GRAPHICAL

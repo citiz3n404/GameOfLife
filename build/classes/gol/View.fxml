@@ -176,6 +176,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </HBox>
+                  <ChoiceBox fx:id="cb_mode" prefWidth="150.0" />
                   <Separator prefWidth="200.0">
                      <padding>
                         <Insets left="10.0" right="10.0" top="10.0" />
