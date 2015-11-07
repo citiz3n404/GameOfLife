@@ -66,13 +66,13 @@ public abstract class Board implements Grid {
                     } else {
                         board[i][j].setState(LifeState.DEAD);
                     }
-                } else if(Param.HIGHLIFE){
+                } else if(Param.IS_HIGHLIFE){
                     if (Math.random() <= proba) {
                         board[i][j].setState(LifeState.ALIVE);
                     } else {
                         board[i][j].setState(LifeState.DEAD);
                     }
-                } else if(Param.DAY_AND_NIGHT){
+                } else if(Param.IS_DAY_AND_NIGHT){
                     if (Math.random() <= proba) {
                         board[i][j].setState(LifeState.ALIVE);
                     } else {
@@ -98,9 +98,9 @@ public abstract class Board implements Grid {
                     brd[i][j] = Utils.createNewCell(ImmigrationState.DEAD);
                 } else if(Param.IS_ISOTROPE) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else if(Param.HIGHLIFE) {
+                } else if(Param.IS_HIGHLIFE) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else if(Param.DAY_AND_NIGHT) {
+                } else if(Param.IS_DAY_AND_NIGHT) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 } else {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);

@@ -8,12 +8,14 @@ import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
@@ -102,7 +104,7 @@ public class Controller implements Initializable {
     private GridPaneDriver display;
     private Timeline loop = null;
     private int generation = 0;
-    FileChooser fileChooser = new FileChooser();
+    private FileChooser fileChooser = new FileChooser();
     private int exVal =0;
     
     @FXML 
@@ -119,28 +121,7 @@ public class Controller implements Initializable {
         
     }
     
-    @FXML
-    private void handleImmigration(){
-        if(b_immigration.isSelected()){
-            Param.IS_IMMIGRATION = true;
-        }
-        else{
-            Param.IS_IMMIGRATION = false;
-        }
-        if(loop != null){
-            handleStop();
-        }
-        handleClear();
-    }
-    
-    @FXML
-    private void handleIsotrope(){
-        if(b_isotrope.isSelected()){
-            Param.IS_ISOTROPE = true;
-        }
-        else{
-            Param.IS_ISOTROPE = false;
-        }
+    private void stopAndClear(){
         if(loop != null){
             handleStop();
         }
@@ -152,10 +133,7 @@ public class Controller implements Initializable {
         b_hexagon.setDisable(false);
         Param.GRID = 1;
         b_square.setDisable(true);
-        if(loop != null){
-            handleStop();
-        }
-        handleClear();
+        stopAndClear();
     }
     
     @FXML
@@ -163,10 +141,7 @@ public class Controller implements Initializable {
         b_square.setDisable(false);
         Param.GRID = 2;
         b_hexagon.setDisable(true);
-        if(loop != null){
-            handleStop();
-        }
-        handleClear();
+        stopAndClear();
     }
 
     @FXML
@@ -272,6 +247,7 @@ public class Controller implements Initializable {
         generation = 0;
         l_generation.setText("0");
         l_population.setText("0");
+        l_population.setStyle("-fx-background-color: #BDBDBD; -fx-background-radius:5; -fx-padding:3;");
     }
     
     private void resetGridView(){
@@ -302,10 +278,7 @@ public class Controller implements Initializable {
                 int val = new_val.intValue();
                 l_nbRows.setText(Integer.toString(val));
                 Param.NB_ROWS = val;
-                if(loop != null){
-                    handleStop();
-                }
-                handleClear();
+                stopAndClear();
             }
         });
         s_nbColumns.valueProperty().addListener(new ChangeListener<Number>(){
@@ -314,18 +287,56 @@ public class Controller implements Initializable {
                 int val = new_val.intValue();
                 l_nbColumns.setText(Integer.toString(val));
                 Param.NB_COLUMNS = val;
-                if(loop != null){
-                     handleStop();
-                }
-                handleClear();
+                stopAndClear();
             }
         });
     }
     
     private void setChoiceBox(){
-        cb_mode = new ChoiceBox(FXCollections.observableArrayList(
-    "Immigraton", "Isotrope", "High Life", "Night and Day")
-);
+        cb_mode.setItems(FXCollections.observableArrayList(
+                "Classique", "Isotrope","Immigration", "NightAndDay", "HighLife"));
+        cb_mode.getSelectionModel().selectFirst();
+        cb_mode.getSelectionModel().selectedItemProperty()
+            .addListener((ObservableValue observable, 
+                    Object oldValue, Object newValue) -> {
+                //label1.setText((String)newValue);
+                if(loop != null){
+                    handleStop();
+                }
+                if("Classique".equals((String)newValue)){
+                    Param.IS_DAY_AND_NIGHT  = false;
+                    Param.IS_GRIFFEAT       = false;
+                    Param.IS_HIGHLIFE       = false;
+                    Param.IS_IMMIGRATION    = false;
+                    Param.IS_ISOTROPE       = false;
+                }else if("Isotrope".equals((String)newValue)){
+                    Param.IS_DAY_AND_NIGHT  = false;
+                    Param.IS_GRIFFEAT       = false;
+                    Param.IS_HIGHLIFE       = false;
+                    Param.IS_IMMIGRATION    = false;
+                    Param.IS_ISOTROPE       = true;
+                }else if("Immigration".equals((String)newValue)){
+                    Param.IS_DAY_AND_NIGHT  = false;
+                    Param.IS_GRIFFEAT       = false;
+                    Param.IS_HIGHLIFE       = false;
+                    Param.IS_IMMIGRATION    = true;
+                    Param.IS_ISOTROPE       = false;
+                }else if("NightAndDay".equals((String)newValue)){
+                    Param.IS_DAY_AND_NIGHT  = true;
+                    Param.IS_GRIFFEAT       = false;
+                    Param.IS_HIGHLIFE       = false;
+                    Param.IS_IMMIGRATION    = false;
+                    Param.IS_ISOTROPE       = false;
+                }else if("HighLife".equals((String)newValue)){
+                    Param.IS_DAY_AND_NIGHT  = false;
+                    Param.IS_GRIFFEAT       = false;
+                    Param.IS_HIGHLIFE       = true;
+                    Param.IS_IMMIGRATION    = false;
+                    Param.IS_ISOTROPE       = false;
+                }
+                handleClear();
+        });
+        System.out.println(cb_mode.getValue());
     }
     
     @Override

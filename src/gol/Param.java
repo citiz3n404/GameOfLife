@@ -38,11 +38,12 @@ public class Param {
     // SIMULATION
     //**************************************************************************
     public static boolean   IS_TORIQUE              = false;
+    
     public static boolean   IS_IMMIGRATION          = false;
     public static boolean   IS_GRIFFEAT             = false;
     public static boolean   IS_ISOTROPE             = false;
-    public static boolean   HIGHLIFE                = false;
-    public static boolean   DAY_AND_NIGHT           = false;
+    public static boolean   IS_HIGHLIFE             = false;
+    public static boolean   IS_DAY_AND_NIGHT        = false;
     
     //**************************************************************************
     // GRAPHICAL
