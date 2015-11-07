@@ -10,11 +10,11 @@ package gol;
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class SquareBoard extends Board{
+public class BoardSquare extends Board{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public SquareBoard(){
+    public BoardSquare(){
         super();
     }
 

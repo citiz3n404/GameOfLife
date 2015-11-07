@@ -8,12 +8,12 @@ package gol;
  * @author Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class HexaBoard extends Board {
+public class BoardHexa extends Board {
 
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public HexaBoard() {
+    public BoardHexa() {
         super();
     }
 

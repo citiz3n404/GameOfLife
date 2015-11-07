@@ -20,11 +20,11 @@ public class Utils {
     public static Board createNewBoard() {
         Board board;
         if (Param.GRID == 1) {
-            board = new SquareBoard();
+            board = new BoardSquare();
         } else if (Param.GRID == 2) {
-            board = new HexaBoard();
+            board = new BoardHexa();
         } else {
-            board = new SquareBoard();
+            board = new BoardSquare();
         }
         return board;
     }
