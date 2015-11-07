@@ -24,8 +24,8 @@ public class SaveManager {
                     Param.GRID = (Integer) input.readObject();
                     Param.NEIGHBORS_MIN_TO_LIVE = (Integer) input.readObject();
                     Param.NEIGHBORS_MAX_TO_LIVE = (Integer) input.readObject();
-                    Param.NEIGHBORS_MIN_TO_BORN = (Integer) input.readObject();
-                    Param.NEIGHBORS_MAX_TO_BORN = (Integer) input.readObject();
+                    /*   Param.NEIGHBORS_MIN_TO_BORN = (Integer) input.readObject();
+                    Param.NEIGHBORS_MAX_TO_BORN = (Integer) input.readObject();*/
                     System.out.println("Param loaded");
                     
                     board = Utils.createNewBoard();
@@ -67,9 +67,9 @@ public class SaveManager {
                 output.writeObject((Integer) Param.NB_COLUMNS);
                 output.writeObject((Integer) Param.GRID);
                 output.writeObject((Integer) Param.NEIGHBORS_MIN_TO_LIVE);
-                output.writeObject((Integer) Param.NEIGHBORS_MAX_TO_LIVE);
+                output.writeObject((Integer) Param.NEIGHBORS_MAX_TO_LIVE);/*
                 output.writeObject((Integer) Param.NEIGHBORS_MIN_TO_BORN);
-                output.writeObject((Integer) Param.NEIGHBORS_MAX_TO_BORN);
+                output.writeObject((Integer) Param.NEIGHBORS_MAX_TO_BORN);*/
                 System.out.println("Param saved");
                 for (int i = 0; i < Param.NB_ROWS; i++) {
                     for (int j = 0; j < Param.NB_COLUMNS; j++) {

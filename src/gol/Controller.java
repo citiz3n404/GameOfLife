@@ -67,6 +67,9 @@ public class Controller implements Initializable {
     private ToggleButton b_torique;
     
     @FXML
+    private ToggleButton b_immigration;
+    
+    @FXML
     private Button b_square;
     
     @FXML
@@ -106,6 +109,20 @@ public class Controller implements Initializable {
             board.updateNeighbors();
         }
         
+    }
+    
+    @FXML
+    private void handleImmigration(){
+        if(b_immigration.isSelected()){
+            Param.IS_IMMIGRATION = true;
+        }
+        else{
+            Param.IS_IMMIGRATION = false;
+        }
+        if(loop != null){
+            handleStop();
+        }
+        handleClear();
     }
     
     @FXML

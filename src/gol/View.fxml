@@ -167,7 +167,8 @@
                   <HBox alignment="CENTER" spacing="5.0">
                      <children>
                         <ToggleButton fx:id="b_torique" mnemonicParsing="false" onAction="#handleTorique" text="Torique" />
-                        <ToggleButton mnemonicParsing="false" text="Immigration" />
+                        <Separator orientation="VERTICAL" />
+                        <ToggleButton fx:id="b_immigration" mnemonicParsing="false" onAction="#handleImmigration" text="Immigration" />
                      </children>
                      <padding>
                         <Insets left="10.0" />

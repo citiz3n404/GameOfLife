@@ -22,12 +22,11 @@ public class Param {
     // 1 -> Square 2-> Hexa 3->Triangle ?
 
     //**************************************************************************
-    // ISOTROPE
+    // CLASSIC
     //**************************************************************************
     public static int       NEIGHBORS_MIN_TO_LIVE   = 2;
     public static int       NEIGHBORS_MAX_TO_LIVE   = 3;
-    public static int       NEIGHBORS_MIN_TO_BORN   = 3;
-    public static int       NEIGHBORS_MAX_TO_BORN   = 3;
+    public static int       NEIGHBORS_TO_BORN   = 3;
     
     //**************************************************************************
     // GRIFFEATH
@@ -50,7 +49,7 @@ public class Param {
     public static int       SIZE_GAP                = 1;
     public static Color     COLOR_ALIVE             = Color.web("#D50000");
     public static Color     COLOR_DEAD              = Color.web("#EF9A9A");
-    public static Color     COLOR_BORN              = Color.web("#FFFFFF");
+    public static Color     COLOR_BORN              = Color.web("#EC407A");
     
 
 }

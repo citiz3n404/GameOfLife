@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 /**
  * @date 3 nov. 2015
@@ -26,19 +27,19 @@ public class DisplayHexaGridFX implements GridPaneDriver {
         grid = board.getGrid();
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                Color c = grid[i][j].getAlive() ? Param.COLOR_ALIVE : Param.COLOR_DEAD;
+                Color c = Utils.getColorCell(grid[i][j]);
                 Polygon hexa = createHexa(x, y);
                 hexa.setFill(c);
                 pane.getChildren().add(hexa);
-                attachListeners(hexa, grid[i][j]);
+                Utils.attachListeners(hexa, grid[i][j]);
                 x += Param.SIZE_HEXA_TILE * Math.cos(Math.PI / 6) * 2 + Param.SIZE_GAP; // OK
             }
             if (y % 2 == 0) {
-                x = Param.SIZE_HEXA_TILE * Math.cos(Math.PI / 6) +Param.SIZE_GAP/2;
-                y += Param.SIZE_HEXA_TILE * 2 * 3 / 4 + Param.SIZE_GAP*2;
+                x = Param.SIZE_HEXA_TILE * Math.cos(Math.PI / 6) + Param.SIZE_GAP / 2;
+                y += Param.SIZE_HEXA_TILE * 2 * 3 / 4 + Param.SIZE_GAP * 2;
             } else {
                 x = 0;
-                y += Param.SIZE_HEXA_TILE * 2 * 3 / 4 +Param.SIZE_GAP*2;
+                y += Param.SIZE_HEXA_TILE * 2 * 3 / 4 + Param.SIZE_GAP * 2;
             }
         }
     }
@@ -50,8 +51,8 @@ public class DisplayHexaGridFX implements GridPaneDriver {
     public void displayBoard(Board board) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                Color c = grid[i][j].getAlive() ? Param.COLOR_ALIVE : Param.COLOR_DEAD;
-                Polygon hexa = (Polygon) pane.getChildren().get(boardToPaneCoords(i, j));
+                Color c = Utils.getColorCell(grid[i][j]);
+                Polygon hexa = (Polygon) pane.getChildren().get(Utils.boardToPaneCoords(i, j));
                 hexa.setFill(c);
             }
         }
@@ -83,21 +84,7 @@ public class DisplayHexaGridFX implements GridPaneDriver {
         return new Polygon(coord);
     }
 
-    private void attachListeners(Polygon r, Cellule c) {
-        r.setOnMousePressed(e -> {
-            r.setFill(Param.COLOR_BORN);
-        });
-
-        r.setOnMouseClicked(e -> {
-            //Si la cellule est vivante on la tue autrement elle nait
-            r.setFill(c.getAlive() ? Param.COLOR_DEAD : Param.COLOR_ALIVE);
-            if (c.getState() == LifeState.ALIVE) {
-                c.setState(LifeState.DEAD);
-            } else {
-                c.setState(LifeState.ALIVE);
-            }
-        });
-    }
+    
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************

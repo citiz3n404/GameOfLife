@@ -30,12 +30,13 @@ public class DisplayConsole implements DisplayDriver{
         grid = board.getGrid();
         for(int i=0; i<Param.NB_ROWS; i++){
             for(int j=0;j<Param.NB_COLUMNS; j++){
-                if(grid[i][j].getAlive()){
-                    System.out.print(LifeState.ALIVE.toChar()+ " ");
+                //*******************************************************************************************
+                /*                if(grid[i][j].getAlive()){
+                System.out.print(LifeState.ALIVE.toChar()+ " ");
                 }
                 else{
-                    System.out.print(LifeState.DEAD.toChar()+ " ");
-                }
+                System.out.print(LifeState.DEAD.toChar()+ " ");
+                }*/
             }
             System.out.println();
         }

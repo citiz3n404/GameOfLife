@@ -36,7 +36,6 @@ public abstract class Board implements Grid {
         }
     }
 
-
     abstract void initToriqueNeighbors();
 
     abstract void initNonToriqueNeighbors();
@@ -53,11 +52,22 @@ public abstract class Board implements Grid {
     public void initRandom(double proba) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                if (Math.random() <= proba) {
-                    board[i][j].setState(LifeState.ALIVE);
+                //******************************************************************************
+                if (Param.IS_IMMIGRATION) {
+                    if(Math.random() <= proba){
+                        board[i][j].setState(ImmigrationState.ALIVE);
+                    }
+                    else{
+                        board[i][j].setState(ImmigrationState.DEAD);
+                    }
                 } else {
-                    board[i][j].setState(LifeState.DEAD);
+                    if (Math.random() <= proba) {
+                        board[i][j].setState(LifeState.ALIVE);
+                    } else {
+                        board[i][j].setState(LifeState.DEAD);
+                    }
                 }
+
             }
         }
     }
@@ -65,7 +75,14 @@ public abstract class Board implements Grid {
     public void initBoard(Cellule[][] brd) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                brd[i][j] = new Cellule(LifeState.DEAD);
+                //****************************************************************************
+                if(Param.IS_IMMIGRATION){
+                    brd[i][j] = Utils.createNewCell(ImmigrationState.DEAD);
+                }
+                else{
+                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
+                }
+                
             }
         }
         initNeighbors();
@@ -105,7 +122,7 @@ public abstract class Board implements Grid {
         int sum = 0;
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                if (board[i][j].getAlive()) {
+                if(board[i][j].getAlive()){
                     sum++;
                 }
             }

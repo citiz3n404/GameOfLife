@@ -31,12 +31,12 @@ public class DisplaySquareGridFX implements GridPaneDriver{
         
         for(int i=0; i<Param.NB_ROWS; i++){
             for(int j=0; j<Param.NB_COLUMNS; j++){
-                Color c = grid[i][j].getAlive() ? Param.COLOR_ALIVE : Param.COLOR_DEAD;
+                Color c = Utils.getColorCell(grid[i][j]);
                 Rectangle rectangle = new Rectangle(Param.SIZE_SQUARE_TILE,Param.SIZE_SQUARE_TILE, c);
                 tilePane.getChildren().add(rectangle);
                 
                 //On attache ici à chaque rectangle un listener pour le clique
-                attachListeners(rectangle, grid[i][j]);
+                Utils.attachListeners(rectangle, grid[i][j]);
             }
         }
     }
@@ -49,37 +49,10 @@ public class DisplaySquareGridFX implements GridPaneDriver{
         //grid = board.getGrid();
         for(int i=0; i<Param.NB_ROWS; i++){
             for(int j=0; j<Param.NB_COLUMNS; j++){
-                Rectangle r = (Rectangle) tilePane.getChildren().get(boardToPaneCoords(i, j));
-                r.setFill(grid[i][j].getAlive() ? Param.COLOR_ALIVE : Param.COLOR_DEAD);
-                if(grid[i][j].getAlive()){
-                    //System.out.print(LifeState.ALIVE.toChar() +" ");
-                }
-                else{
-                    //System.out.print(LifeState.DEAD.toChar() +" ");
-                }
+                Rectangle r = (Rectangle) tilePane.getChildren().get(Utils.boardToPaneCoords(i, j));
+                r.setFill(Utils.getColorCell(grid[i][j]));
             }
-            //System.out.println();
         }
-        //System.out.println("\n\n----------------------------\n");
-    }
-    
-    private int boardToPaneCoords(int i, int j) {
-        return (i * Param.NB_COLUMNS) + j;
-    }
-    
-    private void attachListeners(Rectangle r, Cellule c) {
-        r.setOnMousePressed(e -> { r.setFill(Param.COLOR_BORN); });
-
-        r.setOnMouseClicked(e -> {
-            //Si la cellule est vivante on la tue autrement elle nait
-            r.setFill(c.getAlive() ? Param.COLOR_DEAD : Param.COLOR_ALIVE);            
-            if(c.getState() == LifeState.ALIVE){
-                c.setState(LifeState.DEAD);
-            }
-            else{
-                c.setState(LifeState.ALIVE);
-            }
-        });
     }
     
     //**************************************************************************

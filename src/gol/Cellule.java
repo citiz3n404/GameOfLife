@@ -12,55 +12,29 @@ import java.util.HashMap;
  * @date    1 nov. 2015
  * @author  Anthony CHAFFOT
  */
-public class Cellule implements Cell, Serializable {
-    private State state;
-    private HashMap<Enum, Cellule> neighbors;
-    private int griffeatState;
+public abstract class Cellule implements Cell, Serializable {
+    protected State state;
+    protected HashMap<Enum, Cellule> neighbors;
     
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public Cellule(LifeState st){
+    public Cellule(State st){
         this.neighbors = new HashMap<>();
-        this.state = st;
-        griffeatState = 0; //Griffeath
         
     }
 
     //**************************************************************************
     // METHODS
     //**************************************************************************
-    /**
-     * Si  x vivante inclus entre NEIGHBORS_MIN_TO_LIVE et NEIGHBORS_MAX_TO_LIVE -> VIE
-     * Sinon -> Mort
-     * Si x morte inclus entre NEIGHBORS_MIN_TO_BORN et NEIGHBORS_MAX_TO_BORN -> VIE
-     * Sinon -> Mort
-     * @return 
-     */
+
     @Override 
-    public State nextState() {
-        if(this.state == LifeState.ALIVE){
-            if(getNbNeighbors() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighbors() <= Param.NEIGHBORS_MAX_TO_LIVE){
-                return LifeState.ALIVE;
-            } 
-            else{
-                return LifeState.DEAD;
-            }
-        }
-        else{
-            if(getNbNeighbors() >= Param.NEIGHBORS_MIN_TO_BORN && getNbNeighbors()<=Param.NEIGHBORS_MAX_TO_BORN){
-                return LifeState.ALIVE;
-            }
-        }
-        return this.state;
-    }
+    public abstract State nextState();
     
-    public int nextGriffeatState(){
-        if(griffeatState+1 == Param.ETAT_MAX_GRIFFEAT){
-            return 0;
-        }
-        else return griffeatState +1;
-    }
+    public abstract void kill();
+    
+    public abstract void born();
+    
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************
@@ -78,21 +52,10 @@ public class Cellule implements Cell, Serializable {
         return neighbors.get(direction);
     }
 
-    public int getNbNeighbors(){
-        int sum=0;
-        for(Enum direction : neighbors.keySet()){
-            if(neighbors.get(direction) != null){
-                if(neighbors.get(direction).getAlive()){
-                    sum++;
-                }
-            }
-        }
-        return sum;
-    }
+    public abstract int getNbNeighborsAlive();
     
-    public boolean getAlive(){
-        return state == LifeState.ALIVE;
-    }
+    public abstract boolean getAlive();
+
 
     @Override
     public State getState() {
@@ -103,12 +66,5 @@ public class Cellule implements Cell, Serializable {
         this.state = state;
     }
     
-    public void setGriffeatState(int state){
-        this.griffeatState = state;
-    }
-    
-    public int getGriffeatState(){
-        return this.griffeatState;
-    }
 
 }
