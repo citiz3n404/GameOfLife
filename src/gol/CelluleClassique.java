@@ -44,7 +44,7 @@ public class CelluleClassique extends Cellule{
     }
     
     @Override
-    public boolean getAlive(){
+    public boolean isAlive(){
         return state == LifeState.ALIVE;
     }
 

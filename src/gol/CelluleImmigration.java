@@ -79,7 +79,7 @@ public class CelluleImmigration extends Cellule{
     }
 
     @Override
-    public boolean getAlive() {
+    public boolean isAlive() {
         if(state == ImmigrationState.ALIVE || state == ImmigrationState.BORN){
             return true;
         }

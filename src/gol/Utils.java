@@ -47,7 +47,7 @@ public class Utils {
 
         r.setOnMouseClicked(e -> {
             //Si la cellule est vivante on la tue autrement elle nait
-            if (c.getAlive()) {
+            if (c.isAlive()) {
                 r.setFill(Param.COLOR_DEAD);
                 c.kill();
             } else {

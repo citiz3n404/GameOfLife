@@ -54,7 +54,7 @@ public abstract class Cellule implements Cell, Serializable {
 
     public abstract int getNbNeighborsAlive();
     
-    public abstract boolean getAlive();
+    public abstract boolean isAlive();
 
 
     @Override

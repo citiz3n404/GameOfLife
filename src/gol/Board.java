@@ -122,7 +122,7 @@ public abstract class Board implements Grid {
         int sum = 0;
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                if(board[i][j].getAlive()){
+                if(board[i][j].isAlive()){
                     sum++;
                 }
             }
