@@ -23,7 +23,8 @@ import javafx.util.Duration;
 
 /**
  *
- * @author Anthony
+ * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class Controller implements Initializable {
 
@@ -68,6 +69,9 @@ public class Controller implements Initializable {
     
     @FXML
     private ToggleButton b_immigration;
+    
+    @FXML
+    private ToggleButton b_isotrope;
     
     @FXML
     private Button b_square;
@@ -118,6 +122,20 @@ public class Controller implements Initializable {
         }
         else{
             Param.IS_IMMIGRATION = false;
+        }
+        if(loop != null){
+            handleStop();
+        }
+        handleClear();
+    }
+    
+    @FXML
+    private void handleIsotrope(){
+        if(b_isotrope.isSelected()){
+            Param.IS_ISOTROPE = true;
+        }
+        else{
+            Param.IS_ISOTROPE = false;
         }
         if(loop != null){
             handleStop();

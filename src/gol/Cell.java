@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 /**
  * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  * @param <S>
  * @param <N>
  * @date 30/10/2015

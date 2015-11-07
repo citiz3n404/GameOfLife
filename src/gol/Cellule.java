@@ -11,6 +11,7 @@ import java.util.HashMap;
 /**
  * @date    1 nov. 2015
  * @author  Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public abstract class Cellule implements Cell, Serializable {
     protected State state;

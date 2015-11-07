@@ -1,53 +1,61 @@
 /* 
- * Creation : 6 nov. 2015
+ * Creation : 7 nov. 2015
  */
 package gol;
 
 
 
 /**
- * @date    6 nov. 2015
+ * @date    7 nov. 2015
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class CelluleClassique extends Cellule{
+public class CelluleIsotrope extends Cellule {
+    
+    public int[]survivre = {2,4,5};
+    public int[] naitre = {3,6,8};
+    
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public CelluleClassique(LifeState st){
+    
+    public CelluleIsotrope(LifeState st){
         super(st);
     }
-
+    
     //**************************************************************************
     // METHODS
     //**************************************************************************
-
-    //**************************************************************************
-    // SETTERS / GETTERS
-    //**************************************************************************
-
+    
     @Override
     public State nextState() {
         if(this.state == LifeState.ALIVE){
-            if(getNbNeighborsAlive() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighborsAlive() <= Param.NEIGHBORS_MAX_TO_LIVE){
-                return LifeState.ALIVE;
-            } 
-            else{
-                return LifeState.DEAD;
+            for(int i=0; i<survivre.length; i++){
+                if(getNbNeighborsAlive() == survivre[i]) return LifeState.ALIVE;
             }
+            return LifeState.DEAD;
         }
         else{
-            if(getNbNeighborsAlive() == Param.NEIGHBORS_TO_BORN){
-                return LifeState.ALIVE;
+            for(int i=0; i<naitre.length; i++){
+                if(getNbNeighborsAlive() == naitre[i]) return LifeState.ALIVE;
             }
         }
         return this.state;
     }
-    
+
     @Override
-    public boolean isAlive(){
-        return state == LifeState.ALIVE;
+    public void kill() {
+        state = LifeState.DEAD;
     }
+
+    @Override
+    public void born() {
+        state = LifeState.ALIVE;
+    }
+    
+    //**************************************************************************
+    // SETTERS / GETTERS
+    //**************************************************************************
 
     @Override
     public int getNbNeighborsAlive() {
@@ -63,13 +71,8 @@ public class CelluleClassique extends Cellule{
     }
 
     @Override
-    public void kill() {
-        state = LifeState.DEAD;
+    public boolean isAlive() {
+        return state == LifeState.ALIVE;
     }
-
-    @Override
-    public void born() {
-        state = LifeState.ALIVE;
-    }
-
+    
 }

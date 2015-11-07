@@ -8,6 +8,7 @@ package gol;
 /**
  * @date    6 nov. 2015
  * @author  Anthony CHAFFOT
+ * @author  Jessica FAVIN
  */
 public class CelluleImmigration extends Cellule{
     int tmpNbNeighbors =0;

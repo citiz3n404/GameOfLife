@@ -12,6 +12,7 @@ import javafx.scene.shape.Shape;
 /**
  * @date 3 nov. 2015
  * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class DisplayHexaGridFX implements GridPaneDriver {
 

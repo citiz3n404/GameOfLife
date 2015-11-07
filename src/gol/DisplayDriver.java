@@ -3,7 +3,8 @@ package gol;
 
 /**
  *
- * @author Anthony
+ * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public interface DisplayDriver {
     public void displayBoard(Board board);

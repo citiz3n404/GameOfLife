@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * @date    1 nov. 2015
  * @author  Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class DisplaySquareGridFX implements GridPaneDriver{
     TilePane tilePane;

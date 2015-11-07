@@ -9,7 +9,8 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Anthony
+ * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class GoL extends Application {
     

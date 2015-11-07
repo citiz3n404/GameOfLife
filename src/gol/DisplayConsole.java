@@ -8,6 +8,7 @@ package gol;
 /**
  * @date    1 nov. 2015
  * @author  Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class DisplayConsole implements DisplayDriver{
     Cellule[][] grid;

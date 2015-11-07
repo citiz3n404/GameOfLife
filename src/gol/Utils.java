@@ -9,6 +9,7 @@ import javafx.scene.shape.Shape;
 /**
  * @date 6 nov. 2015
  * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class Utils {
 
@@ -34,6 +35,8 @@ public class Utils {
             cell = new CelluleClassique((LifeState) st);
         } else if (Param.IS_IMMIGRATION) {
             cell = new CelluleImmigration((ImmigrationState) st);
+        } else if (Param.IS_ISOTROPE) {
+            cell = new CelluleIsotrope((LifeState) st);
         } else {
             cell = new CelluleClassique((LifeState) st);
         }

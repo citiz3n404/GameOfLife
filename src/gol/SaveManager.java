@@ -1,3 +1,7 @@
+/* 
+ * Creation : 5 nov. 2015
+ */
+
 package gol;
 
 import java.io.FileInputStream;
@@ -6,6 +10,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/**
+ * 
+ * @date    5 nov. 2015
+ * @author  Anthony CHAFFOT
+ * @author Jessica FAVIN
+ */
 public class SaveManager {
 
     public static Board loadBoard(String path) {

@@ -3,6 +3,7 @@ package gol;
 
 /**
  * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  * @date 30/10/2015
  */
 public interface Grid <S extends State, N extends Enum<N>, C extends Cell<?, N>> {

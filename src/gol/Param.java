@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
  * Parameters of the game
  * @date    3 nov. 2015
  * @author  Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public class Param {
     //**************************************************************************
@@ -39,6 +40,7 @@ public class Param {
     public static boolean   IS_TORIQUE              = false;
     public static boolean   IS_IMMIGRATION          = false;
     public static boolean   IS_GRIFFEAT             = false;
+    public static boolean   IS_ISOTROPE             = false;
     
     
     //**************************************************************************

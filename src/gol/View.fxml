@@ -13,7 +13,7 @@
     <children>
       <BorderPane prefHeight="242.0" prefWidth="320.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <right>
-            <VBox style="-fx-background-color: #F0F0F0;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="700.0" prefWidth="265.0" style="-fx-background-color: #F0F0F0;" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER">
                      <children>
@@ -164,11 +164,13 @@
                         <Insets left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <HBox alignment="CENTER" spacing="5.0">
+                  <HBox prefHeight="33.0" prefWidth="196.0" spacing="5.0">
                      <children>
-                        <ToggleButton fx:id="b_torique" mnemonicParsing="false" onAction="#handleTorique" text="Torique" />
+                        <ToggleButton fx:id="b_torique" mnemonicParsing="false" onAction="#handleTorique" prefHeight="25.0" prefWidth="59.0" text="Torique" />
                         <Separator orientation="VERTICAL" />
                         <ToggleButton fx:id="b_immigration" mnemonicParsing="false" onAction="#handleImmigration" text="Immigration" />
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <ToggleButton fx:id="b_isotrope" mnemonicParsing="false" onAction="#handleIsotrope" text="Isotrope" />
                      </children>
                      <padding>
                         <Insets left="10.0" />

@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 /**
  * @date 1 nov. 2015
  * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  */
 public abstract class Board implements Grid {
 
@@ -56,9 +57,14 @@ public abstract class Board implements Grid {
                 if (Param.IS_IMMIGRATION) {
                     if(Math.random() <= proba){
                         board[i][j].setState(ImmigrationState.ALIVE);
-                    }
-                    else{
+                    }else{
                         board[i][j].setState(ImmigrationState.DEAD);
+                    }
+                } else if(Param.IS_ISOTROPE){
+                    if (Math.random() <= proba) {
+                        board[i][j].setState(LifeState.ALIVE);
+                    } else {
+                        board[i][j].setState(LifeState.DEAD);
                     }
                 } else {
                     if (Math.random() <= proba) {
@@ -78,8 +84,9 @@ public abstract class Board implements Grid {
                 //****************************************************************************
                 if(Param.IS_IMMIGRATION){
                     brd[i][j] = Utils.createNewCell(ImmigrationState.DEAD);
-                }
-                else{
+                } else if(Param.IS_ISOTROPE) {
+                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
+                } else {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 }
                 

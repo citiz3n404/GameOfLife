@@ -5,6 +5,7 @@ import javax.swing.*;
 
 /**
  * @author Anthony CHAFFOT
+ * @author Jessica FAVIN
  * @date 30/10/2015
  */
 public interface State {
