@@ -21,8 +21,8 @@ public abstract class Cellule implements Cell, Serializable {
     // CONSTRUCTOR
     //**************************************************************************
     public Cellule(State st){
+        state = st;
         this.neighbors = new HashMap<>();
-        
     }
 
     //**************************************************************************

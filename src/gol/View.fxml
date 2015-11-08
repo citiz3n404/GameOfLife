@@ -215,6 +215,7 @@
                         <HBox alignment="CENTER" spacing="5.0">
                             <children>
                                 <Button fx:id="b_update" mnemonicParsing="false" onAction="#handleUpdate" text="Update" />
+                        <Button mnemonicParsing="false" onAction="#handleAPropos" text="Informations" />
                             </children>
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" />

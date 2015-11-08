@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Random;
 
 /**
  * @date 1 nov. 2015
@@ -84,7 +85,20 @@ public abstract class Board implements Grid {
                     } else {
                         board[i][j].setState(LifeState.DEAD);
                     }
-                } {
+                } 
+                else if(Param.IS_GRIFFEATH){
+                    //Proportion de case en vie
+                    if(Math.random() <= proba){
+                        //On tire un aléatoire au pif pour son état inital
+                        Random rand = new Random();
+                        int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 1 + 1) + 1;
+                        board[i][j].setState(new GriffeathState(nombreAleatoire));
+                    }
+                    else{
+                        //Le reste en joker
+                        board[i][j].setState(new GriffeathState(0));
+                    }
+                } else{
                     if (Math.random() <= proba) {
                         board[i][j].setState(LifeState.ALIVE);
                     } else {
@@ -110,7 +124,9 @@ public abstract class Board implements Grid {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 } else if(Param.IS_FREDKIN) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else {
+                } else if(Param.IS_GRIFFEATH){
+                    brd[i][j] = Utils.createNewCell(new GriffeathState(1));
+                }else {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 }
                 

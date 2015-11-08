@@ -16,7 +16,6 @@ public class Utils {
     //**************************************************************************
     // METHODS
     //**************************************************************************
-
     public static Board createNewBoard() {
         Board board;
         if (Param.GRID == 1) {
@@ -31,8 +30,8 @@ public class Utils {
 
     public static Cellule createNewCell(State st) {
         Cellule cell;
-        if (Param.IS_GRIFFEAT) {
-            cell = new CelluleClassique((LifeState) st);
+        if (Param.IS_GRIFFEATH) {
+            cell = new CelluleGriffeath((GriffeathState) st);
         } else if (Param.IS_IMMIGRATION) {
             cell = new CelluleImmigration((ImmigrationState) st);
         } else if (Param.IS_ISOTROPE) {
@@ -48,7 +47,7 @@ public class Utils {
         }
         return cell;
     }
-    
+
     public static void attachListeners(Shape r, Cellule c) {
         r.setOnMousePressed(e -> {
             r.setFill(Param.COLOR_BORN);
@@ -65,7 +64,7 @@ public class Utils {
             }
         });
     }
-    
+
     public static int boardToPaneCoords(int i, int j) {
         return (i * Param.NB_COLUMNS) + j;
     }
@@ -83,6 +82,13 @@ public class Utils {
             } else {
                 c = Param.COLOR_DEAD;
             }
+        } else if (Param.IS_GRIFFEATH) {
+            if (((GriffeathState) cell.getState()).val == 0) {
+                    c = Color.GREEN;
+                } else {
+                    int percentVal = (((GriffeathState) cell.getState()).val)*100/Param.ETAT_MAX_GRIFFEAT;
+                    c = Color.web("rgb("+percentVal+"%,80,80)");
+                }
         } else {
             if (cell.getState() == LifeState.ALIVE) {
                 c = Param.COLOR_ALIVE;

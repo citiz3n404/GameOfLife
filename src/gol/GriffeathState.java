@@ -13,4 +13,8 @@ package gol;
 public class GriffeathState implements State {
     public int val = 1;
     
+    public GriffeathState(int value){
+        this.val = value;
+    }
+    
 }

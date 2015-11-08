@@ -40,7 +40,7 @@ public class Param {
     public static boolean   IS_TORIQUE              = false;
     
     public static boolean   IS_IMMIGRATION          = false;
-    public static boolean   IS_GRIFFEAT             = false;
+    public static boolean   IS_GRIFFEATH             = false;
     public static boolean   IS_ISOTROPE             = false;
     public static boolean   IS_HIGHLIFE             = false;
     public static boolean   IS_DAY_AND_NIGHT        = false;
