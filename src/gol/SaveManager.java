@@ -29,30 +29,32 @@ public class SaveManager {
                 Integer tempInt = (Integer) input.readObject();
 
                 if (tempInt.equals(123456789)) {
-                    Param.NB_ROWS = (Integer) input.readObject();
-                    Param.NB_COLUMNS = (Integer) input.readObject();
-                    Param.GRID = (Integer) input.readObject();
-                    Param.NEIGHBORS_MIN_TO_LIVE = (Integer) input.readObject();
-                    Param.NEIGHBORS_MAX_TO_LIVE = (Integer) input.readObject();
-                    /*   Param.NEIGHBORS_MIN_TO_BORN = (Integer) input.readObject();
-                    Param.NEIGHBORS_MAX_TO_BORN = (Integer) input.readObject();*/
-                    System.out.println("Param loaded");
+                    Param.NB_ROWS           = (Integer) input.readObject();
+                    Param.NB_COLUMNS        = (Integer) input.readObject();
+                    Param.GRID              = (Integer) input.readObject();
                     
-                    board = Utils.createNewBoard();
-                    for (int i = 0; i < Param.NB_ROWS; i++) {
-                        for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                            //System.out.println(i + " " + j);
-                            try {
-                                board.getGrid()[i][j] = (Cellule) input.readObject();
-                            } catch (ClassNotFoundException ex) {
-                                System.out.println("ERREUR LORS DE LA LECTURE DES CASES DU BOARD");
-                            }
+                    Param.IS_TORIQUE        = (Boolean) input.readObject();
+                    Param.IS_ISOTROPE       = (Boolean) input.readObject();
+                    Param.IS_IMMIGRATION    = (Boolean) input.readObject();
+                    Param.IS_HIGHLIFE       = (Boolean) input.readObject();
+                    Param.IS_FREDKIN        = (Boolean) input.readObject();
+                    Param.IS_DAY_AND_NIGHT  = (Boolean) input.readObject();
+                    Param.IS_GRIFFEATH      = (Boolean) input.readObject();
+                    
+                    
+                    System.out.println("Param loaded");
+                    board = (Board) input.readObject();
+                    
+                    Board board2 = Utils.createNewBoard();
+                    for(int i=0; i<Param.NB_ROWS; i++){
+                        for(int j=0; j<Param.NB_COLUMNS; j++){
+                            board2.board[i][j] = board.board[i][j];
                         }
                     }
                     
                     System.out.println("fin tableau");
                     System.out.println("Load succeeded");
-                    return board;
+                    return board2;
                 } else {
                     System.out.println("ERREUR DE FICHIER");
                 }
@@ -76,17 +78,14 @@ public class SaveManager {
                 output.writeObject((Integer) Param.NB_ROWS);
                 output.writeObject((Integer) Param.NB_COLUMNS);
                 output.writeObject((Integer) Param.GRID);
-                output.writeObject((Integer) Param.NEIGHBORS_MIN_TO_LIVE);
-                output.writeObject((Integer) Param.NEIGHBORS_MAX_TO_LIVE);/*
-                output.writeObject((Integer) Param.NEIGHBORS_MIN_TO_BORN);
-                output.writeObject((Integer) Param.NEIGHBORS_MAX_TO_BORN);*/
-                System.out.println("Param saved");
-                for (int i = 0; i < Param.NB_ROWS; i++) {
-                    for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                        //System.out.println(i+" "+j);
-                        output.writeObject((Cellule) board.getGrid()[i][j]);
-                    }
-                }
+                output.writeObject((Boolean) Param.IS_TORIQUE);
+                output.writeObject((Boolean) Param.IS_ISOTROPE);
+                output.writeObject((Boolean) Param.IS_IMMIGRATION);
+                output.writeObject((Boolean) Param.IS_HIGHLIFE);
+                output.writeObject((Boolean) Param.IS_FREDKIN);
+                output.writeObject((Boolean) Param.IS_DAY_AND_NIGHT);
+                output.writeObject((Boolean) Param.IS_GRIFFEATH);
+                output.writeObject(board);
                 System.out.println("SAVE SUCCEEDED !");
             } finally {
                 output.close();

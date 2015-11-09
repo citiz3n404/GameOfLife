@@ -22,7 +22,7 @@ public class DisplaySquareGridFX implements GridPaneDriver{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public DisplaySquareGridFX(Board board){
+    public DisplaySquareGridFX(Board board, Controller controller){
         tilePane = new TilePane();
         tilePane.setPrefRows(Param.NB_ROWS);
         tilePane.setPrefColumns(Param.NB_COLUMNS);
@@ -37,7 +37,7 @@ public class DisplaySquareGridFX implements GridPaneDriver{
                 tilePane.getChildren().add(rectangle);
                 
                 //On attache ici à chaque rectangle un listener pour le clique
-                Utils.attachListeners(rectangle, grid[i][j]);
+                Utils.attachListeners(rectangle, grid[i][j], controller);
             }
         }
     }

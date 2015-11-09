@@ -1,12 +1,14 @@
 
 package gol;
 
+import java.io.Serializable;
+
 /**
  * @author Anthony CHAFFOT
  * @author Jessica FAVIN
  * @date 30/10/2015
  */
-public enum LifeState implements State{
+public enum LifeState implements State, Serializable{
     DEAD{
         @Override
         public char toChar() {

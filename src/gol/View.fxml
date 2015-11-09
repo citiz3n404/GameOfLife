@@ -188,6 +188,16 @@
                                 <Insets left="10.0" top="10.0" />
                             </padding>
                         </Label>
+                  <HBox>
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="65.0" text="Speed(ms)" />
+                        <Slider fx:id="s_speed" max="500.0" min="1.0" prefHeight="14.0" prefWidth="135.0" value="300.0" />
+                        <Label fx:id="l_speed" text="300" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" />
+                     </padding>
+                  </HBox>
                         <HBox alignment="CENTER" spacing="5.0">
                             <children>
                                 <Button fx:id="b_start" mnemonicParsing="false" onAction="#handleRun" text="Start" />
@@ -214,7 +224,6 @@
                         </Label>
                         <HBox alignment="CENTER" spacing="5.0">
                             <children>
-                                <Button fx:id="b_update" mnemonicParsing="false" onAction="#handleUpdate" text="Update" />
                         <Button mnemonicParsing="false" onAction="#handleAPropos" text="Informations" />
                             </children>
                             <VBox.margin>

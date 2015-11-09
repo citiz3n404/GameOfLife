@@ -27,12 +27,12 @@ public class Param {
     //**************************************************************************
     public static int       NEIGHBORS_MIN_TO_LIVE   = 2;
     public static int       NEIGHBORS_MAX_TO_LIVE   = 3;
-    public static int       NEIGHBORS_TO_BORN   = 3;
+    public static int       NEIGHBORS_TO_BORN       = 3;
     
     //**************************************************************************
     // GRIFFEATH
     //**************************************************************************
-    public static int       ETAT_MAX_GRIFFEAT       = 10;
+    public static int       ETAT_MAX_GRIFFEAT       = 5;
     
     //**************************************************************************
     // SIMULATION
@@ -40,11 +40,11 @@ public class Param {
     public static boolean   IS_TORIQUE              = false;
     
     public static boolean   IS_IMMIGRATION          = false;
-    public static boolean   IS_GRIFFEATH             = false;
+    public static boolean   IS_GRIFFEATH            = false;
     public static boolean   IS_ISOTROPE             = false;
     public static boolean   IS_HIGHLIFE             = false;
     public static boolean   IS_DAY_AND_NIGHT        = false;
-    public static boolean   IS_FREDKIN                 = false;
+    public static boolean   IS_FREDKIN              = false;
     
     //**************************************************************************
     // GRAPHICAL

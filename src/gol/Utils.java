@@ -14,7 +14,7 @@ import javafx.scene.shape.Shape;
 public class Utils {
 
     //**************************************************************************
-    // METHODS
+    // FUNCTIONS
     //**************************************************************************
     public static Board createNewBoard() {
         Board board;
@@ -47,8 +47,11 @@ public class Utils {
         }
         return cell;
     }
-
-    public static void attachListeners(Shape r, Cellule c) {
+    
+    //**************************************************************************
+    // GRAPHICAL INTERFACE
+    //**************************************************************************
+    public static void attachListeners(Shape r, Cellule c, Controller controller) {
         r.setOnMousePressed(e -> {
             r.setFill(Param.COLOR_BORN);
         });
@@ -58,9 +61,11 @@ public class Utils {
             if (c.isAlive()) {
                 r.setFill(Param.COLOR_DEAD);
                 c.kill();
+                controller.incrementPopulation();
             } else {
                 r.setFill(Param.COLOR_ALIVE);
                 c.born();
+                controller.incrementPopulation();
             }
         });
     }
@@ -68,9 +73,7 @@ public class Utils {
     public static int boardToPaneCoords(int i, int j) {
         return (i * Param.NB_COLUMNS) + j;
     }
-    //**************************************************************************
-    // SETTERS / GETTERS
-    //**************************************************************************
+    
 
     public static Color getColorCell(Cellule cell) {
         Color c;
@@ -84,10 +87,11 @@ public class Utils {
             }
         } else if (Param.IS_GRIFFEATH) {
             if (((GriffeathState) cell.getState()).val == 0) {
-                    c = Color.GREEN;
+                    c = Color.BLACK;
                 } else {
-                    int percentVal = (((GriffeathState) cell.getState()).val)*100/Param.ETAT_MAX_GRIFFEAT;
-                    c = Color.web("rgb("+percentVal+"%,80,80)");
+                    int percentVal = (((GriffeathState) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
+                    c = Color.hsb(percentVal, 0.7, 0.94);
+                    
                 }
         } else {
             if (cell.getState() == LifeState.ALIVE) {

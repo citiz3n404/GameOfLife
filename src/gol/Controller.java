@@ -1,6 +1,9 @@
 package gol;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
@@ -13,12 +16,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -99,6 +107,12 @@ public class Controller implements Initializable {
 
     @FXML
     private Label l_nbColumns;
+    
+    @FXML
+    private Label l_speed;
+    
+    @FXML 
+    private Slider s_speed;
 
     private Board board;
     private GridPaneDriver display;
@@ -106,6 +120,7 @@ public class Controller implements Initializable {
     private int generation = 0;
     private FileChooser fileChooser = new FileChooser();
     private int exVal = 0;
+    private int speed = 300;
 
     @FXML
     private void handleTorique() {
@@ -153,9 +168,11 @@ public class Controller implements Initializable {
             String path = selectedFile.getPath();
             System.out.println(path);
             handleUpdate(new ActionEvent());
-            SaveManager.loadBoard(path);
+            board = SaveManager.loadBoard(path);
+            board.initNeighbors();
             resetGridView();
             display.displayBoard(board);
+            initiateGUI();
         }
     }
 
@@ -201,8 +218,9 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void handleRun(ActionEvent event) {
-        loop = new Timeline(new KeyFrame(Duration.millis(300), e -> {
+    private void handleRun() {
+        
+        loop = new Timeline(new KeyFrame(Duration.millis(speed), e -> {
             board.update();
             display.displayBoard(board);
             generation++;
@@ -220,6 +238,7 @@ public class Controller implements Initializable {
         }));
         loop.setCycleCount(Timeline.INDEFINITE);
         loop.play();
+        
         b_stop.setDisable(false);
         b_start.setDisable(true);
         b_step.setDisable(true);
@@ -239,6 +258,62 @@ public class Controller implements Initializable {
 
     @FXML
     private void handleAPropos(ActionEvent event) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Exception Dialog");
+        alert.setHeaderText("Look, an Exception Dialog");
+        alert.setContentText("Could not find file blabla.txt!");
+
+        Exception ex = new FileNotFoundException("Could not find file blabla.txt");
+
+// Create expandable Exception.
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        ex.printStackTrace(pw);
+        String exceptionText = sw.toString();
+
+        Label label = new Label("The exception stacktrace was:");
+
+        TextArea textArea = new TextArea(exceptionText);
+        textArea.setEditable(false);
+        textArea.setWrapText(true);
+
+        textArea.setMaxWidth(Double.MAX_VALUE);
+        textArea.setMaxHeight(Double.MAX_VALUE);
+        GridPane.setVgrow(textArea, Priority.ALWAYS);
+        GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+        GridPane expContent = new GridPane();
+        expContent.setMaxWidth(Double.MAX_VALUE);
+        expContent.add(label, 0, 0);
+        expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+        alert.getDialogPane().setExpandableContent(expContent);
+
+        alert.showAndWait();
+    }
+
+    private void initiateGUI() {
+        if (Param.IS_TORIQUE) {
+            b_torique.setSelected(true);
+        }
+
+        if (Param.IS_ISOTROPE) {
+            cb_mode.getSelectionModel().select("Isotrope");
+        } else if (Param.IS_IMMIGRATION) {
+            cb_mode.getSelectionModel().select("Immigration");
+        } else if (Param.IS_HIGHLIFE) {
+            cb_mode.getSelectionModel().select("HighLife");
+        } else if (Param.IS_DAY_AND_NIGHT) {
+            cb_mode.getSelectionModel().select("DayAndNight");
+        } else if (Param.IS_FREDKIN) {
+            cb_mode.getSelectionModel().select("Fredkin");
+        } else if (Param.IS_GRIFFEATH) {
+            cb_mode.getSelectionModel().select("Griffeath");
+        }
+
+        s_nbRows.adjustValue(Param.NB_ROWS);
+        s_nbColumns.adjustValue(Param.NB_COLUMNS);
     }
 
     @FXML
@@ -251,13 +326,17 @@ public class Controller implements Initializable {
         l_population.setStyle("-fx-background-color: #BDBDBD; -fx-background-radius:5; -fx-padding:3;");
     }
 
+    public void incrementPopulation(){
+        l_population.setText(Integer.toString(board.getPopulation()));        
+    }
+    
     private void resetGridView() {
         if (Param.GRID == 1) {
-            display = new DisplaySquareGridFX(board);
+            display = new DisplaySquareGridFX(board, this);
         } else if (Param.GRID == 2) {
-            display = new DisplayHexaGridFX(board);
+            display = new DisplayHexaGridFX(board, this);
         } else {
-            display = new DisplaySquareGridFX(board);
+            display = new DisplaySquareGridFX(board, this);
         }
         pane.getChildren().clear();
         pane.getChildren().add(new Group(display.getPane()));
@@ -289,11 +368,32 @@ public class Controller implements Initializable {
                 stopAndClear();
             }
         });
+        s_speed.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                    Number old_val, Number new_val) {
+                int val = new_val.intValue();
+                speed = val;
+                l_speed.setText(Integer.toString(val));
+                if(loop != null){
+                    loop.stop();
+                    handleRun();
+                }
+            }
+        });
+    }
+    
+    private void setModesToFalse(){
+        Param.IS_DAY_AND_NIGHT = false;
+        Param.IS_GRIFFEATH = false;
+        Param.IS_HIGHLIFE = false;
+        Param.IS_IMMIGRATION = false;
+        Param.IS_ISOTROPE = false;
+        Param.IS_FREDKIN = false;
     }
 
     private void setChoiceBox() {
         cb_mode.setItems(FXCollections.observableArrayList(
-                "Classique", "Isotrope", "Immigration", "NightAndDay", "HighLife", "Fredkin", "Griffeath"));
+                "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife", "Fredkin", "Griffeath"));
         cb_mode.getSelectionModel().selectFirst();
         cb_mode.getSelectionModel().selectedItemProperty()
                 .addListener((ObservableValue observable,
@@ -303,55 +403,25 @@ public class Controller implements Initializable {
                         handleStop();
                     }
                     if ("Classique".equals((String) newValue)) {
-                        Param.IS_DAY_AND_NIGHT = false;
-                        Param.IS_GRIFFEATH = false;
-                        Param.IS_HIGHLIFE = false;
-                        Param.IS_IMMIGRATION = false;
-                        Param.IS_ISOTROPE = false;
-                        Param.IS_FREDKIN = false;
+                        setModesToFalse();
                     } else if ("Isotrope".equals((String) newValue)) {
-                        Param.IS_DAY_AND_NIGHT = false;
-                        Param.IS_GRIFFEATH = false;
-                        Param.IS_HIGHLIFE = false;
-                        Param.IS_IMMIGRATION = false;
+                        setModesToFalse();
                         Param.IS_ISOTROPE = true;
-                        Param.IS_FREDKIN = false;
                     } else if ("Immigration".equals((String) newValue)) {
-                        Param.IS_DAY_AND_NIGHT = false;
-                        Param.IS_GRIFFEATH = false;
-                        Param.IS_HIGHLIFE = false;
+                        setModesToFalse();
                         Param.IS_IMMIGRATION = true;
-                        Param.IS_ISOTROPE = false;
-                        Param.IS_FREDKIN = false;
-                    } else if ("NightAndDay".equals((String) newValue)) {
+                    } else if ("DayAndNight".equals((String) newValue)) {
+                        setModesToFalse();
                         Param.IS_DAY_AND_NIGHT = true;
-                        Param.IS_GRIFFEATH = false;
-                        Param.IS_HIGHLIFE = false;
-                        Param.IS_IMMIGRATION = false;
-                        Param.IS_ISOTROPE = false;
-                        Param.IS_FREDKIN = false;
                     } else if ("HighLife".equals((String) newValue)) {
-                        Param.IS_DAY_AND_NIGHT = false;
-                        Param.IS_GRIFFEATH = false;
+                        setModesToFalse();
                         Param.IS_HIGHLIFE = true;
-                        Param.IS_IMMIGRATION = false;
-                        Param.IS_ISOTROPE = false;
-                        Param.IS_FREDKIN = false;
                     } else if ("Fredkin".equals((String) newValue)) {
-                        Param.IS_DAY_AND_NIGHT = false;
-                        Param.IS_GRIFFEATH = false;
-                        Param.IS_HIGHLIFE = false;
-                        Param.IS_IMMIGRATION = false;
-                        Param.IS_ISOTROPE = false;
+                        setModesToFalse();
                         Param.IS_FREDKIN = true;
-                    }
-                    else if("Griffeath".equals((String) newValue)){
-                        Param.IS_DAY_AND_NIGHT = false;
+                    } else if ("Griffeath".equals((String) newValue)) {
+                        setModesToFalse();
                         Param.IS_GRIFFEATH = true;
-                        Param.IS_HIGHLIFE = false;
-                        Param.IS_IMMIGRATION = false;
-                        Param.IS_ISOTROPE = false;
-                        Param.IS_FREDKIN = false;
                     }
                     handleClear();
                 });

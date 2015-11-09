@@ -23,7 +23,7 @@ public class DisplayHexaGridFX implements GridPaneDriver {
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public DisplayHexaGridFX(Board board) {
+    public DisplayHexaGridFX(Board board, Controller controller) {
         pane = new Pane();
         grid = board.getGrid();
         for (int i = 0; i < Param.NB_ROWS; i++) {
@@ -32,7 +32,7 @@ public class DisplayHexaGridFX implements GridPaneDriver {
                 Polygon hexa = createHexa(x, y);
                 hexa.setFill(c);
                 pane.getChildren().add(hexa);
-                Utils.attachListeners(hexa, grid[i][j]);
+                Utils.attachListeners(hexa, grid[i][j], controller);
                 x += Param.SIZE_HEXA_TILE * Math.cos(Math.PI / 6) * 2 + Param.SIZE_GAP; // OK
             }
             if (y % 2 == 0) {

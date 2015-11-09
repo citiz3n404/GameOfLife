@@ -3,6 +3,8 @@
  */
 package gol;
 
+import java.io.Serializable;
+
 
 
 /**
@@ -10,7 +12,7 @@ package gol;
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class GriffeathState implements State {
+public class GriffeathState implements State, Serializable {
     public int val = 1;
     
     public GriffeathState(int value){

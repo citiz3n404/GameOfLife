@@ -10,7 +10,8 @@
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleIsotrope.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayConsole.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/SaveManager.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/BoardSquare.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleGriffeath.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleFredkin.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayDriver.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayHexaGridFX.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleHighLife.java</file>
@@ -27,10 +28,12 @@
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/LifeState.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GridPaneDriver.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleImmigration.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleDayAndNight.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Cell.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/State.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Grid.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/SquareGridNbh.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GriffeathState.java</file>
             <file>file:/D:/Anthony/Lab/JAVA/GoL/.git/config</file>
         </group>
     </open-files>

@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Random;
  * @author Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public abstract class Board implements Grid {
+public abstract class Board implements Grid, Serializable {
 
     Cellule[][] board;
 
@@ -88,7 +89,7 @@ public abstract class Board implements Grid {
                 } 
                 else if(Param.IS_GRIFFEATH){
                     //Proportion de case en vie
-                    if(Math.random() <= proba){
+                    if(Math.random() >= proba){
                         //On tire un aléatoire au pif pour son état inital
                         Random rand = new Random();
                         int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 1 + 1) + 1;
