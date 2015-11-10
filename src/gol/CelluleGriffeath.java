@@ -22,16 +22,16 @@ public class CelluleGriffeath extends Cellule {
     //**************************************************************************
     @Override
     public State nextState() {
-        GriffeathState st = new GriffeathState(0);
+        //GriffeathState st = new GriffeathState(0);
         if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT && getNbNeighborsStateUp() == 3) {
-            st = new GriffeathState(0);
+            state = new GriffeathState(0);
         } else {
             if (getNbNeighborsStateUp() == 3) {
                 ((GriffeathState) state).val += 1;
-                st = new GriffeathState(((GriffeathState) state).val+1);
+                state = new GriffeathState(((GriffeathState) state).val+1);
             }
         }
-        return st;
+        return this.state;
     }
 
     @Override
