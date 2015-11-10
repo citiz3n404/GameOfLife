@@ -2,6 +2,7 @@ package gol;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
@@ -14,8 +15,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -25,11 +30,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -113,6 +120,9 @@ public class Controller implements Initializable {
     
     @FXML 
     private Slider s_speed;
+    
+    @FXML
+    private Button b_closeOk;
 
     private Board board;
     private GridPaneDriver display;
@@ -121,6 +131,7 @@ public class Controller implements Initializable {
     private FileChooser fileChooser = new FileChooser();
     private int exVal = 0;
     private int speed = 300;
+    public static Stage stage = new Stage();
 
     @FXML
     private void handleTorique() {
@@ -157,6 +168,8 @@ public class Controller implements Initializable {
         b_hexagon.setDisable(true);
         stopAndClear();
     }
+    
+    
 
     @FXML
     private void handleLoad(ActionEvent event) {
@@ -258,7 +271,19 @@ public class Controller implements Initializable {
 
     @FXML
     private void handleAPropos(ActionEvent event) {
-        
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Info.fxml"));
+            
+            stage.setTitle("Informations");
+            stage.setScene(new Scene(root, 600, 552));
+            stage.getIcons().add(new Image(GoL.class.getResourceAsStream("icon.png")));
+            stage.show();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initiateGUI() {

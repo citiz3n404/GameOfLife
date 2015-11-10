@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gol.ControllerInfo">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Mode d'emploi">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <TextArea editable="false" prefHeight="293.0" prefWidth="600.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis, est id consequat interdum, magna &#10;odio pharetra odio, sit amet pharetra lectus dui eu erat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi et mattis orci. Intege&#10;r sodales augue a laoreet scelerisque. Integer eget cursus diam. Donec vel malesuada dolor. Donec aliquet, magna eget ornare pretium, felis arcu tristique nisi, et malesuada leo nibh vitae velit. Pellentesque egestas dictum orci quis congue. Nullam ultrices lectus et magna fermentum suscipit. Vivamus non elit eleifend, dapibus dui vel, vestibulum arcu.&#10;&#10;Nullam fermentum ut lectus laoreet blandit. Proin porttito&#10;r pretium erat id porttitor. Etiam eget posuere massa. Cras vel congue risus, consectetur varius metus. Curabitur tincidunt pulvinar libero nec tincidunt. Nunc id sagittis magna. Integer justo libero, luctus nec pharetra eu, volutpat nec sem. Praesent nec pretium eros. In hac habitasse platea dictumst. In egestas felis non porttitor sollicitudin. Pellentesque at ligula felis. Proin interdum posuere quam eu varius. Maecenas id rhoncus augue. Aliquam bibendum, velit ut ultricies molestie, arcu elit laoreet nisi, et porta dolor nisl at urna. Nullam fringilla enim non posuere bibendum. Ut venenatis id nulla eu facilisis.&#10;&#10;Curabitur vel semper lacus, id varius tortor. Cras rutrum pharet&#10;ra purus, non iaculis lacus euismod sed. Sed tempor neque nunc, vitae lobortis ex tincidunt non. Fusce iaculis accumsan turpis, quis porta tortor semper tempor. Phasellus nulla eros, efficitur a dui eu, dignissim egestas sem. Nam semper elit eget odio tincidunt, eu condimentum augue lacinia. Curabitur et eros in dolor fermentum viverra eget nec augue. Nulla vitae gravida ligula. Fusce fringilla, nibh nec sagittis mollis, nisl erat tempus lorem, lobortis vestibulum lacus lectus a ipsum.&#10;&#10;&#10;Vestibulum ante ipsum primis in faucibus orci luctus et ultr&#10;ices posuere cubilia Curae; Duis facilisis posuere porta. Donec maximus et arcu quis commodo. Nam et pellentesque purus. Pellentesque venenatis lectus quis laoreet aliquet. Ut sed nulla a diam volutpat sollicitudin. Vivamus consequat odio et erat placerat rhoncus. Curabitur eget erat nisl. Aliquam aliquam sapien et vehicula vestibulum. Proin ullamcorper eget neque id laoreet.&#10;&#10;Suspendisse dictum orci at nunc efficitur placerat. Ut blandit massa nunc, non molestie tellus ultricies in. Nunc tincidunt interdum lobortis. Duis laoreet est malesuada, semper mauris at, fermentum tortor. Nunc rutrum orci a lacus pulvinar sagittis. Vivamus nec pretium ex, id eleifend tellus. Mauris facilisis tellus nec rhoncus auctor." wrapText="true" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="b_closeOk" mnemonicParsing="false" onAction="#handleClose" prefHeight="25.0" prefWidth="83.0" text="Ok">
+               <HBox.margin>
+                  <Insets bottom="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
