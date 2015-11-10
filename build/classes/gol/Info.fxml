@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gol.ControllerInfo">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Mode d'emploi">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <TextArea editable="false" prefHeight="293.0" prefWidth="600.0" text="1 / REMPLIRE LA GRILLE&#10;----------------------------------------------------------------------------------------------------------------&#10;Il est possible d'initialiser une grille de plusieurs façons :&#10;&#9;- Vous pouvez choisir le type de grille en cliquant sur les butons adéquats&#10;&#9;- Vous pouvez cliquer sur une case morte pour la rendre en vie et inversement&#10;&#9;- Vous pouvez choisir un poucentage de remplissage aléatoire et remplir la grille&#10;&#9;&#9;en cliquant sur random&#10;&#9;- Vous pouvez charger une grille à partir d'un fichier existant&#10;&#10;&#10;2/ MODES DE SIMULATION&#10;----------------------------------------------------------------------------------------------------------------&#10;Le mode torique permet à la grille de reboucler sur elle même tandis que quand&#10;l'option est désactivée la grille n'admet pas de voisins lorsqu'on est sur les bords.&#10;A noter qu'on peut à tout moment changer cette option, même au milieu d'une simulation&#10;&#10;&#9;1) Mode Classique : &#10;&#9;&#9;Game of Life de Conway, si une cellule est vivante, elle reste en vie si elle a 2 ou 3 &#10;&#9;&#9;voisins vivants, si elle en a plus elle meurt et si elle en a moins, elle meurt.&#10;&#9;&#9;Une cellule naît quand elle a 3 voisins exactement.&#10;&#10;&#9;2) Mode Isotrope : &#10;&#10;&#9;3) Mode Immigration :&#10;&#10;&#9;4) Mode DayAndNight :&#10;&#10;&#9;5) Mode HighLife :&#10;&#10;&#9;6) Mode Fredkin :&#10;&#10;&#9;7) Mode Griffeath :&#10;&#10;&#10;&#10;3/ AUTEURS&#10;----------------------------------------------------------------------------------------------------------------&#10;Jessica FAVIN&#10;Anthony CHAFFOT" wrapText="true" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </TextArea>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="b_closeOk" mnemonicParsing="false" onAction="#handleClose" prefHeight="25.0" prefWidth="83.0" text="Ok">
+               <HBox.margin>
+                  <Insets bottom="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
