@@ -19,4 +19,8 @@ public class GriffeathState implements State, Serializable {
         this.val = value;
     }
     
+    public String toString() {
+            return ((Integer)val).toString();
+        }
+    
 }

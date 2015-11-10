@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 
 /**
  * 
@@ -70,25 +71,37 @@ public class SaveManager {
     }
 
     public static void saveBoard(String path, Board board) {
-        ObjectOutputStream output;
+        PrintWriter writer;
         try {
-            output = new ObjectOutputStream(new FileOutputStream(path));
+            writer = new PrintWriter(path, "UTF-8");
             try {
-                output.writeObject((Integer) 123456789);
-                output.writeObject((Integer) Param.NB_ROWS);
-                output.writeObject((Integer) Param.NB_COLUMNS);
-                output.writeObject((Integer) Param.GRID);
-                output.writeObject((Boolean) Param.IS_TORIQUE);
-                output.writeObject((Boolean) Param.IS_ISOTROPE);
-                output.writeObject((Boolean) Param.IS_IMMIGRATION);
-                output.writeObject((Boolean) Param.IS_HIGHLIFE);
-                output.writeObject((Boolean) Param.IS_FREDKIN);
-                output.writeObject((Boolean) Param.IS_DAY_AND_NIGHT);
-                output.writeObject((Boolean) Param.IS_GRIFFEATH);
-                output.writeObject(board);
+                writer.println("123456789");
+                writer.println(Param.NB_ROWS);
+                writer.println(Param.NB_COLUMNS);
+                writer.println(Param.GRID);
+                writer.println(Param.IS_TORIQUE);
+                writer.println(Param.IS_ISOTROPE);
+                writer.println(Param.IS_IMMIGRATION);
+                writer.println(Param.IS_HIGHLIFE);
+                writer.println(Param.IS_FREDKIN);
+                writer.println(Param.IS_DAY_AND_NIGHT);
+                writer.println(Param.IS_GRIFFEATH);
+                
+                for(int i =0; i<Param.NB_ROWS; i++){
+                    for(int j=0; j<Param.NB_COLUMNS; j++){
+                        if(Param.IS_GRIFFEATH){
+                            writer.print(board.board[i][j].state.toString()+" ");
+                        }
+                        else{
+                            writer.print(board.board[i][j].state.toChar()+" ");
+                        }
+                        
+                    }
+                    writer.println();
+                }
                 System.out.println("SAVE SUCCEEDED !");
             } finally {
-                output.close();
+                writer.close();
             }
         } catch (IOException ex) {
             System.out.println("SAVE FAILED !");

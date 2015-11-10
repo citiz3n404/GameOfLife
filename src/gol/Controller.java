@@ -279,8 +279,6 @@ public class Controller implements Initializable {
             stage.setScene(new Scene(root, 600, 552));
             stage.getIcons().add(new Image(GoL.class.getResourceAsStream("icon.png")));
             stage.show();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
