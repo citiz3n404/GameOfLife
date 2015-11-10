@@ -31,6 +31,10 @@ public abstract class Board implements Grid, Serializable {
     //**************************************************************************
     // METHODS
     //**************************************************************************
+    /**
+     * Initialise correctly the neighbors, each grid must Override the initalisation for
+     * the Torique mode and the non torique
+     */
     void initNeighbors() {
         if (Param.IS_TORIQUE) {
             initToriqueNeighbors();
@@ -39,10 +43,21 @@ public abstract class Board implements Grid, Serializable {
         }
     }
 
+    /**
+     * Abstract methode for the mode Torique
+     */
     abstract void initToriqueNeighbors();
 
+    /**
+     * Abstract methode for the mode non Torique
+     */
     abstract void initNonToriqueNeighbors();
 
+    /**
+     * Update Neighbors
+     * Empty the list of neighbors for each cell in the grid and then recalculate
+     * them all.
+     */
     public void updateNeighbors() {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
@@ -52,6 +67,11 @@ public abstract class Board implements Grid, Serializable {
         initNeighbors();
     }
 
+    /**
+     * Init the grid randomly
+     * @param proba Probability set by a slider for an estimation of the state 
+     * of the grid
+     */
     public void initRandom(double proba) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
@@ -111,6 +131,11 @@ public abstract class Board implements Grid, Serializable {
         }
     }
 
+    /**
+     * InitBoard
+     * Init the grid with a dead state new cells and then call the initNeighbors()
+     * @param brd Cell[][]
+     */
     public void initBoard(Cellule[][] brd) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
@@ -136,6 +161,10 @@ public abstract class Board implements Grid, Serializable {
         initNeighbors();
     }
 
+    /**
+     * Update
+     * Each update move forward the generation to the next state.
+     */
     @Override
     public void update() {
         Cellule[][] boardTmp = new Cellule[Param.NB_ROWS][Param.NB_COLUMNS];
@@ -154,6 +183,10 @@ public abstract class Board implements Grid, Serializable {
         }
     }
 
+    /**
+     * Unused methode because we preffered to use the serialization to store our grid
+     * @return String
+     */
     @Override
     public String stateAsString() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -162,10 +195,18 @@ public abstract class Board implements Grid, Serializable {
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************
+    /**
+     * Getter of the grid
+     * @return Cellule[][]
+     */
     public Cellule[][] getGrid() {
         return board;
     }
 
+    /**
+     * Getter of population of cell alive
+     * @return int
+     */
     public int getPopulation() {
         int sum = 0;
         for (int i = 0; i < Param.NB_ROWS; i++) {

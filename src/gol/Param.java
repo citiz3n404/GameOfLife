@@ -52,8 +52,11 @@ public class Param {
     public static int       SIZE_HEXA_TILE          = 5;
     public static int       SIZE_SQUARE_TILE        = 8;
     public static int       SIZE_GAP                = 1;
-    public static Color     COLOR_ALIVE             = Color.web("#D50000");
+    /*public static Color     COLOR_ALIVE             = Color.web("#D50000");
     public static Color     COLOR_DEAD              = Color.web("#EF9A9A");
+    public static Color     COLOR_BORN              = Color.web("#EC407A");*/
+    public static Color     COLOR_ALIVE             = Color.web("#18bbff");
+    public static Color     COLOR_DEAD              = Color.web("#757575");
     public static Color     COLOR_BORN              = Color.web("#EC407A");
     
 

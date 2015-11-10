@@ -26,6 +26,9 @@ public class BoardSquare extends Board{
     // SETTERS / GETTERS
     //**************************************************************************
 
+    /**
+     * Initiate the neighbors list for each cell
+     */
     @Override
     void initToriqueNeighbors() {
         if (Param.NB_COLUMNS == 1 || Param.NB_ROWS == 1) {
@@ -117,6 +120,9 @@ public class BoardSquare extends Board{
 
     }
 
+    /**
+     * Initiate the neighbors list for each cell
+     */
     @Override
     void initNonToriqueNeighbors() {
         for (int i = 0; i < Param.NB_ROWS; i++) {
