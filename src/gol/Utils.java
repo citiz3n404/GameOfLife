@@ -86,13 +86,25 @@ public class Utils {
                 c = Param.COLOR_DEAD;
             }
         } else if (Param.IS_GRIFFEATH) {
-            if (((GriffeathState) cell.getState()).val == 0) {
-                    c = Color.BLACK;
-                } else {
-                    int percentVal = (((GriffeathState) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
-                    c = Color.hsb(percentVal, 0.7, 0.94);
-                    
-                }
+            if(((GriffeathState) cell.getState()).val == 0){
+                c = Color.web("#ffff00");
+            }
+            else if(((GriffeathState) cell.getState()).val == 1){
+                c = Color.web("#ffaa00");
+            }
+            else if(((GriffeathState) cell.getState()).val == 2){
+                c = Color.web("#ff5500");
+            }
+            else {
+                c = Color.web("#ff0000");
+            }
+            /*if (((GriffeathState) cell.getState()).val == 0) {
+            c = Color.BLACK;
+            } else {
+            int percentVal = (((GriffeathState) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
+            c = Color.hsb(percentVal, 0.7, 0.94);
+            
+            }*/
         } else {
             if (cell.getState() == LifeState.ALIVE) {
                 c = Param.COLOR_ALIVE;

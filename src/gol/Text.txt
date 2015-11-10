@@ -1,0 +1,39 @@
+1 / REMPLIRE LA GRILLE
+----------------------------------------------------------------------------------------------------------------
+Il est possible d'initialiser une grille de plusieurs façons :
+	- Vous pouvez choisir le type de grille en cliquant sur les butons adéquats
+	- Vous pouvez cliquer sur une case morte pour la rendre en vie et inversement
+	- Vous pouvez choisir un poucentage de remplissage aléatoire et remplir la grille
+		en cliquant sur random
+	- Vous pouvez charger une grille à partir d'un fichier existant
+
+
+2/ MODES DE SIMULATION
+----------------------------------------------------------------------------------------------------------------
+Le mode torique permet à la grille de reboucler sur elle même tandis que quand
+l'option est désactivée la grille n'admet pas de voisins lorsqu'on est sur les bords.
+A noter qu'on peut à tout moment changer cette option, même au milieu d'une simulation
+
+	1) Mode Classique : 
+		Game of Life de Conway, si une cellule est vivante, elle reste en vie si elle a 2 ou 3 
+		voisins vivants, si elle en a plus elle meurt et si elle en a moins, elle meurt.
+		Une cellule naît quand elle a 3 voisins exactement.
+
+	2) Mode Isotrope : 
+
+	3) Mode Immigration :
+
+	4) Mode DayAndNight :
+
+	5) Mode HighLife :
+
+	6) Mode Fredkin :
+
+	7) Mode Griffeath :
+
+
+
+3/ AUTEURS
+----------------------------------------------------------------------------------------------------------------
+Jessica FAVIN
+Anthony CHAFFOT

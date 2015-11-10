@@ -113,12 +113,8 @@ public abstract class Board implements Grid, Serializable {
                     if(Math.random() >= proba){
                         //On tire un aléatoire au pif pour son état inital
                         Random rand = new Random();
-                        int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 1 + 1) + 1;
+                        int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 0 + 1) + 0;
                         board[i][j].setState(new GriffeathState(nombreAleatoire));
-                    }
-                    else{
-                        //Le reste en joker
-                        board[i][j].setState(new GriffeathState(0));
                     }
                 } else{
                     if (Math.random() <= proba) {
