@@ -78,7 +78,8 @@ public abstract class Board implements Grid, Serializable {
                 //******************************************************************************
                 if (Param.IS_IMMIGRATION) {
                     if(Math.random() <= proba){
-                        board[i][j].setState(ImmigrationState.ALIVE);
+                        if(Math.random()<0.5) board[i][j].setState(ImmigrationState.ALIVE);
+                        else board[i][j].setState(ImmigrationState.ZOMBIE);
                     }else{
                         board[i][j].setState(ImmigrationState.DEAD);
                     }

@@ -23,7 +23,7 @@ public enum ImmigrationState implements State{
             return 'O';
         }
     },
-    BORN{
+    ZOMBIE{
         @Override
         public char toChar(){
             return '*';

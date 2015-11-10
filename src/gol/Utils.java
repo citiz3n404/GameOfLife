@@ -80,8 +80,8 @@ public class Utils {
         if (Param.IS_IMMIGRATION) {
             if (cell.getState() == ImmigrationState.ALIVE) {
                 c = Param.COLOR_ALIVE;
-            } else if (cell.getState() == ImmigrationState.BORN) {
-                c = Param.COLOR_BORN;
+            } else if (cell.getState() == ImmigrationState.ZOMBIE) {
+                c = Param.COLOR_ZOMBIE;
             } else {
                 c = Param.COLOR_DEAD;
             }

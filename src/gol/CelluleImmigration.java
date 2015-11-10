@@ -24,30 +24,22 @@ public class CelluleImmigration extends Cellule{
     //**************************************************************************
     @Override
     public State nextState() {
-        ImmigrationState st = ImmigrationState.DEAD;
-        if(this.state == ImmigrationState.BORN){
+        if(this.state == ImmigrationState.ZOMBIE||this.state == ImmigrationState.ALIVE){
             //La cellule prend l'état majoritaire parmis ses voisins
-            if((double)getNbNeighborsAlive() >= (double)(tmpNbNeighbors/2)){
-                st = ImmigrationState.ALIVE;
-            }
-            else{
-                st = ImmigrationState.DEAD;
-            }
-        }
-        else if(this.state == ImmigrationState.ALIVE){
             if(getNbNeighborsAlive() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighborsAlive() <= Param.NEIGHBORS_MAX_TO_LIVE){
-                st = ImmigrationState.ALIVE;
+                return this.state;
             }
             else{
-                st = ImmigrationState.DEAD;
+                return ImmigrationState.DEAD;
             }
         }
         else{
             if(getNbNeighborsAlive() == Param.NEIGHBORS_TO_BORN){
-                st = ImmigrationState.BORN;
+                if(moreZombies()) return ImmigrationState.ZOMBIE;
+                else return ImmigrationState.ALIVE;
             }
         }
-        return st;
+        return state;
     }
 
     @Override
@@ -57,7 +49,8 @@ public class CelluleImmigration extends Cellule{
 
     @Override
     public void born() {
-        state = ImmigrationState.BORN;
+        if(moreZombies()) state = ImmigrationState.ZOMBIE;
+        else state = ImmigrationState.ALIVE;
     }
     
     
@@ -71,20 +64,35 @@ public class CelluleImmigration extends Cellule{
         for(Enum direction : neighbors.keySet()){
             if(neighbors.get(direction) != null){
                 tmpNbNeighbors ++;
-                if(neighbors.get(direction).getState() == ImmigrationState.ALIVE){
+                if(neighbors.get(direction).getState() == ImmigrationState.ALIVE
+                        ||neighbors.get(direction).getState() == ImmigrationState.ZOMBIE){
                     sum++;
                 }
             }
         }
         return sum;
     }
+    
+    public boolean moreZombies(){
+        int alive=0, zombie = 0;
+        tmpNbNeighbors =0;
+        for(Enum direction : neighbors.keySet()){
+            if(neighbors.get(direction) != null){
+                tmpNbNeighbors ++;
+                if(neighbors.get(direction).getState() == ImmigrationState.ALIVE){
+                    alive++;
+                }
+                if(neighbors.get(direction).getState() == ImmigrationState.ZOMBIE){
+                    zombie++;
+                }
+            }
+        }
+        return (zombie>alive);
+    }
 
     @Override
     public boolean isAlive() {
-        if(state == ImmigrationState.ALIVE || state == ImmigrationState.BORN){
-            return true;
-        }
-        return false;
+        return (state == ImmigrationState.ALIVE || state == ImmigrationState.ZOMBIE);
     }
 
 }

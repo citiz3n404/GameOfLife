@@ -58,6 +58,7 @@ public class Param {
     public static Color     COLOR_ALIVE             = Color.web("#18bbff");
     public static Color     COLOR_DEAD              = Color.web("#757575");
     public static Color     COLOR_BORN              = Color.web("#EC407A");
+    public static Color     COLOR_ZOMBIE            = Color.web("#59EA9D");
     
 
 }
