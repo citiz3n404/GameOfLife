@@ -8,12 +8,12 @@ package gol;
  * @author Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class CelluleMoyenne extends Cellule {
+public class CelluleMaths extends Cellule {
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
 
-    public CelluleMoyenne(DoubleState st) {
+    public CelluleMaths(DoubleState st) {
         super(st);
     }
 
@@ -22,7 +22,16 @@ public class CelluleMoyenne extends Cellule {
     //**************************************************************************
     @Override
     public State nextState() {
-        return new DoubleState(getNeighborMoyenne());
+        double res;
+        double tmp = getNeighborMoyenne() * ((DoubleState)state).val;
+        if(tmp<0.25) {
+            res = tmp + 0.5;
+        } else if(tmp>0.75){
+            res = tmp - 0.5;
+        } else {
+            res = tmp;
+        }
+        return new DoubleState(res);
     }
 
     @Override

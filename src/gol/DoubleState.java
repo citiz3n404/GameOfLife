@@ -12,10 +12,10 @@ import java.io.Serializable;
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class MoyenneState implements State, Serializable {
+public class DoubleState implements State, Serializable {
     public double val;
     
-    public MoyenneState(double value){
+    public DoubleState(double value){
         this.val = value;
     }
     

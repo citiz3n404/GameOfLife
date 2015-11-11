@@ -437,7 +437,7 @@ public class Controller implements Initializable {
     private void setChoiceBox() {
         cb_mode.setItems(FXCollections.observableArrayList(
                 "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife",
-                "Fredkin", "Griffeath", "Griffeath(n)", "Moyenne"));
+                "Fredkin", "Griffeath", "Griffeath(n)", "Moyenne", "Maths"));
         cb_mode.getSelectionModel().selectFirst();
         cb_mode.getSelectionModel().selectedItemProperty()
                 .addListener((ObservableValue observable,
@@ -477,11 +477,12 @@ public class Controller implements Initializable {
                         setModesToFalse();
                         Param.IS_GRIFFEATH_N = true;
                         activeGriffeathSlider(true);
-                    }else if ("Moyenne".equals((String) newValue)) {
+                    } else if ("Moyenne".equals((String) newValue)) {
                         setModesToFalse();
-                        Param.IS_MOYENNE = true;
-
-                        
+                        Param.IS_MOYENNE = true;                        
+                    } else if ("Maths".equals((String) newValue)) {
+                        setModesToFalse();
+                        Param.IS_MATHS = true;                        
                     }
                     handleClear();
                 });

@@ -47,6 +47,7 @@ public class Param {
     public static boolean   IS_FREDKIN              = false;
     public static boolean   IS_MOYENNE              = false;
     public static boolean   IS_GRIFFEATH_N          = false;
+    public static boolean   IS_MATHS                = false;
     
     //**************************************************************************
     // GRAPHICAL
