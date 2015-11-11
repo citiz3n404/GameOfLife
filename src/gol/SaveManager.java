@@ -136,17 +136,17 @@ public class SaveManager {
         try {
             writer = new PrintWriter(path, "UTF-8");
             try {
-                writer.println("123456789");
-                writer.println(Param.NB_ROWS);
-                writer.println(Param.NB_COLUMNS);
-                writer.println(Param.GRID);
-                writer.println(Param.IS_TORIQUE);
-                writer.println(Param.IS_ISOTROPE);
-                writer.println(Param.IS_IMMIGRATION);
-                writer.println(Param.IS_HIGHLIFE);
-                writer.println(Param.IS_FREDKIN);
-                writer.println(Param.IS_DAY_AND_NIGHT);
-                writer.println(Param.IS_GRIFFEATH);
+                writer.println("123456789-LineTest");
+                writer.println("NbRows: "+Param.NB_ROWS);
+                writer.println("NbCol: "+Param.NB_COLUMNS);
+                writer.println("Grid: "+Param.GRID);
+                writer.println("Torique: "+Param.IS_TORIQUE);
+                writer.println("Isotrope: "+Param.IS_ISOTROPE);
+                writer.println("Immigration: "+Param.IS_IMMIGRATION);
+                writer.println("HighLife: "+Param.IS_HIGHLIFE);
+                writer.println("Fredkin: "+Param.IS_FREDKIN);
+                writer.println("DayAndNight: "+Param.IS_DAY_AND_NIGHT);
+                writer.println("Griffeath: "+Param.IS_GRIFFEATH);
 
                 for (int i = 0; i < Param.NB_ROWS; i++) {
                     for (int j = 0; j < Param.NB_COLUMNS; j++) {

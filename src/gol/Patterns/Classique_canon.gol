@@ -1,14 +1,14 @@
-123456789
-50
-92
-1
-false
-false
-false
-false
-false
-false
-false
+123456789-LineTest
+NbRows: 50
+NbCol: 92
+Grid: 1
+Torique: false
+Isotrope: false
+Immigration: false
+HighLife: false
+Fredkin: false
+DayAndNight: false
+Griffeath: false
 . . . . . . . . . . . . . . . . . . . . . . . . O . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . O . O . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . O O . . . . . . O O . . . . . . . . . . . . O O . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 

@@ -1,14 +1,14 @@
-123456789
-50
-50
-1
-true
-false
-false
-false
-true
-false
-false
+123456789-LineTest
+NbRows: 50
+NbCol: 50
+Grid: 1
+Torique: true
+Isotrope: false
+Immigration: false
+HighLife: false
+Fredkin: true
+DayAndNight: false
+Griffeath: false
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
