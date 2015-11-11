@@ -107,15 +107,15 @@ public abstract class Board implements Grid, Serializable {
                     } else {
                         board[i][j].setState(LifeState.DEAD);
                     }
-                } 
-                else if(Param.IS_GRIFFEATH){
-                    //Proportion de case en vie
-                    if(Math.random() >= proba){
-                        //On tire un aléatoire au pif pour son état inital
+                } else if(Param.IS_GRIFFEATH){
+                        Random rand = new Random();
+                        int nombreAleatoire = rand.nextInt(3 - 0 + 1) + 0;
+                        board[i][j].setState(new GriffeathState(nombreAleatoire));
+                } else if(Param.IS_GRIFFEATH_N){
                         Random rand = new Random();
                         int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 0 + 1) + 0;
                         board[i][j].setState(new GriffeathState(nombreAleatoire));
-                    }
+                    
                 } else if(Param.IS_MOYENNE){
                     if(Math.random() >= proba){
                         //A revoir pour inclure 1
@@ -153,10 +153,12 @@ public abstract class Board implements Grid, Serializable {
                 } else if(Param.IS_FREDKIN) {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 } else if(Param.IS_GRIFFEATH){
-                    brd[i][j] = Utils.createNewCell(new GriffeathState(1));
+                    brd[i][j] = Utils.createNewCell(new GriffeathState(0));
                 } else if(Param.IS_MOYENNE){
                     brd[i][j] = Utils.createNewCell(new MoyenneState(0.0));
-                } else {
+                } else if(Param.IS_GRIFFEATH_N){
+                    brd[i][j] = Utils.createNewCell(new GriffeathState(0));
+                }else {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 }
                 

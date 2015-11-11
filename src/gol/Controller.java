@@ -111,7 +111,16 @@ public class Controller implements Initializable {
 
     @FXML
     private Slider s_nbColumns;
-
+    
+    @FXML
+    private Slider s_griffeath;
+    
+    @FXML
+    private Label l_griffeath;
+    
+    @FXML
+    private Label l_etat;
+    
     @FXML
     private Label l_nbColumns;
     
@@ -124,6 +133,8 @@ public class Controller implements Initializable {
     @FXML
     private Button b_closeOk;
 
+    
+    
     private Board board;
     private GridPaneDriver display;
     private Timeline loop = null;
@@ -390,6 +401,14 @@ public class Controller implements Initializable {
                 }
             }
         });
+        s_griffeath.valueProperty().addListener(new ChangeListener<Number>() {
+            public void changed(ObservableValue<? extends Number> ov,
+                    Number old_val, Number new_val) {
+                int val = new_val.intValue();
+                Param.ETAT_MAX_GRIFFEAT = val;
+                l_griffeath.setText(Integer.toString(val));
+            }
+        });
     }
     
     private void setModesToFalse(){
@@ -399,12 +418,26 @@ public class Controller implements Initializable {
         Param.IS_IMMIGRATION = false;
         Param.IS_ISOTROPE = false;
         Param.IS_FREDKIN = false;
+        Param.IS_GRIFFEATH_N = false;
+    }
+    
+    private void activeGriffeathSlider(boolean b){
+        if(b == true){
+            s_griffeath.setDisable(false);
+            l_griffeath.setDisable(false);
+            l_etat.setDisable(false);
+        }
+        else{
+            s_griffeath.setDisable(true);
+            l_griffeath.setDisable(true);
+            l_etat.setDisable(true);
+        }
     }
 
     private void setChoiceBox() {
         cb_mode.setItems(FXCollections.observableArrayList(
-                "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife", 
-                "Fredkin", "Griffeath", "Moyenne"));
+                "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife",
+                "Fredkin", "Griffeath", "Griffeath(n)", "Moyenne"));
         cb_mode.getSelectionModel().selectFirst();
         cb_mode.getSelectionModel().selectedItemProperty()
                 .addListener((ObservableValue observable,
@@ -415,27 +448,40 @@ public class Controller implements Initializable {
                     }
                     if ("Classique".equals((String) newValue)) {
                         setModesToFalse();
+                        activeGriffeathSlider(false);
                     } else if ("Isotrope".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_ISOTROPE = true;
+                        activeGriffeathSlider(false);
                     } else if ("Immigration".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_IMMIGRATION = true;
+                        activeGriffeathSlider(false);
                     } else if ("DayAndNight".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_DAY_AND_NIGHT = true;
+                        activeGriffeathSlider(false);
                     } else if ("HighLife".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_HIGHLIFE = true;
+                        activeGriffeathSlider(false);
                     } else if ("Fredkin".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_FREDKIN = true;
+                        activeGriffeathSlider(false);
                     } else if ("Griffeath".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_GRIFFEATH = true;
+                        activeGriffeathSlider(false);
+                    } else if("Griffeath(n)".equals((String) newValue)){
+                        setModesToFalse();
+                        Param.IS_GRIFFEATH_N = true;
+                        activeGriffeathSlider(true);
                     }else if ("Moyenne".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_MOYENNE = true;
+
+                        
                     }
                     handleClear();
                 });
@@ -448,7 +494,6 @@ public class Controller implements Initializable {
         b_stop.setDisable(true);
         setSliders();
         setChoiceBox();
-        
     }
 
 }

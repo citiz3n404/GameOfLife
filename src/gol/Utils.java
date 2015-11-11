@@ -44,6 +44,8 @@ public class Utils {
             cell = new CelluleFredkin((LifeState) st);
         } else if (Param.IS_MOYENNE) {
             cell = new CelluleMoyenne((MoyenneState) st);
+        } else if (Param.IS_GRIFFEATH_N) {
+            cell = new CelluleGriffeath((GriffeathState) st);
         } else {
             cell = new CelluleClassique((LifeState) st);
         }
@@ -100,13 +102,9 @@ public class Utils {
             else {
                 c = Color.web("#ff0000");
             }
-            /*if (((GriffeathState) cell.getState()).val == 0) {
-            c = Color.BLACK;
-            } else {
+        } else if(Param.IS_GRIFFEATH_N){
             int percentVal = (((GriffeathState) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
             c = Color.hsb(percentVal, 0.7, 0.94);
-            
-            }*/
         } else if(Param.IS_MOYENNE) {
             c = Color.color(0,0,(((MoyenneState) cell.getState()).val));
             //c = Color.hsb((((MoyenneState) cell.getState()).val), 0.7, 0.94);

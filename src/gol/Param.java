@@ -46,6 +46,7 @@ public class Param {
     public static boolean   IS_DAY_AND_NIGHT        = false;
     public static boolean   IS_FREDKIN              = false;
     public static boolean   IS_MOYENNE              = false;
+    public static boolean   IS_GRIFFEATH_N          = false;
     
     //**************************************************************************
     // GRAPHICAL
