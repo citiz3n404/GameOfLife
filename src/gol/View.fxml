@@ -175,6 +175,23 @@
                                 <Insets left="10.0" />
                             </padding>
                         </HBox>
+                  <HBox>
+                     <children>
+                        <Label fx:id="l_etat" disable="true" prefHeight="17.0" prefWidth="47.0" text="Etats (n)" />
+                        <Slider fx:id="s_griffeath" disable="true" min="1.0" prefHeight="14.0" prefWidth="135.0" value="3.0">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Slider>
+                        <Label fx:id="l_griffeath" disable="true" text="3" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
                         <Separator prefWidth="200.0">
                             <padding>
                                 <Insets left="10.0" right="10.0" top="10.0" />

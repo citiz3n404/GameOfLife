@@ -1,18 +1,28 @@
-1 / REMPLIRE LA GRILLE
+LE PROJET
+----------------------------------------------------------------------------------------------------------------
+Ce Game of Life à été réalisé dans le cadre d'un projet Universitaire de Licence 3 Informatique 
+à Paris Diderot. Il a été encadré par Aldric DEGORRE (Maître de conférences au Laboratoire 
+d'Informatique Algorithmique (LIAFA)) et  Victor MARSAULT de la même équipe de recherche (Automates et Applications).
+Le but du projet était de programmer un Game of Life en rendant facile l'ajout de nouveaux atomates 
+et de nouvelles grilles. 
+Nous avons décidé de faire une interface graphique (Optionnelle) pour rendre plus facile les interactions avec l'utilisateur.
+
+1 / INITIALISER LA GRILLE
 ----------------------------------------------------------------------------------------------------------------
 Il est possible d'initialiser une grille de plusieurs façons :
-	- Vous pouvez choisir le type de grille en cliquant sur les butons adéquats
-	- Vous pouvez cliquer sur une case morte pour la rendre en vie et inversement
-	- Vous pouvez choisir un poucentage de remplissage aléatoire et remplir la grille
-		en cliquant sur random
-	- Vous pouvez charger une grille à partir d'un fichier existant
+	1) Vous pouvez choisir le type de grille en cliquant sur les butons adéquats (Square ou Hexagon).
+	2) Vous pouvez cliquer sur une case morte pour la rendre en vie et inversement 
+            (Dépend du mode de jeu).
+	3) Vous pouvez choisir un poucentage de remplissage aléatoire et remplir la grille.
+            en cliquant sur random.
+	4) Vous pouvez charger une grille à partir d'un fichier existant (Nous avons mis à disposition 
+            le dossier Patterns qui contient plusieurs motifs intéressants dans plusieurs modes de jeu).
 
 
 2/ MODES DE SIMULATION
 ----------------------------------------------------------------------------------------------------------------
-Le mode torique permet à la grille de reboucler sur elle même tandis que quand
-l'option est désactivée la grille n'admet pas de voisins lorsqu'on est sur les bords.
-A noter qu'on peut à tout moment changer cette option, même au milieu d'une simulation
+Le mode TORIQUE permet à la grille de reboucler sur elle même, lorsque l'option est désactivée la grille n'admet pas de voisins quand est sur les bords.
+A noter qu'on peut à tout moment changer cette option, même au milieu d'une simulation.
 
 	1) Mode Classique : 
 		Game of Life de Conway, si une cellule est vivante, elle reste en vie si elle a 2 ou 3 
@@ -31,9 +41,16 @@ A noter qu'on peut à tout moment changer cette option, même au milieu d'une si
 
 	7) Mode Griffeath :
 
-
-
-3/ AUTEURS
+3/ COMMENCER LA SIMULATION
 ----------------------------------------------------------------------------------------------------------------
-Jessica FAVIN
-Anthony CHAFFOT
+Une fois votre grille initialisée, vous pouvez commencer la partie en cliquant sur Start (Cela lance une boucle infinie qui à chaque tour augmente de génération) ou en cliquant sur Step(Qui n'incrémente que d'une génération).
+Vous pouvez choisir la vitesse d'itération via le Slider prévu à cet effet et enfin à tout moment vous pouvez interrompre la simulation en cliquant sur stop. 
+
+4/ POUR LES DEVELOPPEURS
+----------------------------------------------------------------------------------------------------------------
+
+
+5/ AUTEURS
+----------------------------------------------------------------------------------------------------------------
+    Jessica FAVIN
+    Anthony CHAFFOT

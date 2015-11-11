@@ -1,32 +1,32 @@
 /* 
- * Creation : 7 nov. 2015
+ * Creation : 11 nov. 2015
  */
 package gol;
 
+
+
 /**
- * @date 7 nov. 2015
- * @author Anthony CHAFFOT
- * @author Jessica FAVIN
+ * @date    11 nov. 2015
+ * @author  Anthony CHAFFOT
  */
-public class CelluleGriffeath extends Cellule {
+public class CelluleGriffeathN extends Cellule{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-
-    public CelluleGriffeath(GriffeathState st) {
+    public CelluleGriffeathN(GriffeathState st){
         super(st);
     }
 
     //**************************************************************************
     // METHODS
     //**************************************************************************
+
     @Override
     public State nextState() {
-        if (((GriffeathState) state).val == 3 && getNbNeighborsStateUp() == 3) {
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT && getNbNeighborsStateUp() == 3) {
             state = new GriffeathState(0);
         } else {
             if (getNbNeighborsStateUp() == 3) {
-                //((GriffeathState) state).val += 1;
                 state = new GriffeathState(((GriffeathState) state).val+1);
             }
         }
@@ -35,7 +35,7 @@ public class CelluleGriffeath extends Cellule {
 
     @Override
     public void kill() {
-        if (((GriffeathState) state).val == 3){
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
             state = new GriffeathState(0);
         }
         else{
@@ -45,26 +45,27 @@ public class CelluleGriffeath extends Cellule {
 
     @Override
     public void born() {
-        if (((GriffeathState) state).val == 3){
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
             state = new GriffeathState(0);
         }
         else{
             state = new GriffeathState(((GriffeathState) state).val+1);
         }
     }
-
+    
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************
+
     public int getNbNeighborsStateUp() {
         int sum = 0;
         for (Enum direction : neighbors.keySet()) {
             if (neighbors.get(direction) != null) 
-                if(((GriffeathState) state).val == 3){
+                if(((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
                     if(((GriffeathState) (neighbors.get(direction).getState())).val == 0){
                         sum++;
                     }
-                }else if(((GriffeathState) state).val < 3){
+                }else if(((GriffeathState) state).val < Param.ETAT_MAX_GRIFFEAT){
                     if(((GriffeathState) (neighbors.get(direction).getState())).val == ((GriffeathState) state).val + 1){
                         sum++;
                     }
@@ -89,4 +90,5 @@ public class CelluleGriffeath extends Cellule {
     public boolean isAlive() {
         return true;
     }
+
 }
