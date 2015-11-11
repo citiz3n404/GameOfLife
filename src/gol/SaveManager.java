@@ -40,7 +40,7 @@ public class SaveManager {
                     String str[] = ligne.split(" ");
                     switch (cmpt) {
                         case 0:
-                            if (str[0].equals("123456789")) {
+                            if (str[0].equals("123456789-LineTest")) {
                                 cmpt++;
                                 break;
                             } else {
@@ -48,44 +48,44 @@ public class SaveManager {
                                 break end;
                             }
                         case 1:
-                            Param.NB_ROWS = Integer.parseInt(str[0]);
+                            Param.NB_ROWS = Integer.parseInt(str[1]);
                             cmpt++;
                             break;
                         case 2:
-                            Param.NB_COLUMNS = Integer.parseInt(str[0]);
+                            Param.NB_COLUMNS = Integer.parseInt(str[1]);
                             cmpt++;
                             break;
                         case 3:
-                            Param.GRID = Integer.parseInt(str[0]);
+                            Param.GRID = Integer.parseInt(str[1]);
                             cmpt++;
                             break;
                             
                         case 4:
-                            Param.IS_TORIQUE = str[0].equals("true");
+                            Param.IS_TORIQUE = str[1].equals("true");
                             cmpt++;
                             break;
                         case 5:
-                            Param.IS_ISOTROPE = str[0].equals("true");
+                            Param.IS_ISOTROPE = str[1].equals("true");
                             cmpt++;
                             break;
                         case 6:
-                            Param.IS_IMMIGRATION = str[0].equals("true");
+                            Param.IS_IMMIGRATION = str[1].equals("true");
                             cmpt++;
                             break;
                         case 7:
-                            Param.IS_HIGHLIFE = str[0].equals("true");
+                            Param.IS_HIGHLIFE = str[1].equals("true");
                             cmpt++;
                             break;
                         case 8:
-                            Param.IS_FREDKIN = str[0].equals("true");
+                            Param.IS_FREDKIN = str[1].equals("true");
                             cmpt++;
                             break;
                         case 9:
-                            Param.IS_DAY_AND_NIGHT = str[0].equals("true");
+                            Param.IS_DAY_AND_NIGHT = str[1].equals("true");
                             cmpt++;
                             break;
                         case 10:
-                            Param.IS_GRIFFEATH = str[0].equals("true");
+                            Param.IS_GRIFFEATH = str[1].equals("true");
                             board = Utils.createNewBoard();
                             cmpt++;
                             break;
