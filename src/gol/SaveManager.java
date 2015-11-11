@@ -31,7 +31,6 @@ public class SaveManager {
             ipsr = new InputStreamReader(input);
             br = new BufferedReader(ipsr);
 
-            System.out.println("File openned");
             int cmpt = 0;
             int cmptGrid = 0;
             try {
@@ -42,7 +41,6 @@ public class SaveManager {
                     switch (cmpt) {
                         case 0:
                             if (str[0].equals("123456789")) {
-                                System.out.println(str[0]);
                                 cmpt++;
                                 break;
                             } else {
@@ -51,82 +49,43 @@ public class SaveManager {
                             }
                         case 1:
                             Param.NB_ROWS = Integer.parseInt(str[0]);
-                            System.out.println(str[0]);
                             cmpt++;
                             break;
                         case 2:
                             Param.NB_COLUMNS = Integer.parseInt(str[0]);
-                            System.out.println(str[0]);
                             cmpt++;
                             break;
                         case 3:
-                            System.out.println(str[0]);
                             Param.GRID = Integer.parseInt(str[0]);
                             cmpt++;
                             break;
                             
                         case 4:
-                            System.out.println(str[0]);
-                            if (str[0].equals("true")) {
-                                Param.IS_TORIQUE = true;
-                            } else {
-                                Param.IS_TORIQUE = false;
-                            }
+                            Param.IS_TORIQUE = str[0].equals("true");
                             cmpt++;
                             break;
                         case 5:
-                            System.out.println(str[0]);
-                            if (str[0].equals("true")) {
-                                Param.IS_ISOTROPE = true;
-                            } else {
-                                Param.IS_ISOTROPE = false;
-                            }
+                            Param.IS_ISOTROPE = str[0].equals("true");
                             cmpt++;
                             break;
                         case 6:
-                            System.out.println(str[0]);
-                            if (str[0].equals("true")) {
-                                Param.IS_IMMIGRATION = true;
-                            } else {
-                                Param.IS_IMMIGRATION = false;
-                            }
+                            Param.IS_IMMIGRATION = str[0].equals("true");
                             cmpt++;
                             break;
                         case 7:
-                            System.out.println(str[0]);
-                            if (str[0].equals("true")) {
-                                Param.IS_HIGHLIFE = true;
-                            } else {
-                                Param.IS_HIGHLIFE = false;
-                            }
+                            Param.IS_HIGHLIFE = str[0].equals("true");
                             cmpt++;
                             break;
                         case 8:
-                            System.out.println(str[0]);
-                            if (str[0].equals("true")) {
-                                Param.IS_FREDKIN = true;
-                            } else {
-                                Param.IS_FREDKIN = false;
-                            }
+                            Param.IS_FREDKIN = str[0].equals("true");
                             cmpt++;
                             break;
                         case 9:
-                            System.out.println(str[0]);
-
-                            if (str[0].equals("true")) {
-                                Param.IS_DAY_AND_NIGHT = true;
-                            } else {
-                                Param.IS_DAY_AND_NIGHT = false;
-                            }
+                            Param.IS_DAY_AND_NIGHT = str[0].equals("true");
                             cmpt++;
                             break;
                         case 10:
-                            System.out.println(str[0]);
-                            if (str[0].equals("true")) {
-                                Param.IS_GRIFFEATH = true;
-                            } else {
-                                Param.IS_GRIFFEATH = false;
-                            }
+                            Param.IS_GRIFFEATH = str[0].equals("true");
                             board = Utils.createNewBoard();
                             cmpt++;
                             break;

@@ -186,7 +186,7 @@ public class Controller implements Initializable {
             resetGridView();
             display.displayBoard(board);
             
-            // Aucune idée de pourquoi faut le faire 2 fois
+            //Aucune idée de pourquoi faut le faire 2 fois
             board = SaveManager.loadBoard(path);
             board.initNeighbors();
             resetGridView();
