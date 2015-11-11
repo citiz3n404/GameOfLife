@@ -180,12 +180,12 @@ public class Controller implements Initializable {
         if (selectedFile != null) {
             String path = selectedFile.getPath();
             System.out.println(path);
-            handleUpdate(new ActionEvent());
             board = SaveManager.loadBoard(path);
+            handleUpdate(new ActionEvent());
+            initiateGUI();
             board.initNeighbors();
             resetGridView();
             display.displayBoard(board);
-            initiateGUI();
         }
     }
 
@@ -301,6 +301,9 @@ public class Controller implements Initializable {
             cb_mode.getSelectionModel().select("Fredkin");
         } else if (Param.IS_GRIFFEATH) {
             cb_mode.getSelectionModel().select("Griffeath");
+        }
+        else{
+            cb_mode.getSelectionModel().select("Classique");
         }
 
         s_nbRows.adjustValue(Param.NB_ROWS);

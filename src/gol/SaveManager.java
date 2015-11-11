@@ -1,71 +1,173 @@
 /* 
  * Creation : 5 nov. 2015
  */
-
 package gol;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 /**
- * 
- * @date    5 nov. 2015
- * @author  Anthony CHAFFOT
+ *
+ * @date 5 nov. 2015
+ * @author Anthony CHAFFOT
  * @author Jessica FAVIN
  */
 public class SaveManager {
 
     public static Board loadBoard(String path) {
-        ObjectInputStream input;
-        Board board;
-        //Cellule[][] grid = board.getGrid();
+        InputStream input;
+        Board board = Utils.createNewBoard();
+        InputStreamReader ipsr;
+        BufferedReader br;
         try {
-            input = new ObjectInputStream(new FileInputStream(path));
-            System.out.println("fichier ouvert");
-            try {
-                Integer tempInt = (Integer) input.readObject();
+            input = new FileInputStream(path);
+            ipsr = new InputStreamReader(input);
+            br = new BufferedReader(ipsr);
 
-                if (tempInt.equals(123456789)) {
-                    Param.NB_ROWS           = (Integer) input.readObject();
-                    Param.NB_COLUMNS        = (Integer) input.readObject();
-                    Param.GRID              = (Integer) input.readObject();
-                    
-                    Param.IS_TORIQUE        = (Boolean) input.readObject();
-                    Param.IS_ISOTROPE       = (Boolean) input.readObject();
-                    Param.IS_IMMIGRATION    = (Boolean) input.readObject();
-                    Param.IS_HIGHLIFE       = (Boolean) input.readObject();
-                    Param.IS_FREDKIN        = (Boolean) input.readObject();
-                    Param.IS_DAY_AND_NIGHT  = (Boolean) input.readObject();
-                    Param.IS_GRIFFEATH      = (Boolean) input.readObject();
-                    
-                    
-                    System.out.println("Param loaded");
-                    board = (Board) input.readObject();
-                    
-                    Board board2 = Utils.createNewBoard();
-                    for(int i=0; i<Param.NB_ROWS; i++){
-                        for(int j=0; j<Param.NB_COLUMNS; j++){
-                            board2.board[i][j] = board.board[i][j];
-                        }
+            System.out.println("File openned");
+            int cmpt = 0;
+            int cmptGrid = 0;
+            try {
+                String ligne;
+                end:
+                while ((ligne = br.readLine()) != null) {
+                    String str[] = ligne.split(" ");
+                    switch (cmpt) {
+                        case 0:
+                            if (str[0].equals("123456789")) {
+                                System.out.println(str[0]);
+                                cmpt++;
+                                break;
+                            } else {
+                                System.out.println("Wrong file");
+                                break end;
+                            }
+                        case 1:
+                            Param.NB_ROWS = Integer.parseInt(str[0]);
+                            System.out.println(str[0]);
+                            cmpt++;
+                            break;
+                        case 2:
+                            Param.NB_COLUMNS = Integer.parseInt(str[0]);
+                            System.out.println(str[0]);
+                            cmpt++;
+                            break;
+                        case 3:
+                            System.out.println(str[0]);
+                            Param.GRID = Integer.parseInt(str[0]);
+                            cmpt++;
+                            break;
+                            
+                        case 4:
+                            System.out.println(str[0]);
+                            if (str[0].equals("true")) {
+                                Param.IS_TORIQUE = true;
+                            } else {
+                                Param.IS_TORIQUE = false;
+                            }
+                            cmpt++;
+                            break;
+                        case 5:
+                            System.out.println(str[0]);
+                            if (str[0].equals("true")) {
+                                Param.IS_ISOTROPE = true;
+                            } else {
+                                Param.IS_ISOTROPE = false;
+                            }
+                            cmpt++;
+                            break;
+                        case 6:
+                            System.out.println(str[0]);
+                            if (str[0].equals("true")) {
+                                Param.IS_IMMIGRATION = true;
+                            } else {
+                                Param.IS_IMMIGRATION = false;
+                            }
+                            cmpt++;
+                            break;
+                        case 7:
+                            System.out.println(str[0]);
+                            if (str[0].equals("true")) {
+                                Param.IS_HIGHLIFE = true;
+                            } else {
+                                Param.IS_HIGHLIFE = false;
+                            }
+                            cmpt++;
+                            break;
+                        case 8:
+                            System.out.println(str[0]);
+                            if (str[0].equals("true")) {
+                                Param.IS_FREDKIN = true;
+                            } else {
+                                Param.IS_FREDKIN = false;
+                            }
+                            cmpt++;
+                            break;
+                        case 9:
+                            System.out.println(str[0]);
+
+                            if (str[0].equals("true")) {
+                                Param.IS_DAY_AND_NIGHT = true;
+                            } else {
+                                Param.IS_DAY_AND_NIGHT = false;
+                            }
+                            cmpt++;
+                            break;
+                        case 10:
+                            System.out.println(str[0]);
+                            if (str[0].equals("true")) {
+                                Param.IS_GRIFFEATH = true;
+                            } else {
+                                Param.IS_GRIFFEATH = false;
+                            }
+                            board = Utils.createNewBoard();
+                            cmpt++;
+                            break;
+                        default:
+                            for (int i = 0; i < str.length; i++) {
+                                if (Param.IS_GRIFFEATH) {
+                                    board.board[cmptGrid][i] = Utils.createNewCell(new GriffeathState(Integer.parseInt(str[i])));
+                                } else {
+                                    if (Param.IS_IMMIGRATION) {
+                                        if (str[i].equals("*")) {
+                                            board.board[cmptGrid][i] = Utils.createNewCell(ImmigrationState.ZOMBIE);
+                                        } else if (str[i].equals("O")) {
+                                            board.board[cmptGrid][i] = Utils.createNewCell(ImmigrationState.ALIVE);
+                                        } else if (str[i].equals(".")) {
+                                            board.board[cmptGrid][i] = Utils.createNewCell(ImmigrationState.DEAD);
+                                        }
+                                    }
+                                    else{
+                                        if(str[i].equals("O")){
+                                            System.out.print(str[i]+" ");
+                                            board.board[cmptGrid][i] = Utils.createNewCell(LifeState.ALIVE);
+                                        }
+                                        else{
+                                            System.out.print(str[i]+" ");
+                                            board.board[cmptGrid][i] = Utils.createNewCell(LifeState.DEAD);
+                                        }
+                                    }
+                                }
+                            }
+                            cmptGrid++;
+                            if(cmptGrid == Param.NB_ROWS){
+                                return board;
+                            }
                     }
-                    
-                    System.out.println("fin tableau");
-                    System.out.println("Load succeeded");
-                    return board2;
-                } else {
-                    System.out.println("ERREUR DE FICHIER");
+
                 }
             } finally {
                 input.close();
             }
         } catch (IOException ex) {
-            System.out.println("WORLD LOADING FAILED !");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Class not found");
+            System.out.println("LOADING FAILED !");
         }
         return Utils.createNewBoard();
     }
@@ -86,16 +188,15 @@ public class SaveManager {
                 writer.println(Param.IS_FREDKIN);
                 writer.println(Param.IS_DAY_AND_NIGHT);
                 writer.println(Param.IS_GRIFFEATH);
-                
-                for(int i =0; i<Param.NB_ROWS; i++){
-                    for(int j=0; j<Param.NB_COLUMNS; j++){
-                        if(Param.IS_GRIFFEATH){
-                            writer.print(board.board[i][j].state.toString()+" ");
+
+                for (int i = 0; i < Param.NB_ROWS; i++) {
+                    for (int j = 0; j < Param.NB_COLUMNS; j++) {
+                        if (Param.IS_GRIFFEATH) {
+                            writer.print(board.board[i][j].state.toString() + " ");
+                        } else {
+                            writer.print(board.board[i][j].state.toChar() + " ");
                         }
-                        else{
-                            writer.print(board.board[i][j].state.toChar()+" ");
-                        }
-                        
+
                     }
                     writer.println();
                 }
