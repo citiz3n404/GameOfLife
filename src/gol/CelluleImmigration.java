@@ -44,12 +44,13 @@ public class CelluleImmigration extends Cellule{
 
     @Override
     public void kill() {
-        state = ImmigrationState.DEAD;
+        if(state==ImmigrationState.ALIVE) state = ImmigrationState.ZOMBIE;
+        else state = ImmigrationState.DEAD;
     }
 
     @Override
     public void born() {
-        if(moreZombies()) state = ImmigrationState.ZOMBIE;
+        if(state==ImmigrationState.ALIVE) state = ImmigrationState.ZOMBIE;
         else state = ImmigrationState.ALIVE;
     }
     

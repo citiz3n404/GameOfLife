@@ -403,7 +403,8 @@ public class Controller implements Initializable {
 
     private void setChoiceBox() {
         cb_mode.setItems(FXCollections.observableArrayList(
-                "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife", "Fredkin", "Griffeath"));
+                "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife", 
+                "Fredkin", "Griffeath", "Moyenne"));
         cb_mode.getSelectionModel().selectFirst();
         cb_mode.getSelectionModel().selectedItemProperty()
                 .addListener((ObservableValue observable,
@@ -432,6 +433,9 @@ public class Controller implements Initializable {
                     } else if ("Griffeath".equals((String) newValue)) {
                         setModesToFalse();
                         Param.IS_GRIFFEATH = true;
+                    }else if ("Moyenne".equals((String) newValue)) {
+                        setModesToFalse();
+                        Param.IS_MOYENNE = true;
                     }
                     handleClear();
                 });

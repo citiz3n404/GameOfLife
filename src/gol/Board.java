@@ -116,7 +116,12 @@ public abstract class Board implements Grid, Serializable {
                         int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 0 + 1) + 0;
                         board[i][j].setState(new GriffeathState(nombreAleatoire));
                     }
-                } else{
+                } else if(Param.IS_MOYENNE){
+                    if(Math.random() >= proba){
+                        //A revoir pour inclure 1
+                        board[i][j].setState(new MoyenneState(Math.random()));
+                    }
+                } else {
                     if (Math.random() <= proba) {
                         board[i][j].setState(LifeState.ALIVE);
                     } else {
@@ -149,7 +154,9 @@ public abstract class Board implements Grid, Serializable {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 } else if(Param.IS_GRIFFEATH){
                     brd[i][j] = Utils.createNewCell(new GriffeathState(1));
-                }else {
+                } else if(Param.IS_MOYENNE){
+                    brd[i][j] = Utils.createNewCell(new MoyenneState(0.0));
+                } else {
                     brd[i][j] = Utils.createNewCell(LifeState.DEAD);
                 }
                 
