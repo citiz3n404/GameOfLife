@@ -23,11 +23,21 @@ public class CelluleGriffeathN extends Cellule{
 
     @Override
     public State nextState() {
-        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT && getNbNeighborsStateUp() == 3) {
-            state = new GriffeathState(0);
+        if(this.neighbors.size() == 5){
+            if(getNbNeighborsStateUp() >= 2){
+                if(((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
+                    return new GriffeathState(0);
+                }
+                else{
+                    return new GriffeathState(((GriffeathState) state).val+1);
+                }
+            }
+        }
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT && (getNbNeighborsStateUp() == 3)) {
+            return new GriffeathState(0);
         } else {
             if (getNbNeighborsStateUp() == 3) {
-                state = new GriffeathState(((GriffeathState) state).val+1);
+                return new GriffeathState(((GriffeathState) state).val+1);
             }
         }
         return this.state;

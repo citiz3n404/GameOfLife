@@ -419,6 +419,8 @@ public class Controller implements Initializable {
         Param.IS_ISOTROPE = false;
         Param.IS_FREDKIN = false;
         Param.IS_GRIFFEATH_N = false;
+        Param.IS_MOYENNE = false;
+        Param.IS_MATHS = false;
     }
     
     private void activeGriffeathSlider(boolean b){
@@ -479,10 +481,12 @@ public class Controller implements Initializable {
                         activeGriffeathSlider(true);
                     } else if ("Moyenne".equals((String) newValue)) {
                         setModesToFalse();
-                        Param.IS_MOYENNE = true;                        
+                        Param.IS_MOYENNE = true;   
+                        activeGriffeathSlider(false);
                     } else if ("Maths".equals((String) newValue)) {
                         setModesToFalse();
-                        Param.IS_MATHS = true;                        
+                        Param.IS_MATHS = true; 
+                        activeGriffeathSlider(false);
                     }
                     handleClear();
                 });

@@ -86,10 +86,25 @@ public class SaveManager {
                             break;
                         case 10:
                             Param.IS_GRIFFEATH = str[1].equals("true");
-                            board = Utils.createNewBoard();
                             cmpt++;
                             break;
+                        case 11:
+                            Param.IS_GRIFFEATH_N = str[1].equals("true");
+                            cmpt++;
+                            break;
+                        case 12:
+                            Param.IS_MOYENNE =str[1].equals("true");
+                            cmpt++;
+                            break;
+                        case 13:
+                            Param.IS_MATHS= str[1].equals("true");
+                            cmpt++;
+                            
+                            board = Utils.createNewBoard();
+                            break;
+                            
                         default:
+                            
                             for (int i = 0; i < str.length; i++) {
                                 if (Param.IS_GRIFFEATH) {
                                     board.board[cmptGrid][i].setState(new GriffeathState(Integer.parseInt(str[i])));
@@ -147,6 +162,9 @@ public class SaveManager {
                 writer.println("Fredkin: "+Param.IS_FREDKIN);
                 writer.println("DayAndNight: "+Param.IS_DAY_AND_NIGHT);
                 writer.println("Griffeath: "+Param.IS_GRIFFEATH);
+                writer.println("GriffeathN: "+Param.IS_GRIFFEATH_N);
+                writer.println("Moyenne: "+Param.IS_MOYENNE);
+                writer.println("Maths: "+Param.IS_MATHS);
 
                 for (int i = 0; i < Param.NB_ROWS; i++) {
                     for (int j = 0; j < Param.NB_COLUMNS; j++) {
