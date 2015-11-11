@@ -59,12 +59,12 @@ public class Utils {
         r.setOnMouseClicked(e -> {
             //Si la cellule est vivante on la tue autrement elle nait
             if (c.isAlive()) {
-                r.setFill(Param.COLOR_DEAD);
                 c.kill();
+                r.setFill(Utils.getColorCell(c));
                 controller.incrementPopulation();
             } else {
-                r.setFill(Param.COLOR_ALIVE);
                 c.born();
+                r.setFill(Utils.getColorCell(c));
                 controller.incrementPopulation();
             }
         });

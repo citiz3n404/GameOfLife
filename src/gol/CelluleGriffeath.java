@@ -36,13 +36,22 @@ public class CelluleGriffeath extends Cellule {
 
     @Override
     public void kill() {
-        //Quand on clique sur une cell en vie on passe le state au prochain
-        state = nextState();
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
+            state = new GriffeathState(0);
+        }
+        else{
+            state = new GriffeathState(((GriffeathState) state).val+1);
+        }
     }
 
     @Override
     public void born() {
-        // Useless car ne sera jamais invoquée. La grille n'a pas d'état mort
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
+            state = new GriffeathState(0);
+        }
+        else{
+            state = new GriffeathState(((GriffeathState) state).val+1);
+        }
     }
 
     //**************************************************************************
