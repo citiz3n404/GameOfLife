@@ -169,8 +169,7 @@ public class Controller implements Initializable {
         stopAndClear();
     }
     
-    
-
+ 
     @FXML
     private void handleLoad(ActionEvent event) {
         fileChooser.setTitle("Select a file");
@@ -181,8 +180,14 @@ public class Controller implements Initializable {
             String path = selectedFile.getPath();
             System.out.println(path);
             board = SaveManager.loadBoard(path);
+            board.initNeighbors();
             handleUpdate(new ActionEvent());
             initiateGUI();
+            resetGridView();
+            display.displayBoard(board);
+            
+            // Aucune idée de pourquoi faut le faire 2 fois
+            board = SaveManager.loadBoard(path);
             board.initNeighbors();
             resetGridView();
             display.displayBoard(board);
@@ -288,6 +293,18 @@ public class Controller implements Initializable {
         if (Param.IS_TORIQUE) {
             b_torique.setSelected(true);
         }
+        else{
+            b_torique.setSelected(false);
+        }
+        
+        if(Param.GRID == 1){
+            b_hexagon.setDisable(false);
+            b_square.setDisable(true);
+        }
+        else{
+            b_hexagon.setDisable(true);
+            b_square.setDisable(false);
+        }
 
         if (Param.IS_ISOTROPE) {
             cb_mode.getSelectionModel().select("Isotrope");
@@ -301,8 +318,7 @@ public class Controller implements Initializable {
             cb_mode.getSelectionModel().select("Fredkin");
         } else if (Param.IS_GRIFFEATH) {
             cb_mode.getSelectionModel().select("Griffeath");
-        }
-        else{
+        } else{
             cb_mode.getSelectionModel().select("Classique");
         }
 
@@ -316,7 +332,7 @@ public class Controller implements Initializable {
         resetGridView();
         generation = 0;
         l_generation.setText("0");
-        l_population.setText("0");
+        l_population.setText(Integer.toString(board.getPopulation()));
         l_population.setStyle("-fx-background-color: #BDBDBD; -fx-background-radius:5; -fx-padding:3;");
     }
 

@@ -27,7 +27,7 @@ public class CelluleGriffeath extends Cellule {
             state = new GriffeathState(0);
         } else {
             if (getNbNeighborsStateUp() == 3) {
-                ((GriffeathState) state).val += 1;
+                //((GriffeathState) state).val += 1;
                 state = new GriffeathState(((GriffeathState) state).val+1);
             }
         }

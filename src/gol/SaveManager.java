@@ -133,25 +133,25 @@ public class SaveManager {
                         default:
                             for (int i = 0; i < str.length; i++) {
                                 if (Param.IS_GRIFFEATH) {
-                                    board.board[cmptGrid][i] = Utils.createNewCell(new GriffeathState(Integer.parseInt(str[i])));
+                                    board.board[cmptGrid][i].setState(new GriffeathState(Integer.parseInt(str[i])));
                                 } else {
                                     if (Param.IS_IMMIGRATION) {
                                         if (str[i].equals("*")) {
-                                            board.board[cmptGrid][i] = Utils.createNewCell(ImmigrationState.ZOMBIE);
+                                            board.board[cmptGrid][i].setState(ImmigrationState.ZOMBIE);
                                         } else if (str[i].equals("O")) {
-                                            board.board[cmptGrid][i] = Utils.createNewCell(ImmigrationState.ALIVE);
+                                            board.board[cmptGrid][i].setState(ImmigrationState.ALIVE);
                                         } else if (str[i].equals(".")) {
-                                            board.board[cmptGrid][i] = Utils.createNewCell(ImmigrationState.DEAD);
+                                            board.board[cmptGrid][i].setState(ImmigrationState.DEAD);
                                         }
                                     }
                                     else{
                                         if(str[i].equals("O")){
-                                            System.out.print(str[i]+" ");
-                                            board.board[cmptGrid][i] = Utils.createNewCell(LifeState.ALIVE);
+                                            //System.out.print(str[i]+" ");
+                                            board.board[cmptGrid][i].setState(LifeState.ALIVE);
                                         }
                                         else{
-                                            System.out.print(str[i]+" ");
-                                            board.board[cmptGrid][i] = Utils.createNewCell(LifeState.DEAD);
+                                            //System.out.print(str[i]+" ");
+                                            board.board[cmptGrid][i].setState(LifeState.DEAD);
                                         }
                                     }
                                 }
@@ -169,7 +169,7 @@ public class SaveManager {
         } catch (IOException ex) {
             System.out.println("LOADING FAILED !");
         }
-        return Utils.createNewBoard();
+        return board;
     }
 
     public static void saveBoard(String path, Board board) {
