@@ -22,18 +22,19 @@ public class CelluleMoyenne extends Cellule {
     //**************************************************************************
     @Override
     public State nextState() {
-        ((MoyenneState)this.state).val = getNeighborMoyenne();
-        return this.state;
+        return new MoyenneState(getNeighborMoyenne());
     }
 
     @Override
     public void kill() {
-        this.state = new MoyenneState(0.0);
+        if(((MoyenneState)state).val==0.0) this.state = new MoyenneState(1.0);
+        else this.state = new MoyenneState(0.0);
     }
 
     @Override
     public void born() {
-        ((MoyenneState)this.state).val = 1.0;
+        if(((MoyenneState)state).val==0.0) this.state = new MoyenneState(1.0);
+        else this.state = new MoyenneState(0.0);
     }
 
     //**************************************************************************
@@ -51,13 +52,13 @@ public class CelluleMoyenne extends Cellule {
     }
     
     public double getNeighborMoyenne(){
-        int sum = 0;
+        double sum = 0;
         for (Enum direction : neighbors.keySet()) {
             if (neighbors.get(direction) != null) {
-                sum+=((MoyenneState)state).val;
+                sum+=((MoyenneState)neighbors.get(direction).getState()).val;
             }
         }
-        return (sum/neighbors.size());
+        return (sum/getNbNeighborsAlive());
     }
 
     @Override

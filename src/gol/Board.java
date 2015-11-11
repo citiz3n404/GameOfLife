@@ -117,9 +117,16 @@ public abstract class Board implements Grid, Serializable {
                         board[i][j].setState(new GriffeathState(nombreAleatoire));
                     
                 } else if(Param.IS_MOYENNE){
-                    if(Math.random() >= proba){
+                    if(Math.random() <= proba){
                         //A revoir pour inclure 1
-                        board[i][j].setState(new MoyenneState(Math.random()));
+                        double x = Math.random();
+                        if(x!=0.0){
+                            board[i][j].setState(new MoyenneState(x));
+                        } else {
+                            board[i][j].setState(new MoyenneState(1.0));
+                        }
+                    } else {
+                        board[i][j].setState(new MoyenneState(0.0));
                     }
                 } else {
                     if (Math.random() <= proba) {

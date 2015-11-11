@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author Jessica FAVIN
  */
 public class MoyenneState implements State, Serializable {
-    public double val = 0;
+    public double val;
     
     public MoyenneState(double value){
         this.val = value;
