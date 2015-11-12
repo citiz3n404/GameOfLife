@@ -25,24 +25,25 @@ public class CelluleGriffeathN extends Cellule{
     public State nextState() {
         if(this.neighbors.size() == 5){
             if(getNbNeighborsStateUp() >= 2){
-                if(((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
-                    return new GriffeathState(0);
-                }
-                else{
-                    return new GriffeathState(((GriffeathState) state).val+1);
-                }
+            if(((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
+            return new GriffeathState(0);
+            }
+            else{
+            return new GriffeathState(((GriffeathState) state).val+1);
             }
         }
-        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT && (getNbNeighborsStateUp() == 3)) {
+        
+        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT && (getNbNeighborsStateUp() >= 3)) {
             return new GriffeathState(0);
         } else {
-            if (getNbNeighborsStateUp() == 3) {
+            if (getNbNeighborsStateUp() >= 3) {
                 return new GriffeathState(((GriffeathState) state).val+1);
             }
         }
-        return this.state;
+        } 
+        return this.state;  
     }
-
+    
     @Override
     public void kill() {
         if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){

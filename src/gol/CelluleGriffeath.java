@@ -22,10 +22,10 @@ public class CelluleGriffeath extends Cellule {
     //**************************************************************************
     @Override
     public State nextState() {
-        if (((GriffeathState) state).val == 3 && getNbNeighborsStateUp() == 3) {
+        if (((GriffeathState) state).val == 3 && getNbNeighborsStateUp() >= 3) {
             state = new GriffeathState(0);
         } else {
-            if (getNbNeighborsStateUp() == 3) {
+            if (getNbNeighborsStateUp() >= 3) {
                 //((GriffeathState) state).val += 1;
                 state = new GriffeathState(((GriffeathState) state).val+1);
             }
