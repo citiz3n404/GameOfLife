@@ -3,41 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/README.txt</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/build.xml</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleClassique.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/HexaGridNbh.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleIsotrope.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayConsole.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/SaveManager.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleGriffeath.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleFredkin.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/BoardSquare.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayDriver.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplayHexaGridFX.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleHighLife.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Param.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/DisplaySquareGridFX.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/BoardHexa.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Board.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/ImmigrationState.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/View.fxml</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Controller.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/ControllerInfo.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Utils.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Cellule.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GoL.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/LifeState.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GridPaneDriver.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleImmigration.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Info.fxml</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/CelluleDayAndNight.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Cell.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/State.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/Grid.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/SquareGridNbh.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/src/gol/GriffeathState.java</file>
-            <file>file:/D:/Anthony/Lab/JAVA/GoL/.git/config</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/Board.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/GoL.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/CelluleGriffeath.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/CelluleGriffeathN.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/Utils.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/Text.txt</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/SaveManager.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/Controller.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/BoardSquare.java</file>
+            <file>file:/D:/Anthony/Lab/JAVA/GameOfLife/src/gol/Param.java</file>
         </group>
     </open-files>
 </project-private>

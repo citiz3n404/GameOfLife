@@ -77,6 +77,9 @@ public class Controller implements Initializable {
     private ChoiceBox cb_mode;
 
     @FXML
+    private ChoiceBox cb_load;
+
+    @FXML
     private ToggleButton b_torique;
 
     @FXML
@@ -487,6 +490,31 @@ public class Controller implements Initializable {
                     }
                     handleClear();
                 });
+
+        //Deuxième choicebox
+        cb_load.setItems(Utils.listDirectory(new File("./src/gol/Patterns")));
+        cb_load.getSelectionModel().selectedItemProperty()
+                .addListener((ObservableValue observable,
+                                Object oldValue, Object newValue) -> {
+                    File selectedFile = new File("./src/gol/Patterns/"+(String)newValue+".gol");
+                    if (selectedFile != null) {
+                        String path = selectedFile.getPath();
+                        System.out.println(path);
+                        board = SaveManager.loadBoard(path);
+                        board.initNeighbors();
+                        handleUpdate(new ActionEvent());
+                        initiateGUI();
+                        resetGridView();
+                        display.displayBoard(board);
+
+                        //Aucune idée de pourquoi faut le faire 2 fois
+                        board = SaveManager.loadBoard(path);
+                        board.initNeighbors();
+                        resetGridView();
+                        display.displayBoard(board);
+                    }
+                });
+        cb_load.setValue("Select a Pattern");
     }
 
     @Override
@@ -496,12 +524,7 @@ public class Controller implements Initializable {
         b_stop.setDisable(true);
         setSliders();
         setChoiceBox();
-        try {
-            System.out.println((new File(".")).getCanonicalPath());
-            Utils.listDirectory(new File("./src/gol/Patterns"));
-        } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }
 
 }
