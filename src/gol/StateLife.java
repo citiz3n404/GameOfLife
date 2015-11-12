@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Jessica FAVIN
  * @date 30/10/2015
  */
-public enum LifeState implements State, Serializable{
+public enum StateLife implements State, Serializable{
     DEAD{
         @Override
         public char toChar() {

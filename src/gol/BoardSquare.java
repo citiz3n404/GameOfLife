@@ -27,7 +27,7 @@ public class BoardSquare extends Board{
     //**************************************************************************
 
     /**
-     * Initiate the neighbors list for each cell
+     * Initiate the neighbors list for each cell in torique mode
      */
     @Override
     void initToriqueNeighbors() {
@@ -89,7 +89,7 @@ public class BoardSquare extends Board{
                             board[i][j].setNeighbor(SquareGridNbh.SOUTH_EAST, board[i + 1][0]);
                         }
                     }
-                    //Cases en milieu de grille
+                    //Cases en milieu de grille (pas encore initialisées
                     if (board[i][j].getNeighbor(SquareGridNbh.NORTH_WEST) == null) {
                         board[i][j].setNeighbor(SquareGridNbh.NORTH_WEST, board[i - 1][j - 1]);
                     }
@@ -121,7 +121,7 @@ public class BoardSquare extends Board{
     }
 
     /**
-     * Initiate the neighbors list for each cell
+     * Initiate the neighbors list for each cell (non torique)
      */
     @Override
     void initNonToriqueNeighbors() {

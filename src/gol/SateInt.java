@@ -1,5 +1,5 @@
 /* 
- * Creation : 11 nov. 2015
+ * Creation : 7 nov. 2015
  */
 package gol;
 
@@ -8,20 +8,20 @@ import java.io.Serializable;
 
 
 /**
- * @date    11 nov. 2015
+ * @date    7 nov. 2015
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class DoubleState implements State, Serializable {
-    public double val;
+public class SateInt implements State, Serializable {
+    public int val = 1;
     
-    public DoubleState(double value){
+    public SateInt(int value){
         this.val = value;
     }
     
     @Override
     public String toString() {
-            return ((Double)val).toString();
+            return ((Integer)val).toString();
         }
     
 }

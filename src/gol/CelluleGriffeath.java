@@ -13,7 +13,7 @@ public class CelluleGriffeath extends Cellule {
     // CONSTRUCTOR
     //**************************************************************************
 
-    public CelluleGriffeath(GriffeathState st) {
+    public CelluleGriffeath(SateInt st) {
         super(st);
     }
 
@@ -22,12 +22,12 @@ public class CelluleGriffeath extends Cellule {
     //**************************************************************************
     @Override
     public State nextState() {
-        if (((GriffeathState) state).val == 3 && getNbNeighborsStateUp() >= 3) {
-            state = new GriffeathState(0);
+        if (((SateInt) state).val == 3 && getNbNeighborsStateUp() >= 3) {
+            state = new SateInt(0);
         } else {
             if (getNbNeighborsStateUp() >= 3) {
-                //((GriffeathState) state).val += 1;
-                state = new GriffeathState(((GriffeathState) state).val+1);
+                //((SateInt) state).val += 1;
+                state = new SateInt(((SateInt) state).val+1);
             }
         }
         return this.state;
@@ -35,21 +35,21 @@ public class CelluleGriffeath extends Cellule {
 
     @Override
     public void kill() {
-        if (((GriffeathState) state).val == 3){
-            state = new GriffeathState(0);
+        if (((SateInt) state).val == 3){
+            state = new SateInt(0);
         }
         else{
-            state = new GriffeathState(((GriffeathState) state).val+1);
+            state = new SateInt(((SateInt) state).val+1);
         }
     }
 
     @Override
     public void born() {
-        if (((GriffeathState) state).val == 3){
-            state = new GriffeathState(0);
+        if (((SateInt) state).val == 3){
+            state = new SateInt(0);
         }
         else{
-            state = new GriffeathState(((GriffeathState) state).val+1);
+            state = new SateInt(((SateInt) state).val+1);
         }
     }
 
@@ -60,12 +60,12 @@ public class CelluleGriffeath extends Cellule {
         int sum = 0;
         for (Enum direction : neighbors.keySet()) {
             if (neighbors.get(direction) != null) 
-                if(((GriffeathState) state).val == 3){
-                    if(((GriffeathState) (neighbors.get(direction).getState())).val == 0){
+                if(((SateInt) state).val == 3){
+                    if(((SateInt) (neighbors.get(direction).getState())).val == 0){
                         sum++;
                     }
-                }else if(((GriffeathState) state).val < 3){
-                    if(((GriffeathState) (neighbors.get(direction).getState())).val == ((GriffeathState) state).val + 1){
+                }else if(((SateInt) state).val < 3){
+                    if(((SateInt) (neighbors.get(direction).getState())).val == ((SateInt) state).val + 1){
                         sum++;
                     }
                 }

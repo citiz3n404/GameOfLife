@@ -3,11 +3,6 @@
  */
 package gol;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Random;
 
@@ -83,55 +78,34 @@ public abstract class Board implements Grid, Serializable {
                     }else{
                         board[i][j].setState(ImmigrationState.DEAD);
                     }
-                } else if(Param.IS_ISOTROPE){
-                    if (Math.random() <= proba) {
-                        board[i][j].setState(LifeState.ALIVE);
-                    } else {
-                        board[i][j].setState(LifeState.DEAD);
-                    }
-                } else if(Param.IS_HIGHLIFE){
-                    if (Math.random() <= proba) {
-                        board[i][j].setState(LifeState.ALIVE);
-                    } else {
-                        board[i][j].setState(LifeState.DEAD);
-                    }
-                } else if(Param.IS_DAY_AND_NIGHT){
-                    if (Math.random() <= proba) {
-                        board[i][j].setState(LifeState.ALIVE);
-                    } else {
-                        board[i][j].setState(LifeState.DEAD);
-                    }
-                } else if(Param.IS_FREDKIN){
-                    if (Math.random() <= proba) {
-                        board[i][j].setState(LifeState.ALIVE);
-                    } else {
-                        board[i][j].setState(LifeState.DEAD);
-                    }
                 } else if(Param.IS_GRIFFEATH){
-                        Random rand = new Random();
-                        int nombreAleatoire = rand.nextInt(3 - 0 + 1) + 0;
-                        board[i][j].setState(new GriffeathState(nombreAleatoire));
+                    Random rand = new Random();
+                    int nombreAleatoire = rand.nextInt(4) ;
+                    board[i][j].setState(new SateInt(nombreAleatoire));
+                        
                 } else if(Param.IS_GRIFFEATH_N){
-                        Random rand = new Random();
-                        int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT - 0 + 1) + 0;
-                        board[i][j].setState(new GriffeathState(nombreAleatoire));
+                    Random rand = new Random();
+                    int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT + 1);
+                    board[i][j].setState(new SateInt(nombreAleatoire));
                     
                 } else if(Param.IS_MOYENNE || Param.IS_MATHS){
                     if(Math.random() <= proba){
                         double x = Math.random();
                         if(x!=0.0){
-                            board[i][j].setState(new DoubleState(x));
+                            board[i][j].setState(new SateDouble(x));
                         } else {
-                            board[i][j].setState(new DoubleState(1.0));
+                            board[i][j].setState(new SateDouble(1.0));
                         }
                     } else {
-                        board[i][j].setState(new DoubleState(0.0));
+                        board[i][j].setState(new SateDouble(0.0));
                     }
                 } else {
+                    //traite les modes restants se servants de SateLife
+                    //Classique, Isotrope, HighLife, DayAndNight et Fredkin
                     if (Math.random() <= proba) {
-                        board[i][j].setState(LifeState.ALIVE);
+                        board[i][j].setState(StateLife.ALIVE);
                     } else {
-                        board[i][j].setState(LifeState.DEAD);
+                        board[i][j].setState(StateLife.DEAD);
                     }
                 }
 
@@ -141,33 +115,23 @@ public abstract class Board implements Grid, Serializable {
 
     /**
      * InitBoard
-     * Init the grid with a dead state new cells and then call the initNeighbors()
+     * Init the grid with a dead state or 0 (if int or double state) new cells 
+     * and then call the initNeighbors()
      * @param brd Cell[][]
      */
     public void initBoard(Cellule[][] brd) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
-                //****************************************************************************
                 if(Param.IS_IMMIGRATION){
                     brd[i][j] = Utils.createNewCell(ImmigrationState.DEAD);
-                } else if(Param.IS_ISOTROPE) {
-                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else if(Param.IS_HIGHLIFE) {
-                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else if(Param.IS_DAY_AND_NIGHT) {
-                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else if(Param.IS_FREDKIN) {
-                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
-                } else if(Param.IS_GRIFFEATH){
-                    brd[i][j] = Utils.createNewCell(new GriffeathState(0));
-                } else if(Param.IS_MOYENNE){
-                    brd[i][j] = Utils.createNewCell(new DoubleState(0.0));
-                } else if(Param.IS_GRIFFEATH_N){
-                    brd[i][j] = Utils.createNewCell(new GriffeathState(0));
-                }else if(Param.IS_MATHS){
-                    brd[i][j] = Utils.createNewCell(new DoubleState(0.0));
+                } else if(Param.IS_GRIFFEATH || Param.IS_GRIFFEATH_N){
+                    brd[i][j] = Utils.createNewCell(new SateInt(0));
+                }else if(Param.IS_MOYENNE || Param.IS_MATHS){
+                    brd[i][j] = Utils.createNewCell(new SateDouble(0.0));
                 } else {
-                    brd[i][j] = Utils.createNewCell(LifeState.DEAD);
+                    //traite les modes restants se servants de SateLife
+                    //Classique, Isotrope, HighLife, DayAndNight et Fredkin
+                    brd[i][j] = Utils.createNewCell(StateLife.DEAD);
                 }
                 
             }
@@ -198,12 +162,19 @@ public abstract class Board implements Grid, Serializable {
     }
 
     /**
-     * Unused methode because we preffered to use the serialization to store our grid
+     * Retourne la grille sous forme de chaine de caractères
      * @return String
      */
     @Override
     public String stateAsString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String res = "";
+        for (int i = 0; i < Param.NB_ROWS; i++) {
+            for (int j = 0; j < Param.NB_COLUMNS; j++) {
+                res += board[i][j].getState().toChar()+" ";
+            }
+            res += "\n";
+        }
+        return res;
     }
 
     //**************************************************************************

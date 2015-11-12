@@ -16,7 +16,7 @@ public class CelluleFredkin extends Cellule {
     // CONSTRUCTOR
     //**************************************************************************
     
-    public CelluleFredkin(LifeState st){
+    public CelluleFredkin(StateLife st){
         super(st);
     }
     
@@ -26,24 +26,24 @@ public class CelluleFredkin extends Cellule {
     
     @Override
     public State nextState() {
-        if(this.state == LifeState.ALIVE){
-            if((getNbNeighborsAlive()+1)%2 == 1) return LifeState.ALIVE;
-            else return LifeState.DEAD;
+        if(this.state == StateLife.ALIVE){
+            if((getNbNeighborsAlive()+1)%2 == 1) return StateLife.ALIVE;
+            else return StateLife.DEAD;
         }
         else{
-            if((getNbNeighborsAlive())%2 == 1) return LifeState.ALIVE;
+            if((getNbNeighborsAlive())%2 == 1) return StateLife.ALIVE;
         }
         return this.state;
     }
 
     @Override
     public void kill() {
-        state = LifeState.DEAD;
+        state = StateLife.DEAD;
     }
 
     @Override
     public void born() {
-        state = LifeState.ALIVE;
+        state = StateLife.ALIVE;
     }
     
     //**************************************************************************
@@ -55,7 +55,7 @@ public class CelluleFredkin extends Cellule {
         int sum=0;
         for(Enum direction : neighbors.keySet()){
             if(neighbors.get(direction) != null){
-                if(neighbors.get(direction).getState() == LifeState.ALIVE){
+                if(neighbors.get(direction).getState() == StateLife.ALIVE){
                     sum++;
                 }
             }
@@ -65,7 +65,7 @@ public class CelluleFredkin extends Cellule {
 
     @Override
     public boolean isAlive() {
-        return state == LifeState.ALIVE;
+        return state == StateLife.ALIVE;
     }
     
 }

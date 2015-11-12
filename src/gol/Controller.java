@@ -1,38 +1,29 @@
 package gol;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.control.Alert;
-//import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -111,30 +102,28 @@ public class Controller implements Initializable {
 
     @FXML
     private Slider s_nbColumns;
-    
+
     @FXML
     private Slider s_griffeath;
-    
+
     @FXML
     private Label l_griffeath;
-    
+
     @FXML
     private Label l_etat;
-    
+
     @FXML
     private Label l_nbColumns;
-    
+
     @FXML
     private Label l_speed;
-    
-    @FXML 
+
+    @FXML
     private Slider s_speed;
-    
+
     @FXML
     private Button b_closeOk;
 
-    
-    
     private Board board;
     private GridPaneDriver display;
     private Timeline loop = null;
@@ -179,8 +168,7 @@ public class Controller implements Initializable {
         b_hexagon.setDisable(true);
         stopAndClear();
     }
-    
- 
+
     @FXML
     private void handleLoad(ActionEvent event) {
         fileChooser.setTitle("Select a file");
@@ -196,7 +184,7 @@ public class Controller implements Initializable {
             initiateGUI();
             resetGridView();
             display.displayBoard(board);
-            
+
             //Aucune idée de pourquoi faut le faire 2 fois
             board = SaveManager.loadBoard(path);
             board.initNeighbors();
@@ -248,7 +236,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void handleRun() {
-        
+
         loop = new Timeline(new KeyFrame(Duration.millis(speed), e -> {
             board.update();
             display.displayBoard(board);
@@ -267,7 +255,7 @@ public class Controller implements Initializable {
         }));
         loop.setCycleCount(Timeline.INDEFINITE);
         loop.play();
-        
+
         b_stop.setDisable(false);
         b_start.setDisable(true);
         b_step.setDisable(true);
@@ -290,7 +278,7 @@ public class Controller implements Initializable {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("Info.fxml"));
-            
+
             stage.setTitle("Informations");
             stage.setScene(new Scene(root, 600, 552));
             stage.getIcons().add(new Image(GoL.class.getResourceAsStream("icon.png")));
@@ -303,16 +291,14 @@ public class Controller implements Initializable {
     private void initiateGUI() {
         if (Param.IS_TORIQUE) {
             b_torique.setSelected(true);
-        }
-        else{
+        } else {
             b_torique.setSelected(false);
         }
-        
-        if(Param.GRID == 1){
+
+        if (Param.GRID == 1) {
             b_hexagon.setDisable(false);
             b_square.setDisable(true);
-        }
-        else{
+        } else {
             b_hexagon.setDisable(true);
             b_square.setDisable(false);
         }
@@ -329,7 +315,7 @@ public class Controller implements Initializable {
             cb_mode.getSelectionModel().select("Fredkin");
         } else if (Param.IS_GRIFFEATH) {
             cb_mode.getSelectionModel().select("Griffeath");
-        } else{
+        } else {
             cb_mode.getSelectionModel().select("Classique");
         }
 
@@ -347,10 +333,10 @@ public class Controller implements Initializable {
         l_population.setStyle("-fx-background-color: #BDBDBD; -fx-background-radius:5; -fx-padding:3;");
     }
 
-    public void incrementPopulation(){
-        l_population.setText(Integer.toString(board.getPopulation()));        
+    public void incrementPopulation() {
+        l_population.setText(Integer.toString(board.getPopulation()));
     }
-    
+
     private void resetGridView() {
         if (Param.GRID == 1) {
             display = new DisplaySquareGridFX(board, this);
@@ -395,7 +381,7 @@ public class Controller implements Initializable {
                 int val = new_val.intValue();
                 speed = val;
                 l_speed.setText(Integer.toString(val));
-                if(loop != null){
+                if (loop != null) {
                     loop.stop();
                     handleRun();
                 }
@@ -410,8 +396,8 @@ public class Controller implements Initializable {
             }
         });
     }
-    
-    private void setModesToFalse(){
+
+    private void setModesToFalse() {
         Param.IS_DAY_AND_NIGHT = false;
         Param.IS_GRIFFEATH = false;
         Param.IS_HIGHLIFE = false;
@@ -422,14 +408,13 @@ public class Controller implements Initializable {
         Param.IS_MOYENNE = false;
         Param.IS_MATHS = false;
     }
-    
-    private void activeGriffeathSlider(boolean b){
-        if(b == true){
+
+    private void activeGriffeathSlider(boolean b) {
+        if (b == true) {
             s_griffeath.setDisable(false);
             l_griffeath.setDisable(false);
             l_etat.setDisable(false);
-        }
-        else{
+        } else {
             s_griffeath.setDisable(true);
             l_griffeath.setDisable(true);
             l_etat.setDisable(true);
@@ -444,49 +429,61 @@ public class Controller implements Initializable {
         cb_mode.getSelectionModel().selectedItemProperty()
                 .addListener((ObservableValue observable,
                                 Object oldValue, Object newValue) -> {
-                    //label1.setText((String)newValue);
                     if (loop != null) {
                         handleStop();
                     }
-                    if ("Classique".equals((String) newValue)) {
-                        setModesToFalse();
-                        activeGriffeathSlider(false);
-                    } else if ("Isotrope".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_ISOTROPE = true;
-                        activeGriffeathSlider(false);
-                    } else if ("Immigration".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_IMMIGRATION = true;
-                        activeGriffeathSlider(false);
-                    } else if ("DayAndNight".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_DAY_AND_NIGHT = true;
-                        activeGriffeathSlider(false);
-                    } else if ("HighLife".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_HIGHLIFE = true;
-                        activeGriffeathSlider(false);
-                    } else if ("Fredkin".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_FREDKIN = true;
-                        activeGriffeathSlider(false);
-                    } else if ("Griffeath".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_GRIFFEATH = true;
-                        activeGriffeathSlider(false);
-                    } else if("Griffeath(n)".equals((String) newValue)){
-                        setModesToFalse();
-                        Param.IS_GRIFFEATH_N = true;
-                        activeGriffeathSlider(true);
-                    } else if ("Moyenne".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_MOYENNE = true;   
-                        activeGriffeathSlider(false);
-                    } else if ("Maths".equals((String) newValue)) {
-                        setModesToFalse();
-                        Param.IS_MATHS = true; 
-                        activeGriffeathSlider(false);
+                    if ((String) newValue != null) {
+                        switch ((String) newValue) {
+                            case "Classique":
+                                setModesToFalse();
+                                activeGriffeathSlider(false);
+                                break;
+                            case "Isotrope":
+                                setModesToFalse();
+                                Param.IS_ISOTROPE = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "Immigration":
+                                setModesToFalse();
+                                Param.IS_IMMIGRATION = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "DayAndNight":
+                                setModesToFalse();
+                                Param.IS_DAY_AND_NIGHT = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "HighLife":
+                                setModesToFalse();
+                                Param.IS_HIGHLIFE = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "Fredkin":
+                                setModesToFalse();
+                                Param.IS_FREDKIN = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "Griffeath":
+                                setModesToFalse();
+                                Param.IS_GRIFFEATH = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "Griffeath(n)":
+                                setModesToFalse();
+                                Param.IS_GRIFFEATH_N = true;
+                                activeGriffeathSlider(true);
+                                break;
+                            case "Moyenne":
+                                setModesToFalse();
+                                Param.IS_MOYENNE = true;
+                                activeGriffeathSlider(false);
+                                break;
+                            case "Maths":
+                                setModesToFalse();
+                                Param.IS_MATHS = true;
+                                activeGriffeathSlider(false);
+                                break;
+                        }
                     }
                     handleClear();
                 });
@@ -499,6 +496,12 @@ public class Controller implements Initializable {
         b_stop.setDisable(true);
         setSliders();
         setChoiceBox();
+        try {
+            System.out.println((new File(".")).getCanonicalPath());
+            Utils.listDirectory(new File("./src/gol/Patterns"));
+        } catch (IOException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

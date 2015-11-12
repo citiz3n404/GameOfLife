@@ -5,12 +5,9 @@ package gol;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 
 /**
@@ -107,7 +104,7 @@ public class SaveManager {
                             
                             for (int i = 0; i < str.length; i++) {
                                 if (Param.IS_GRIFFEATH) {
-                                    board.board[cmptGrid][i].setState(new GriffeathState(Integer.parseInt(str[i])));
+                                    board.board[cmptGrid][i].setState(new SateInt(Integer.parseInt(str[i])));
                                 } else {
                                     if (Param.IS_IMMIGRATION) {
                                         if (str[i].equals("*")) {
@@ -121,11 +118,11 @@ public class SaveManager {
                                     else{
                                         if(str[i].equals("O")){
                                             //System.out.print(str[i]+" ");
-                                            board.board[cmptGrid][i].setState(LifeState.ALIVE);
+                                            board.board[cmptGrid][i].setState(StateLife.ALIVE);
                                         }
                                         else{
                                             //System.out.print(str[i]+" ");
-                                            board.board[cmptGrid][i].setState(LifeState.DEAD);
+                                            board.board[cmptGrid][i].setState(StateLife.DEAD);
                                         }
                                     }
                                 }

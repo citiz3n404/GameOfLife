@@ -14,7 +14,7 @@ public class CelluleClassique extends Cellule{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public CelluleClassique(LifeState st){
+    public CelluleClassique(StateLife st){
         super(st);
     }
 
@@ -28,17 +28,17 @@ public class CelluleClassique extends Cellule{
 
     @Override
     public State nextState() {
-        if(this.state == LifeState.ALIVE){
+        if(this.state == StateLife.ALIVE){
             if(getNbNeighborsAlive() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighborsAlive() <= Param.NEIGHBORS_MAX_TO_LIVE){
-                return LifeState.ALIVE;
+                return StateLife.ALIVE;
             } 
             else{
-                return LifeState.DEAD;
+                return StateLife.DEAD;
             }
         }
         else{
             if(getNbNeighborsAlive() == Param.NEIGHBORS_TO_BORN){
-                return LifeState.ALIVE;
+                return StateLife.ALIVE;
             }
         }
         return this.state;
@@ -46,7 +46,7 @@ public class CelluleClassique extends Cellule{
     
     @Override
     public boolean isAlive(){
-        return state == LifeState.ALIVE;
+        return state == StateLife.ALIVE;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class CelluleClassique extends Cellule{
         int sum=0;
         for(Enum direction : neighbors.keySet()){
             if(neighbors.get(direction) != null){
-                if(neighbors.get(direction).getState() == LifeState.ALIVE){
+                if(neighbors.get(direction).getState() == StateLife.ALIVE){
                     sum++;
                 }
             }
@@ -64,12 +64,12 @@ public class CelluleClassique extends Cellule{
 
     @Override
     public void kill() {
-        state = LifeState.DEAD;
+        state = StateLife.DEAD;
     }
 
     @Override
     public void born() {
-        state = LifeState.ALIVE;
+        state = StateLife.ALIVE;
     }
 
 }

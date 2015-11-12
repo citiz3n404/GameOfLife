@@ -19,7 +19,7 @@ public class CelluleDayAndNight extends Cellule {
     // CONSTRUCTOR
     //**************************************************************************
     
-    public CelluleDayAndNight(LifeState st){
+    public CelluleDayAndNight(StateLife st){
         super(st);
     }
     
@@ -29,15 +29,15 @@ public class CelluleDayAndNight extends Cellule {
     
     @Override
     public State nextState() {
-        if(this.state == LifeState.ALIVE){
+        if(this.state == StateLife.ALIVE){
             for(int i=0; i<survivre.length; i++){
-                if(getNbNeighborsAlive() == survivre[i]) return LifeState.ALIVE;
+                if(getNbNeighborsAlive() == survivre[i]) return StateLife.ALIVE;
             }
-            return LifeState.DEAD;
+            return StateLife.DEAD;
         }
         else{
             for(int i=0; i<naitre.length; i++){
-                if(getNbNeighborsAlive() == naitre[i]) return LifeState.ALIVE;
+                if(getNbNeighborsAlive() == naitre[i]) return StateLife.ALIVE;
             }
         }
         return this.state;
@@ -45,12 +45,12 @@ public class CelluleDayAndNight extends Cellule {
 
     @Override
     public void kill() {
-        state = LifeState.DEAD;
+        state = StateLife.DEAD;
     }
 
     @Override
     public void born() {
-        state = LifeState.ALIVE;
+        state = StateLife.ALIVE;
     }
     
     //**************************************************************************
@@ -62,7 +62,7 @@ public class CelluleDayAndNight extends Cellule {
         int sum=0;
         for(Enum direction : neighbors.keySet()){
             if(neighbors.get(direction) != null){
-                if(neighbors.get(direction).getState() == LifeState.ALIVE){
+                if(neighbors.get(direction).getState() == StateLife.ALIVE){
                     sum++;
                 }
             }
@@ -72,7 +72,7 @@ public class CelluleDayAndNight extends Cellule {
 
     @Override
     public boolean isAlive() {
-        return state == LifeState.ALIVE;
+        return state == StateLife.ALIVE;
     }
     
 }

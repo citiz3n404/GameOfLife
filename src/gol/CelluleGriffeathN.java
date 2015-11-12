@@ -13,7 +13,7 @@ public class CelluleGriffeathN extends Cellule{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public CelluleGriffeathN(GriffeathState st){
+    public CelluleGriffeathN(SateInt st){
         super(st);
     }
 
@@ -23,27 +23,27 @@ public class CelluleGriffeathN extends Cellule{
 
     @Override
     public State nextState() {
-        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
+        if (((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
             if(this.neighbors.size() == 5 && getNbNeighborsStateUp() >= 2) {
-                return new GriffeathState(0);
+                return new SateInt(0);
 
             }
             if (this.neighbors.size() == 3 && getNbNeighborsStateUp() >= 1) {
-                return new GriffeathState(0);
+                return new SateInt(0);
 
             }
             if ((getNbNeighborsStateUp() >= 3)) {
-                return new GriffeathState(0);
+                return new SateInt(0);
             }
         } else {
             if(this.neighbors.size() == 5 && getNbNeighborsStateUp() >= 2) {
-                return new GriffeathState(((GriffeathState) state).val+1);
+                return new SateInt(((SateInt) state).val+1);
             }
             if (this.neighbors.size() == 3 && getNbNeighborsStateUp() >= 1) {
-                return new GriffeathState(((GriffeathState) state).val+1);
+                return new SateInt(((SateInt) state).val+1);
             }
             if (getNbNeighborsStateUp() >= 3) {
-                return new GriffeathState(((GriffeathState) state).val+1);
+                return new SateInt(((SateInt) state).val+1);
             }
         }
         
@@ -53,21 +53,21 @@ public class CelluleGriffeathN extends Cellule{
     
     @Override
     public void kill() {
-        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
-            state = new GriffeathState(0);
+        if (((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+            state = new SateInt(0);
         }
         else{
-            state = new GriffeathState(((GriffeathState) state).val+1);
+            state = new SateInt(((SateInt) state).val+1);
         }
     }
 
     @Override
     public void born() {
-        if (((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
-            state = new GriffeathState(0);
+        if (((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+            state = new SateInt(0);
         }
         else{
-            state = new GriffeathState(((GriffeathState) state).val+1);
+            state = new SateInt(((SateInt) state).val+1);
         }
     }
     
@@ -79,12 +79,12 @@ public class CelluleGriffeathN extends Cellule{
         int sum = 0;
         for (Enum direction : neighbors.keySet()) {
             if (neighbors.get(direction) != null) 
-                if(((GriffeathState) state).val == Param.ETAT_MAX_GRIFFEAT){
-                    if(((GriffeathState) (neighbors.get(direction).getState())).val == 0){
+                if(((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+                    if(((SateInt) (neighbors.get(direction).getState())).val == 0){
                         sum++;
                     }
-                }else if(((GriffeathState) state).val < Param.ETAT_MAX_GRIFFEAT){
-                    if(((GriffeathState) (neighbors.get(direction).getState())).val == ((GriffeathState) state).val + 1){
+                }else if(((SateInt) state).val < Param.ETAT_MAX_GRIFFEAT){
+                    if(((SateInt) (neighbors.get(direction).getState())).val == ((SateInt) state).val + 1){
                         sum++;
                     }
                 }

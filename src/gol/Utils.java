@@ -3,6 +3,8 @@
  */
 package gol;
 
+import java.io.File;
+import java.util.ArrayList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
@@ -31,25 +33,25 @@ public class Utils {
     public static Cellule createNewCell(State st) {
         Cellule cell;
         if (Param.IS_GRIFFEATH) {
-            cell = new CelluleGriffeath((GriffeathState) st);
+            cell = new CelluleGriffeath((SateInt) st);
         } else if (Param.IS_IMMIGRATION) {
             cell = new CelluleImmigration((ImmigrationState) st);
         } else if (Param.IS_ISOTROPE) {
-            cell = new CelluleIsotrope((LifeState) st);
+            cell = new CelluleIsotrope((StateLife) st);
         } else if (Param.IS_HIGHLIFE) {
-            cell = new CelluleHighLife((LifeState) st);
+            cell = new CelluleHighLife((StateLife) st);
         } else if (Param.IS_DAY_AND_NIGHT) {
-            cell = new CelluleDayAndNight((LifeState) st);
+            cell = new CelluleDayAndNight((StateLife) st);
         } else if (Param.IS_FREDKIN) {
-            cell = new CelluleFredkin((LifeState) st);
+            cell = new CelluleFredkin((StateLife) st);
         } else if (Param.IS_MOYENNE) {
-            cell = new CelluleMoyenne((DoubleState) st);
+            cell = new CelluleMoyenne((SateDouble) st);
         } else if (Param.IS_GRIFFEATH_N) {
-            cell = new CelluleGriffeathN((GriffeathState) st);
+            cell = new CelluleGriffeathN((SateInt) st);
         } else if (Param.IS_MATHS) {
-            cell = new CelluleMaths((DoubleState) st);
+            cell = new CelluleMaths((SateDouble) st);
         } else {
-            cell = new CelluleClassique((LifeState) st);
+            cell = new CelluleClassique((StateLife) st);
         }
         return cell;
     }
@@ -92,31 +94,46 @@ public class Utils {
                 c = Param.COLOR_DEAD;
             }
         } else if (Param.IS_GRIFFEATH) {
-            if(((GriffeathState) cell.getState()).val == 0){
+            if(((SateInt) cell.getState()).val == 0){
                 c = Color.web("#ffff00");
             }
-            else if(((GriffeathState) cell.getState()).val == 1){
+            else if(((SateInt) cell.getState()).val == 1){
                 c = Color.web("#ffaa00");
             }
-            else if(((GriffeathState) cell.getState()).val == 2){
+            else if(((SateInt) cell.getState()).val == 2){
                 c = Color.web("#ff5500");
             }
             else {
                 c = Color.web("#ff0000");
             }
         } else if(Param.IS_GRIFFEATH_N){
-            int percentVal = (((GriffeathState) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
+            int percentVal = (((SateInt) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
             c = Color.hsb(percentVal, 0.7, 0.94);
         } else if(Param.IS_MOYENNE || Param.IS_MATHS) {
-            c = Color.color(0,0,(((DoubleState) cell.getState()).val));
-            //c = Color.hsb((((DoubleState) cell.getState()).val), 0.7, 0.94);
+            c = Color.color(0,0,(((SateDouble) cell.getState()).val));
+            //Couleurs psychédélique
+            //c = Color.hsb((((SateDouble) cell.getState()).val)*360, 0.7, 0.94);
         } else {
-            if (cell.getState() == LifeState.ALIVE) {
+            if (cell.getState() == StateLife.ALIVE) {
                 c = Param.COLOR_ALIVE;
             } else {
                 c = Param.COLOR_DEAD;
             }
         }
         return c;
+    }
+    
+    public static ArrayList<String> listDirectory(File directory){
+	String[] listefichiers;
+	listefichiers = directory.list();
+	ArrayList<String> res = new ArrayList<>();
+        for (String listefichier : listefichiers) {
+            if (listefichier.endsWith(".gol") == true) {
+                System.out.println(listefichier.substring(0, listefichier.length() - 4));
+                res.add(listefichier.substring(0, listefichier.length() - 4));
+                // on choisit la sous chaine - les 4 derniers caracteres ".gol"
+            }
+        }
+	return res;
     }
 }

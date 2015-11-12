@@ -24,7 +24,7 @@ public class BoardHexa extends Board {
     // SETTERS / GETTERS
     //**************************************************************************
     /**
-     * Initiate the neighbors list for each cell
+     * Initiate the neighbors list for each cell with torique mode
      */
     @Override
     void initToriqueNeighbors() {
@@ -131,7 +131,7 @@ public class BoardHexa extends Board {
                         }
                     }
 
-                    if(i%2==1){  //"lignes paire" d'indice tableau impair
+                    if(i%2==1){  //indice tableau impair
                         if (board[i][j].getNeighbor(HexaGridNbh.NORTH_WEST) == null) {
                             board[i][j].setNeighbor(HexaGridNbh.NORTH_WEST, board[i - 1][j]);
                         }
@@ -150,7 +150,7 @@ public class BoardHexa extends Board {
                         if (board[i][j].getNeighbor(HexaGridNbh.WEST) == null) {
                             board[i][j].setNeighbor(HexaGridNbh.WEST, board[i][j - 1]);
                         }
-                    } else if(i%2==0){ //lignes "impaires" d'indice tableau pair
+                    } else if(i%2==0){ //indice tableau pair
                         if (board[i][j].getNeighbor(HexaGridNbh.NORTH_WEST) == null) {
                             board[i][j].setNeighbor(HexaGridNbh.NORTH_WEST, board[i - 1][j - 1]);
                         }
@@ -176,7 +176,7 @@ public class BoardHexa extends Board {
     }
 
     /**
-     * Initiate the neighbors list for each cell
+     * Initiate the neighbors list for each cell (non torique)
      */
     @Override
     void initNonToriqueNeighbors() {
