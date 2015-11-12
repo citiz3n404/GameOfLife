@@ -30,16 +30,51 @@ A noter qu'on peut à tout moment changer cette option, même au milieu d'une si
 		Une cellule naît quand elle a 3 voisins exactement.
 
 	2) Mode Isotrope : 
+                Si une cellule est vivante, elle reste en vie si elle a 2, 4 ou 5 voisins vivants, 
+                si ce n'est pas le cas elle meurt. 
+                Si une cellule est morte elle naît quand elle a 3, 6 ou 8 voisins en vie.
 
 	3) Mode Immigration :
+                Les règles sont les mêmes que dans le mode classique à la différence 
+                qu'il existe 2 états vivants. Si une cellule est vivante, elle reste en vie 
+                si elle a 2 ou 3 voisins vivants, si elle en a plus elle meurt et si elle 
+                en a moins, elle meurt.	Une cellule naît quand elle a 3 voisins exactement, 
+                la cellule naissante prends l'état vivant majoritaire parmi ses voisins.
 
 	4) Mode DayAndNight :
+                Si une cellule est vivante, elle reste en vie si elle a 3, 6, 7 ou 8 voisins vivants, 
+                si ce n'est pas le cas elle meurt. 
+                Si une cellule est morte elle naît quand elle a 3, 4, 6, 7 ou 8 voisins en vie.
 
 	5) Mode HighLife :
+                Si une cellule est vivante, elle reste en vie si elle a 2 ou 3 voisins vivants, 
+                si ce n'est pas le cas elle meurt. 
+                Si une cellule est morte elle naît quand elle a 3 ou 6 voisins en vie.
 
 	6) Mode Fredkin :
+                Une cellulle reste en vie ou naît uniquement si elle a un nombre de voisins 
+                vivants impair.
 
 	7) Mode Griffeath :
+            On considère le nombre d'état infini. On dispose de 4 états et une cellule à l'état i
+            passe à l'état (i+1) si elle a au moins 3 voisins dans ce même état (i+1). Lorsque
+            la cellule est à l'état 4 elle évolue à l'état 1 lorsque les conditions sont rénunies.
+
+        8) Mode Griffeath(n) :
+            On considère le nombre d'état infini. On dispose de n états et une cellule à l'état i
+            passe à l'état (i+1) si elle a au moins 3 voisins dans ce même état (i+1). Lorsque
+            la cellule est à l'état n elle évolue à l'état 1 lorsque les conditions sont rénunies.
+
+        9) Mode Moyenne :
+            L'état de la cellule est maintenant un nombre réel compris entre 0 et 1 
+            (affiché sous forme de nuances de bleu). A la génération suivante la cellule 
+            devient la moyenne de ses voisins.
+
+        10) Mode Maths :
+            L'état de la cellule est un nombre réel compris entre 0 et 1 (affiché sous forme
+            de nuances de bleu). A la génération suivante la cellule devient (x*y+c) 
+            où x est la moyenne, y son ancien état et :
+            -c vaut 0.5 si (x*y)<0.25; -c vaut -0.5 si (x*y)>0.75; - c vaut 0 sinon
 
 3/ COMMENCER LA SIMULATION
 ----------------------------------------------------------------------------------------------------------------

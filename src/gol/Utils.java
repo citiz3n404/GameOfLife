@@ -45,7 +45,7 @@ public class Utils {
         } else if (Param.IS_MOYENNE) {
             cell = new CelluleMoyenne((DoubleState) st);
         } else if (Param.IS_GRIFFEATH_N) {
-            cell = new CelluleGriffeath((GriffeathState) st);
+            cell = new CelluleGriffeathN((GriffeathState) st);
         } else if (Param.IS_MATHS) {
             cell = new CelluleMaths((DoubleState) st);
         } else {
