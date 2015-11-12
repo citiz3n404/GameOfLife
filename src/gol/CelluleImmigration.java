@@ -15,7 +15,7 @@ public class CelluleImmigration extends Cellule{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public CelluleImmigration(ImmigrationState st){
+    public CelluleImmigration(StateImmigration st){
         super(st);
     }
 
@@ -24,19 +24,19 @@ public class CelluleImmigration extends Cellule{
     //**************************************************************************
     @Override
     public State nextState() {
-        if(this.state == ImmigrationState.ZOMBIE||this.state == ImmigrationState.ALIVE){
+        if(this.state == StateImmigration.ZOMBIE||this.state == StateImmigration.ALIVE){
             //La cellule prend l'état majoritaire parmis ses voisins
             if(getNbNeighborsAlive() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighborsAlive() <= Param.NEIGHBORS_MAX_TO_LIVE){
                 return this.state;
             }
             else{
-                return ImmigrationState.DEAD;
+                return StateImmigration.DEAD;
             }
         }
         else{
             if(getNbNeighborsAlive() == Param.NEIGHBORS_TO_BORN){
-                if(moreZombies()) return ImmigrationState.ZOMBIE;
-                else return ImmigrationState.ALIVE;
+                if(moreZombies()) return StateImmigration.ZOMBIE;
+                else return StateImmigration.ALIVE;
             }
         }
         return state;
@@ -44,14 +44,14 @@ public class CelluleImmigration extends Cellule{
 
     @Override
     public void kill() {
-        if(state==ImmigrationState.ALIVE) state = ImmigrationState.ZOMBIE;
-        else state = ImmigrationState.DEAD;
+        if(state==StateImmigration.ALIVE) state = StateImmigration.ZOMBIE;
+        else state = StateImmigration.DEAD;
     }
 
     @Override
     public void born() {
-        if(state==ImmigrationState.ALIVE) state = ImmigrationState.ZOMBIE;
-        else state = ImmigrationState.ALIVE;
+        if(state==StateImmigration.ALIVE) state = StateImmigration.ZOMBIE;
+        else state = StateImmigration.ALIVE;
     }
     
     
@@ -65,8 +65,8 @@ public class CelluleImmigration extends Cellule{
         for(Enum direction : neighbors.keySet()){
             if(neighbors.get(direction) != null){
                 tmpNbNeighbors ++;
-                if(neighbors.get(direction).getState() == ImmigrationState.ALIVE
-                        ||neighbors.get(direction).getState() == ImmigrationState.ZOMBIE){
+                if(neighbors.get(direction).getState() == StateImmigration.ALIVE
+                        ||neighbors.get(direction).getState() == StateImmigration.ZOMBIE){
                     sum++;
                 }
             }
@@ -80,10 +80,10 @@ public class CelluleImmigration extends Cellule{
         for(Enum direction : neighbors.keySet()){
             if(neighbors.get(direction) != null){
                 tmpNbNeighbors ++;
-                if(neighbors.get(direction).getState() == ImmigrationState.ALIVE){
+                if(neighbors.get(direction).getState() == StateImmigration.ALIVE){
                     alive++;
                 }
-                if(neighbors.get(direction).getState() == ImmigrationState.ZOMBIE){
+                if(neighbors.get(direction).getState() == StateImmigration.ZOMBIE){
                     zombie++;
                 }
             }
@@ -93,7 +93,7 @@ public class CelluleImmigration extends Cellule{
 
     @Override
     public boolean isAlive() {
-        return (state == ImmigrationState.ALIVE || state == ImmigrationState.ZOMBIE);
+        return (state == StateImmigration.ALIVE || state == StateImmigration.ZOMBIE);
     }
 
 }

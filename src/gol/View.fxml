@@ -164,7 +164,7 @@
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
-                        <ChoiceBox fx:id="cb_load" prefHeight="25.0" prefWidth="210.0">
+                        <ChoiceBox fx:id="cb_load" prefHeight="25.0" prefWidth="223.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

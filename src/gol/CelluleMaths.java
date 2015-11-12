@@ -13,7 +13,7 @@ public class CelluleMaths extends Cellule {
     // CONSTRUCTOR
     //**************************************************************************
 
-    public CelluleMaths(SateDouble st) {
+    public CelluleMaths(StateDouble st) {
         super(st);
     }
 
@@ -23,7 +23,7 @@ public class CelluleMaths extends Cellule {
     @Override
     public State nextState() {
         double res;
-        double tmp = getNeighborMoyenne() * ((SateDouble)state).val;
+        double tmp = getNeighborMoyenne() * ((StateDouble)state).val;
         if(tmp<0.25) {
             res = tmp + 0.5;
         } else if(tmp>0.75){
@@ -31,19 +31,19 @@ public class CelluleMaths extends Cellule {
         } else {
             res = tmp;
         }
-        return new SateDouble(res);
+        return new StateDouble(res);
     }
 
     @Override
     public void kill() {
-        if(((SateDouble)state).val==0.0) this.state = new SateDouble(1.0);
-        else this.state = new SateDouble(0.0);
+        if(((StateDouble)state).val==0.0) this.state = new StateDouble(1.0);
+        else this.state = new StateDouble(0.0);
     }
 
     @Override
     public void born() {
-        if(((SateDouble)state).val==0.0) this.state = new SateDouble(1.0);
-        else this.state = new SateDouble(0.0);
+        if(((StateDouble)state).val==0.0) this.state = new StateDouble(1.0);
+        else this.state = new StateDouble(0.0);
     }
 
     //**************************************************************************
@@ -64,7 +64,7 @@ public class CelluleMaths extends Cellule {
         double sum = 0;
         for (Enum direction : neighbors.keySet()) {
             if (neighbors.get(direction) != null) {
-                sum+=((SateDouble)neighbors.get(direction).getState()).val;
+                sum+=((StateDouble)neighbors.get(direction).getState()).val;
             }
         }
         return (sum/getNbNeighborsAlive());

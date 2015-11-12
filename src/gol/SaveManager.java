@@ -104,15 +104,15 @@ public class SaveManager {
                             
                             for (int i = 0; i < str.length; i++) {
                                 if (Param.IS_GRIFFEATH) {
-                                    board.board[cmptGrid][i].setState(new SateInt(Integer.parseInt(str[i])));
+                                    board.board[cmptGrid][i].setState(new StateInt(Integer.parseInt(str[i])));
                                 } else {
                                     if (Param.IS_IMMIGRATION) {
                                         if (str[i].equals("*")) {
-                                            board.board[cmptGrid][i].setState(ImmigrationState.ZOMBIE);
+                                            board.board[cmptGrid][i].setState(StateImmigration.ZOMBIE);
                                         } else if (str[i].equals("O")) {
-                                            board.board[cmptGrid][i].setState(ImmigrationState.ALIVE);
+                                            board.board[cmptGrid][i].setState(StateImmigration.ALIVE);
                                         } else if (str[i].equals(".")) {
-                                            board.board[cmptGrid][i].setState(ImmigrationState.DEAD);
+                                            board.board[cmptGrid][i].setState(StateImmigration.DEAD);
                                         }
                                     }
                                     else{

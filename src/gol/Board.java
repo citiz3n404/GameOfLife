@@ -73,31 +73,31 @@ public abstract class Board implements Grid, Serializable {
                 //******************************************************************************
                 if (Param.IS_IMMIGRATION) {
                     if(Math.random() <= proba){
-                        if(Math.random()<0.5) board[i][j].setState(ImmigrationState.ALIVE);
-                        else board[i][j].setState(ImmigrationState.ZOMBIE);
+                        if(Math.random()<0.5) board[i][j].setState(StateImmigration.ALIVE);
+                        else board[i][j].setState(StateImmigration.ZOMBIE);
                     }else{
-                        board[i][j].setState(ImmigrationState.DEAD);
+                        board[i][j].setState(StateImmigration.DEAD);
                     }
                 } else if(Param.IS_GRIFFEATH){
                     Random rand = new Random();
                     int nombreAleatoire = rand.nextInt(4) ;
-                    board[i][j].setState(new SateInt(nombreAleatoire));
+                    board[i][j].setState(new StateInt(nombreAleatoire));
                         
                 } else if(Param.IS_GRIFFEATH_N){
                     Random rand = new Random();
                     int nombreAleatoire = rand.nextInt(Param.ETAT_MAX_GRIFFEAT + 1);
-                    board[i][j].setState(new SateInt(nombreAleatoire));
+                    board[i][j].setState(new StateInt(nombreAleatoire));
                     
                 } else if(Param.IS_MOYENNE || Param.IS_MATHS){
                     if(Math.random() <= proba){
                         double x = Math.random();
                         if(x!=0.0){
-                            board[i][j].setState(new SateDouble(x));
+                            board[i][j].setState(new StateDouble(x));
                         } else {
-                            board[i][j].setState(new SateDouble(1.0));
+                            board[i][j].setState(new StateDouble(1.0));
                         }
                     } else {
-                        board[i][j].setState(new SateDouble(0.0));
+                        board[i][j].setState(new StateDouble(0.0));
                     }
                 } else {
                     //traite les modes restants se servants de SateLife
@@ -123,11 +123,11 @@ public abstract class Board implements Grid, Serializable {
         for (int i = 0; i < Param.NB_ROWS; i++) {
             for (int j = 0; j < Param.NB_COLUMNS; j++) {
                 if(Param.IS_IMMIGRATION){
-                    brd[i][j] = Utils.createNewCell(ImmigrationState.DEAD);
+                    brd[i][j] = Utils.createNewCell(StateImmigration.DEAD);
                 } else if(Param.IS_GRIFFEATH || Param.IS_GRIFFEATH_N){
-                    brd[i][j] = Utils.createNewCell(new SateInt(0));
+                    brd[i][j] = Utils.createNewCell(new StateInt(0));
                 }else if(Param.IS_MOYENNE || Param.IS_MATHS){
-                    brd[i][j] = Utils.createNewCell(new SateDouble(0.0));
+                    brd[i][j] = Utils.createNewCell(new StateDouble(0.0));
                 } else {
                     //traite les modes restants se servants de SateLife
                     //Classique, Isotrope, HighLife, DayAndNight et Fredkin
