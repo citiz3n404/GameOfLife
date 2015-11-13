@@ -83,14 +83,26 @@ public abstract class Cellule implements Cell, Serializable {
      */
     public abstract int getNbNeighborsAlive();
     
+    /**
+     * 
+     * @return true if the cell is alive
+     */
     public abstract boolean isAlive();
 
 
+    /**
+     * 
+     * @return the state of the cell
+     */
     @Override
     public State getState() {
         return this.state;
     }
 
+    /**
+     * Set the state of the cell by a new state
+     * @param state 
+     */
     @Override
     public void setState(State state) {
         this.state = state;

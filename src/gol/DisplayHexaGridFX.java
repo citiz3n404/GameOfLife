@@ -22,7 +22,8 @@ public class DisplayHexaGridFX implements GridPaneDriver {
     // CONSTRUCTOR
     //**************************************************************************
     /**
-     * displays the hexagonal board
+     * displays the hexagonal board creating each Hexagon to the good coordinates
+     * and then attach the listeners to react to the clic.
      * @param board
      * @param controller 
      */
@@ -51,6 +52,11 @@ public class DisplayHexaGridFX implements GridPaneDriver {
     //**************************************************************************
     // METHODS
     //**************************************************************************
+    
+    /**
+     * Methods that set all the hexagons already created.
+     * @param board 
+     */
     @Override
     public void displayBoard(Board board) {
         for (int i = 0; i < Param.NB_ROWS; i++) {
@@ -66,6 +72,12 @@ public class DisplayHexaGridFX implements GridPaneDriver {
         return (i * Param.NB_COLUMNS) + j;
     }
 
+    /**
+     * Create an hexagon to the panel to the coordinates centerX and centerY
+     * @param centerX
+     * @param centerY
+     * @return 
+     */
     private Polygon createHexa(double centerX, double centerY) {
         double[] coord = new double[12];
         coord[0] = Param.SIZE_HEXA_TILE * Math.sqrt(3) / 2 + centerX;
@@ -93,6 +105,10 @@ public class DisplayHexaGridFX implements GridPaneDriver {
     // SETTERS / GETTERS
     //**************************************************************************
 
+    /**
+     * 
+     * @return the panel with the hexagon grid inside
+     */
     @Override
     public Pane getPane() {
         return this.pane;

@@ -103,6 +103,10 @@ public class CelluleGriffeathN extends Cellule{
         return sum;
     }
 
+    /**
+     * 
+     * @return the number of neighbors alive 
+     */
     @Override
     public int getNbNeighborsAlive() {
         int sum = 0;

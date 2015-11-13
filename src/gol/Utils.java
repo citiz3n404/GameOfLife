@@ -99,7 +99,7 @@ public class Utils {
      * 
      * @param i
      * @param j
-     * @return 
+     * @return le number of the element in the pane
      */
     public static int boardToPaneCoords(int i, int j) {
         return (i * Param.NB_COLUMNS) + j;

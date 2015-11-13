@@ -45,6 +45,10 @@ public class DisplaySquareGridFX implements GridPaneDriver{
     //**************************************************************************
     // METHODS
     //**************************************************************************
+    /**
+     * display the board with squares
+     * @param board 
+     */
     @Override
     public void displayBoard(Board board) {
         //grid = board.getGrid();
@@ -59,6 +63,10 @@ public class DisplaySquareGridFX implements GridPaneDriver{
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************
+    /**
+     * 
+     * @return Panel with the square grid inside
+     */
     public Pane getPane() {
         return tilePane;
     }
