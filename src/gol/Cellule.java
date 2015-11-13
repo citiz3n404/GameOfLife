@@ -29,23 +29,20 @@ public abstract class Cellule implements Cell, Serializable {
     // METHODS
     //**************************************************************************
 
-    /**
-     * nextState
-     * Called to do a turn
-     * @return 
-     */
     @Override 
     public abstract State nextState();
     
     /**
      * Kill a cell
      * Called when we clic on alive cell on the screen
+     * More generally gets cell to next state 
      */
     public abstract void kill();
     
     /**
      * Born a cell
      * Called when we clic on dead cell on the screen
+     * More generally gets cell to next state 
      */
     public abstract void born();
     
@@ -63,7 +60,7 @@ public abstract class Cellule implements Cell, Serializable {
     
     /**
      * Getter of the neighbors hashmap
-     * @return neighbors hashmap 
+     * @return neighbors hashmap of the cell's neighbors
      */
     public HashMap<Enum,Cellule> getHashMapNeighbors(){
         return this.neighbors;
@@ -72,14 +69,18 @@ public abstract class Cellule implements Cell, Serializable {
     /**
      * Getter
      * @param direction
-     * @return Cell of neighbor of the direction else return null
+     * @return Cell the neighbor in the direction specified else return null
      */
     @Override
     public Cell getNeighbor(Enum direction) {
         //Retourne null si il n'y a pas de voisins
         return neighbors.get(direction);
     }
-
+    
+    /**
+     * 
+     * @return number of neighbors considered alive
+     */
     public abstract int getNbNeighborsAlive();
     
     public abstract boolean isAlive();
@@ -90,6 +91,7 @@ public abstract class Cellule implements Cell, Serializable {
         return this.state;
     }
 
+    @Override
     public void setState(State state) {
         this.state = state;
     }

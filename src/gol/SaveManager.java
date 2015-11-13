@@ -18,6 +18,11 @@ import java.io.PrintWriter;
  */
 public class SaveManager {
 
+    /**
+     * loads a board from a save file with ".gol" extension
+     * @param path of the file from where to load
+     * @return the board generated
+     */
     public static Board loadBoard(String path) {
         InputStream input;
         Board board = Utils.createNewBoard();
@@ -104,15 +109,15 @@ public class SaveManager {
                             
                             for (int i = 0; i < str.length; i++) {
                                 if (Param.IS_GRIFFEATH) {
-                                    board.board[cmptGrid][i].setState(new SateInt(Integer.parseInt(str[i])));
+                                    board.board[cmptGrid][i].setState(new StateInt(Integer.parseInt(str[i])));
                                 } else {
                                     if (Param.IS_IMMIGRATION) {
                                         if (str[i].equals("*")) {
-                                            board.board[cmptGrid][i].setState(ImmigrationState.ZOMBIE);
+                                            board.board[cmptGrid][i].setState(StateImmigration.ZOMBIE);
                                         } else if (str[i].equals("O")) {
-                                            board.board[cmptGrid][i].setState(ImmigrationState.ALIVE);
+                                            board.board[cmptGrid][i].setState(StateImmigration.ALIVE);
                                         } else if (str[i].equals(".")) {
-                                            board.board[cmptGrid][i].setState(ImmigrationState.DEAD);
+                                            board.board[cmptGrid][i].setState(StateImmigration.DEAD);
                                         }
                                     }
                                     else{
@@ -143,6 +148,11 @@ public class SaveManager {
         return board;
     }
 
+    /**
+     * saves a board to a file with ".gol" extension
+     * @param path of the file where to save
+     * @param board to save
+     */
     public static void saveBoard(String path, Board board) {
         PrintWriter writer;
         try {

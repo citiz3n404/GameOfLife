@@ -132,10 +132,12 @@ public class Controller implements Initializable {
     private int exVal = 0;
     private int speed = 300;
     public static Stage stage = new Stage();
-
+    
+    /**
+     * changes Param.Torique and updates the neighborhood
+     */
     @FXML
     private void handleTorique() {
-        //Changer les voisins
         if (b_torique.isSelected()) {
             Param.IS_TORIQUE = true;
             board.updateNeighbors();
@@ -145,14 +147,19 @@ public class Controller implements Initializable {
         }
 
     }
-
+    /**
+     * stops game and clears the grid
+     */
     private void stopAndClear() {
         if (loop != null) {
             handleStop();
         }
         handleClear();
     }
-
+    
+    /**
+     * changes the grid to a Square grid
+     */
     @FXML
     private void handleSquare() {
         b_hexagon.setDisable(false);
@@ -160,7 +167,10 @@ public class Controller implements Initializable {
         b_square.setDisable(true);
         stopAndClear();
     }
-
+    
+    /**
+     * changes the grid to an Hexagonal grid
+     */
     @FXML
     private void handleHexa() {
         b_square.setDisable(false);
@@ -168,7 +178,11 @@ public class Controller implements Initializable {
         b_hexagon.setDisable(true);
         stopAndClear();
     }
-
+    
+    /**
+     * load the save file of a game with a ".gol" extension
+     * @param event 
+     */
     @FXML
     private void handleLoad(ActionEvent event) {
         fileChooser.setTitle("Select a file");
@@ -192,7 +206,11 @@ public class Controller implements Initializable {
             display.displayBoard(board);
         }
     }
-
+    
+    /**
+     * save a game to a file with a ".gol" extension
+     * @param event 
+     */
     @FXML
     private void handleSave(ActionEvent event) {
         fileChooser.setTitle("Save");
@@ -207,6 +225,10 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * set population randomly according to a probabilty given by the user in the GUI
+     * @param event 
+     */
     @FXML
     private void handleRandom(ActionEvent event) {
         generation = 0;
@@ -216,12 +238,19 @@ public class Controller implements Initializable {
         l_population.setText(Integer.toString(board.getPopulation()));
     }
 
+    /**
+     * updates the view of the grid
+     * @param event 
+     */
     @FXML
     private void handleUpdate(ActionEvent event) {
         l_generation.setText(Integer.toString(generation));
         l_population.setText(Integer.toString(board.getPopulation()));
     }
 
+    /**
+     * stops the game
+     */
     @FXML
     private void handleStop() {
         loop.stop();
@@ -234,6 +263,9 @@ public class Controller implements Initializable {
         b_stop.setDisable(true);
     }
 
+    /**
+     * runs the game
+     */
     @FXML
     private void handleRun() {
 
@@ -264,6 +296,10 @@ public class Controller implements Initializable {
         b_load.setDisable(true);
     }
 
+    /**
+     * Moves one step further in the game
+     * @param event 
+     */
     @FXML
     private void handleStep(ActionEvent event) {
         board.update();
@@ -273,6 +309,10 @@ public class Controller implements Initializable {
         l_population.setText(Integer.toString(board.getPopulation()));
     }
 
+    /**
+     * Open a new window with the instructions of the game and the credits
+     * @param event 
+     */
     @FXML
     private void handleAPropos(ActionEvent event) {
         Parent root;
@@ -288,6 +328,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * initiate the GUI
+     */
     private void initiateGUI() {
         if (Param.IS_TORIQUE) {
             b_torique.setSelected(true);
@@ -323,6 +366,9 @@ public class Controller implements Initializable {
         s_nbColumns.adjustValue(Param.NB_COLUMNS);
     }
 
+    /**
+     * clears the grid of any alive (or considered alive) cell
+     */
     @FXML
     private void handleClear() {
         board = Utils.createNewBoard();
@@ -332,11 +378,17 @@ public class Controller implements Initializable {
         l_population.setText(Integer.toString(board.getPopulation()));
         l_population.setStyle("-fx-background-color: #BDBDBD; -fx-background-radius:5; -fx-padding:3;");
     }
-
+    
+    /**
+     * updates the population
+     */
     public void incrementPopulation() {
         l_population.setText(Integer.toString(board.getPopulation()));
     }
 
+    /**
+     * resets view of the grid
+     */
     private void resetGridView() {
         if (Param.GRID == 1) {
             display = new DisplaySquareGridFX(board, this);
@@ -349,6 +401,10 @@ public class Controller implements Initializable {
         pane.getChildren().add(new Group(display.getPane()));
     }
 
+    /**
+     * sets all the sliders needed for the user
+     * Random, Rows, Columns, Speed and Griffeath(n) sliders
+     */
     private void setSliders() {
         s_random.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
@@ -397,6 +453,9 @@ public class Controller implements Initializable {
         });
     }
 
+    /**
+     * sets all the possible modes to false
+     */
     private void setModesToFalse() {
         Param.IS_DAY_AND_NIGHT = false;
         Param.IS_GRIFFEATH = false;
@@ -409,6 +468,11 @@ public class Controller implements Initializable {
         Param.IS_MATHS = false;
     }
 
+    /**
+     * activate the griffeath(n) slider if b is true
+     * deactivates the slider otherwise
+     * @param b 
+     */
     private void activeGriffeathSlider(boolean b) {
         if (b == true) {
             s_griffeath.setDisable(false);
@@ -421,6 +485,9 @@ public class Controller implements Initializable {
         }
     }
 
+    /**
+     * sets the mode choice box with all mode and actions to do accordingly
+     */
     private void setChoiceBox() {
         cb_mode.setItems(FXCollections.observableArrayList(
                 "Classique", "Isotrope", "Immigration", "DayAndNight", "HighLife",
@@ -489,6 +556,11 @@ public class Controller implements Initializable {
                 });
     }
 
+    /**
+     * Initialize the view
+     * @param url
+     * @param rb 
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         board = Utils.createNewBoard();

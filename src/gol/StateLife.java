@@ -4,6 +4,7 @@ package gol;
 import java.io.Serializable;
 
 /**
+ * State of the cell as ALIVE or DEAD
  * @author Anthony CHAFFOT
  * @author Jessica FAVIN
  * @date 30/10/2015

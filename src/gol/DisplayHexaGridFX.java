@@ -21,6 +21,11 @@ public class DisplayHexaGridFX implements GridPaneDriver {
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
+    /**
+     * displays the hexagonal board
+     * @param board
+     * @param controller 
+     */
     public DisplayHexaGridFX(Board board, Controller controller) {
         pane = new Pane();
         grid = board.getGrid();

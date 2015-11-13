@@ -6,11 +6,12 @@ package gol;
 
 
 /**
+ * State of the cell as ALIVE, ZOMBIE or DEAD
  * @date    6 nov. 2015
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public enum ImmigrationState implements State{
+public enum StateImmigration implements State{
     DEAD{
         @Override
         public char toChar() {

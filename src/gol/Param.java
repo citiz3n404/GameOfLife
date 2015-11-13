@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 
 /**
- * Parameters of the game
+ * Contains all the parameters of the game
  * @date    3 nov. 2015
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN

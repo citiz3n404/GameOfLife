@@ -13,37 +13,40 @@ public class CelluleGriffeathN extends Cellule{
     //**************************************************************************
     // CONSTRUCTOR
     //**************************************************************************
-    public CelluleGriffeathN(SateInt st){
+    public CelluleGriffeathN(StateInt st){
         super(st);
     }
 
     //**************************************************************************
     // METHODS
     //**************************************************************************
-
+    /**
+     * 
+     * @return next state of the cell (increments the int value of the cell)
+     */
     @Override
     public State nextState() {
-        if (((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+        if (((StateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
             if(this.neighbors.size() == 5 && getNbNeighborsStateUp() >= 2) {
-                return new SateInt(0);
+                return new StateInt(0);
 
             }
             if (this.neighbors.size() == 3 && getNbNeighborsStateUp() >= 1) {
-                return new SateInt(0);
+                return new StateInt(0);
 
             }
             if ((getNbNeighborsStateUp() >= 3)) {
-                return new SateInt(0);
+                return new StateInt(0);
             }
         } else {
             if(this.neighbors.size() == 5 && getNbNeighborsStateUp() >= 2) {
-                return new SateInt(((SateInt) state).val+1);
+                return new StateInt(((StateInt) state).val+1);
             }
             if (this.neighbors.size() == 3 && getNbNeighborsStateUp() >= 1) {
-                return new SateInt(((SateInt) state).val+1);
+                return new StateInt(((StateInt) state).val+1);
             }
             if (getNbNeighborsStateUp() >= 3) {
-                return new SateInt(((SateInt) state).val+1);
+                return new StateInt(((StateInt) state).val+1);
             }
         }
         
@@ -51,40 +54,47 @@ public class CelluleGriffeathN extends Cellule{
         return this.state;  
     }
     
+    /**
+     * in this mode kill increments the int value of the cell
+     * used when the cell is clicked on in the GUI
+     */
     @Override
     public void kill() {
-        if (((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
-            state = new SateInt(0);
+        if (((StateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+            state = new StateInt(0);
         }
         else{
-            state = new SateInt(((SateInt) state).val+1);
+            state = new StateInt(((StateInt) state).val+1);
         }
     }
 
     @Override
     public void born() {
-        if (((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
-            state = new SateInt(0);
+        if (((StateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+            state = new StateInt(0);
         }
         else{
-            state = new SateInt(((SateInt) state).val+1);
+            state = new StateInt(((StateInt) state).val+1);
         }
     }
     
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************
-
+    /**
+     * 
+     * @return sum of neighbors that are in the next state (=value of the cell + 1)
+     */
     public int getNbNeighborsStateUp() {
         int sum = 0;
         for (Enum direction : neighbors.keySet()) {
             if (neighbors.get(direction) != null) 
-                if(((SateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
-                    if(((SateInt) (neighbors.get(direction).getState())).val == 0){
+                if(((StateInt) state).val == Param.ETAT_MAX_GRIFFEAT){
+                    if(((StateInt) (neighbors.get(direction).getState())).val == 0){
                         sum++;
                     }
-                }else if(((SateInt) state).val < Param.ETAT_MAX_GRIFFEAT){
-                    if(((SateInt) (neighbors.get(direction).getState())).val == ((SateInt) state).val + 1){
+                }else if(((StateInt) state).val < Param.ETAT_MAX_GRIFFEAT){
+                    if(((StateInt) (neighbors.get(direction).getState())).val == ((StateInt) state).val + 1){
                         sum++;
                     }
                 }
@@ -103,7 +113,11 @@ public class CelluleGriffeathN extends Cellule{
         }
         return sum;
     }
-
+    
+    /**
+     * 
+     * @return In this mode cell's are never really dead, always return true
+     */
     @Override
     public boolean isAlive() {
         return true;

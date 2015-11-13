@@ -26,7 +26,10 @@ public class ControllerInfo implements Initializable{
     //**************************************************************************
     // METHODS
     //**************************************************************************
-
+    
+    /**
+     * closes the stage
+     */
     @FXML
     private void handleClose(){
         Controller.stage.close();

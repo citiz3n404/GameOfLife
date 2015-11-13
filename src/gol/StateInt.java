@@ -8,14 +8,15 @@ import java.io.Serializable;
 
 
 /**
+ * State of the cell as an int number
  * @date    7 nov. 2015
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class SateInt implements State, Serializable {
+public class StateInt implements State, Serializable {
     public int val = 1;
     
-    public SateInt(int value){
+    public StateInt(int value){
         this.val = value;
     }
     

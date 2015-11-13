@@ -8,14 +8,15 @@ import java.io.Serializable;
 
 
 /**
+ * Cell's state as a double number
  * @date    11 nov. 2015
  * @author  Anthony CHAFFOT
  * @author Jessica FAVIN
  */
-public class SateDouble implements State, Serializable {
+public class StateDouble implements State, Serializable {
     public double val;
     
-    public SateDouble(double value){
+    public StateDouble(double value){
         this.val = value;
     }
     

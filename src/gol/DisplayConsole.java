@@ -25,7 +25,9 @@ public class DisplayConsole implements DisplayDriver{
     //**************************************************************************
     // SETTERS / GETTERS
     //**************************************************************************
-
+    /**
+     * displays the game board
+     */
     @Override
     public void displayBoard(Board board) {
         grid = board.getGrid();

@@ -18,6 +18,10 @@ public class Utils {
     //**************************************************************************
     // FUNCTIONS
     //**************************************************************************
+    /**
+     * creates a new board according to the parameters in Param
+     * @return the board generated
+     */
     public static Board createNewBoard() {
         Board board;
         if (Param.GRID == 1) {
@@ -30,12 +34,17 @@ public class Utils {
         return board;
     }
 
+    /**
+     * creates a new cell according to the parameters in Param
+     * @param st
+     * @return 
+     */
     public static Cellule createNewCell(State st) {
         Cellule cell;
         if (Param.IS_GRIFFEATH) {
-            cell = new CelluleGriffeath((SateInt) st);
+            cell = new CelluleGriffeath((StateInt) st);
         } else if (Param.IS_IMMIGRATION) {
-            cell = new CelluleImmigration((ImmigrationState) st);
+            cell = new CelluleImmigration((StateImmigration) st);
         } else if (Param.IS_ISOTROPE) {
             cell = new CelluleIsotrope((StateLife) st);
         } else if (Param.IS_HIGHLIFE) {
@@ -45,11 +54,11 @@ public class Utils {
         } else if (Param.IS_FREDKIN) {
             cell = new CelluleFredkin((StateLife) st);
         } else if (Param.IS_MOYENNE) {
-            cell = new CelluleMoyenne((SateDouble) st);
+            cell = new CelluleMoyenne((StateDouble) st);
         } else if (Param.IS_GRIFFEATH_N) {
-            cell = new CelluleGriffeathN((SateInt) st);
+            cell = new CelluleGriffeathN((StateInt) st);
         } else if (Param.IS_MATHS) {
-            cell = new CelluleMaths((SateDouble) st);
+            cell = new CelluleMaths((StateDouble) st);
         } else {
             cell = new CelluleClassique((StateLife) st);
         }
@@ -86,33 +95,33 @@ public class Utils {
     public static Color getColorCell(Cellule cell) {
         Color c;
         if (Param.IS_IMMIGRATION) {
-            if (cell.getState() == ImmigrationState.ALIVE) {
+            if (cell.getState() == StateImmigration.ALIVE) {
                 c = Param.COLOR_ALIVE;
-            } else if (cell.getState() == ImmigrationState.ZOMBIE) {
+            } else if (cell.getState() == StateImmigration.ZOMBIE) {
                 c = Param.COLOR_ZOMBIE;
             } else {
                 c = Param.COLOR_DEAD;
             }
         } else if (Param.IS_GRIFFEATH) {
-            if(((SateInt) cell.getState()).val == 0){
+            if(((StateInt) cell.getState()).val == 0){
                 c = Color.web("#ffff00");
             }
-            else if(((SateInt) cell.getState()).val == 1){
+            else if(((StateInt) cell.getState()).val == 1){
                 c = Color.web("#ffaa00");
             }
-            else if(((SateInt) cell.getState()).val == 2){
+            else if(((StateInt) cell.getState()).val == 2){
                 c = Color.web("#ff5500");
             }
             else {
                 c = Color.web("#ff0000");
             }
         } else if(Param.IS_GRIFFEATH_N){
-            int percentVal = (((SateInt) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
+            int percentVal = (((StateInt) cell.getState()).val)*360/Param.ETAT_MAX_GRIFFEAT;
             c = Color.hsb(percentVal, 0.7, 0.94);
         } else if(Param.IS_MOYENNE || Param.IS_MATHS) {
-            c = Color.color(0,0,(((SateDouble) cell.getState()).val));
+            c = Color.color(0,0,(((StateDouble) cell.getState()).val));
             //Couleurs psychédélique
-            //c = Color.hsb((((SateDouble) cell.getState()).val)*360, 0.7, 0.94);
+            //c = Color.hsb((((StateDouble) cell.getState()).val)*360, 0.7, 0.94);
         } else {
             if (cell.getState() == StateLife.ALIVE) {
                 c = Param.COLOR_ALIVE;
