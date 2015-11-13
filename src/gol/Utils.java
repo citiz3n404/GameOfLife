@@ -5,6 +5,8 @@ package gol;
 
 import java.io.File;
 import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
@@ -70,7 +72,7 @@ public class Utils {
     //**************************************************************************
     public static void attachListeners(Shape r, Cellule c, Controller controller) {
         r.setOnMousePressed(e -> {
-            r.setFill(Param.COLOR_BORN);
+            //r.setFill(Param.COLOR_BORN);
         });
 
         r.setOnMouseClicked(e -> {
@@ -132,17 +134,19 @@ public class Utils {
         return c;
     }
     
-    public static ArrayList<String> listDirectory(File directory){
+    public static ObservableList<String> listDirectory(File directory){
 	String[] listefichiers;
 	listefichiers = directory.list();
-	ArrayList<String> res = new ArrayList<>();
+	ObservableList<String> res = FXCollections.observableArrayList();
+        
         for (String listefichier : listefichiers) {
             if (listefichier.endsWith(".gol") == true) {
-                System.out.println(listefichier.substring(0, listefichier.length() - 4));
+                //System.out.println(listefichier.substring(0, listefichier.length() - 4));
                 res.add(listefichier.substring(0, listefichier.length() - 4));
                 // on choisit la sous chaine - les 4 derniers caracteres ".gol"
             }
         }
+        
 	return res;
     }
 }

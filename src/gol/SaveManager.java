@@ -143,7 +143,7 @@ public class SaveManager {
                 input.close();
             }
         } catch (IOException ex) {
-            System.out.println("LOADING FAILED !");
+            //System.out.println("LOADING FAILED !");
         }
         return board;
     }
