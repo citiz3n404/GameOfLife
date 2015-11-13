@@ -1,4 +1,4 @@
-/* 
+ /* 
  * Creation : 6 nov. 2015
  */
 package gol;
@@ -114,11 +114,11 @@ public class Utils {
         Color c;
         if (Param.IS_IMMIGRATION) {
             if (cell.getState() == StateImmigration.ALIVE) {
-                c = Param.COLOR_ALIVE;
+                c = Color.web("#18bbff");
             } else if (cell.getState() == StateImmigration.ZOMBIE) {
-                c = Param.COLOR_ZOMBIE;
+                c = Color.web("#59EA9D");
             } else {
-                c = Param.COLOR_DEAD;
+                c = Color.web("#757575");
             }
         } else if (Param.IS_GRIFFEATH) {
             if(((StateInt) cell.getState()).val == 0){
@@ -142,9 +142,9 @@ public class Utils {
             //c = Color.hsb((((StateDouble) cell.getState()).val)*360, 0.7, 0.94);
         } else {
             if (cell.getState() == StateLife.ALIVE) {
-                c = Param.COLOR_ALIVE;
+                c = Color.web("#18bbff");
             } else {
-                c = Param.COLOR_DEAD;
+                c = Color.web("#757575");
             }
         }
         return c;

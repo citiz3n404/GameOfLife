@@ -29,7 +29,7 @@ public class CelluleClassique extends Cellule{
     @Override
     public State nextState() {
         if(this.state == StateLife.ALIVE){
-            if(getNbNeighborsAlive() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighborsAlive() <= Param.NEIGHBORS_MAX_TO_LIVE){
+            if(getNbNeighborsAlive() >= 2 && getNbNeighborsAlive() <= 3){
                 return StateLife.ALIVE;
             } 
             else{
@@ -37,7 +37,7 @@ public class CelluleClassique extends Cellule{
             }
         }
         else{
-            if(getNbNeighborsAlive() == Param.NEIGHBORS_TO_BORN){
+            if(getNbNeighborsAlive() == 3){
                 return StateLife.ALIVE;
             }
         }

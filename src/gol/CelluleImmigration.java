@@ -32,7 +32,7 @@ public class CelluleImmigration extends Cellule{
     public State nextState() {
         if(this.state == StateImmigration.ZOMBIE||this.state == StateImmigration.ALIVE){
             //La cellule prend l'état majoritaire parmis ses voisins
-            if(getNbNeighborsAlive() >= Param.NEIGHBORS_MIN_TO_LIVE && getNbNeighborsAlive() <= Param.NEIGHBORS_MAX_TO_LIVE){
+            if(getNbNeighborsAlive() >= 2 && getNbNeighborsAlive() <= 3){
                 return this.state;
             }
             else{
@@ -40,7 +40,7 @@ public class CelluleImmigration extends Cellule{
             }
         }
         else{
-            if(getNbNeighborsAlive() == Param.NEIGHBORS_TO_BORN){
+            if(getNbNeighborsAlive() == 3){
                 if(moreZombies()) return StateImmigration.ZOMBIE;
                 else return StateImmigration.ALIVE;
             }

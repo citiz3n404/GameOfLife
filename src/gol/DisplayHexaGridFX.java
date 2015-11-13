@@ -68,9 +68,6 @@ public class DisplayHexaGridFX implements GridPaneDriver {
         }
     }
 
-    private int boardToPaneCoords(int i, int j) {
-        return (i * Param.NB_COLUMNS) + j;
-    }
 
     /**
      * Create an hexagon to the panel to the coordinates centerX and centerY

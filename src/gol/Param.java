@@ -23,13 +23,6 @@ public class Param {
     // 1 -> Square 2-> Hexa 3->Triangle ?
 
     //**************************************************************************
-    // CLASSIC
-    //**************************************************************************
-    public static int       NEIGHBORS_MIN_TO_LIVE   = 2;
-    public static int       NEIGHBORS_MAX_TO_LIVE   = 3;
-    public static int       NEIGHBORS_TO_BORN       = 3;
-    
-    //**************************************************************************
     // GRIFFEATH
     //**************************************************************************
     public static int       ETAT_MAX_GRIFFEAT       = 3;
@@ -38,7 +31,6 @@ public class Param {
     // SIMULATION
     //**************************************************************************
     public static boolean   IS_TORIQUE              = false;
-    
     public static boolean   IS_IMMIGRATION          = false;
     public static boolean   IS_GRIFFEATH            = false;
     public static boolean   IS_ISOTROPE             = false;
@@ -55,10 +47,6 @@ public class Param {
     public static int       SIZE_HEXA_TILE          = 5;
     public static int       SIZE_SQUARE_TILE        = 8;
     public static int       SIZE_GAP                = 1;
-    public static Color     COLOR_ALIVE             = Color.web("#18bbff");
-    public static Color     COLOR_DEAD              = Color.web("#757575");
-    public static Color     COLOR_BORN              = Color.web("#EC407A");
-    public static Color     COLOR_ZOMBIE            = Color.web("#59EA9D");
     
 
 }
