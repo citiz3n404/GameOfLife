@@ -70,6 +70,12 @@ public class Utils {
     //**************************************************************************
     // GRAPHICAL INTERFACE
     //**************************************************************************
+    /**
+     * attached all listeners needed on cell in the GUI
+     * @param r chape of the cell (square or hexagonal)
+     * @param c the cell
+     * @param controller 
+     */
     public static void attachListeners(Shape r, Cellule c, Controller controller) {
         r.setOnMousePressed(e -> {
             //r.setFill(Param.COLOR_BORN);
@@ -89,11 +95,21 @@ public class Utils {
         });
     }
 
+    /**
+     * 
+     * @param i
+     * @param j
+     * @return 
+     */
     public static int boardToPaneCoords(int i, int j) {
         return (i * Param.NB_COLUMNS) + j;
     }
     
-
+    /**
+     * used to set the color of the cellule according to the parameters in Param
+     * @param cell to color
+     * @return the color of the cell
+     */
     public static Color getColorCell(Cellule cell) {
         Color c;
         if (Param.IS_IMMIGRATION) {
@@ -134,6 +150,11 @@ public class Utils {
         return c;
     }
     
+    /**
+     * Used in the pattern choicebox in the GUI
+     * @param directory from where to get all the pattern files
+     * @return list of all the names of the files (without the extension)
+     */
     public static ObservableList<String> listDirectory(File directory){
 	String[] listefichiers;
 	listefichiers = directory.list();
@@ -141,7 +162,6 @@ public class Utils {
         
         for (String listefichier : listefichiers) {
             if (listefichier.endsWith(".gol") == true) {
-                //System.out.println(listefichier.substring(0, listefichier.length() - 4));
                 res.add(listefichier.substring(0, listefichier.length() - 4));
                 // on choisit la sous chaine - les 4 derniers caracteres ".gol"
             }
